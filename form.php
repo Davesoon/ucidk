@@ -41,6 +41,31 @@
             $_SESSION['e_phone']="Numer telefonu może składać się tylko z cyfr (bez kierunkowego, myślników i spacji) oraz powinien zawierać od 7 do 15 cyfr!";
         }
 
+        //Sprawdź poprawność informacji dodatkowej
+        $info = $_POST['info'];
+        if(strlen($info)>300)
+        {
+            $everything_OK=false;
+            $_SESSION['e_info']="Informacja dodatkowa nie może przekroczyć 300 znaków!";
+        }
+
+        //Sprawdź checkboxa
+        if(!isset($_POST['regulations']))
+        {
+            $everything_OK=false;
+            $_SESSION['e_regulations']="Potwierdź akceptację regulaminu!";
+        }
+
+        //bot or not?
+        // $secret = "";
+        // $verify = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret='.$secret.'&respone='.$_POST['g-recaptcha-response']);
+        // $response = json_decode($verify);
+        // if($response->success==false)
+        // {
+        //     $everything_OK=false;
+        //     $_SESSION['e_bot']="Potwierdź, że nie jesteś botem!";
+        // }
+
         if($everything_OK==true)
         {
             //Hurra, wszystkie testy zaliczone!
@@ -106,14 +131,38 @@
         ?>
 
         Dodatkowe informacje: <input type="text" name="info"><br>
+        <?php
+            if(isset($_SESSION['e_info']))
+            {
+                echo '<div class="error">'.$_SESSION['e_info'].'</div>';
+                unset($_SESSION['e_info']);
+            }
+        ?>
+
         <label>
             <input type="checkbox" name="regulations"> Akceptuję regulamin
         </label>
+        <?php
+            if(isset($_SESSION['e_regulations']))
+            {
+                echo '<div class="error">'.$_SESSION['e_regulations'].'</div>';
+                unset($_SESSION['e_regulations']);
+            }
+        ?>
+
         <button class="g-recaptcha" 
                 data-sitekey="reCAPTCHA_site_key" 
                 data-callback='onSubmit' 
                 data-action='submit'>Submit
         </button><br>
+        <!-- <?php
+            if(isset($_SESSION['e_bot']))
+            {
+                echo '<div class="error">'.$_SESSION['e_bot'].'</div>';
+                unset($_SESSION['e_bot']);
+            }
+        ?> -->
+
         <input type="submit" value="Wyślij formularz">
 
     </form>
