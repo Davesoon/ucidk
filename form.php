@@ -35,10 +35,10 @@
 
         // Sprawdź poprawność telefonu
         $phone = $_POST['phone'];
-        if(ctype_digit($phone)==false)
+        if((ctype_digit($phone)==false) || ((strlen($phone)<7) || (strlen($phone)>15)))
         {
             $everything_OK=false;
-            $_SESSION['e_phone']="Numer telefonu może składać się tylko z cyfr (bez kierunkowego, myślników i spacji)";
+            $_SESSION['e_phone']="Numer telefonu może składać się tylko z cyfr (bez kierunkowego, myślników i spacji) oraz powinien zawierać od 7 do 15 cyfr!";
         }
 
         if($everything_OK==true)
