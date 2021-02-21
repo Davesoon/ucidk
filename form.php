@@ -4,15 +4,27 @@
     {
         //Udana walidacja? Załóżmy, że tak!
         $everything_OK=true;
-
         //Sprawdź poprawność imienia
         $firstname = $_POST['firstname'];
-
         //Sprawdzenie długości imienia
         if((strlen($firstname)<3) || (strlen($firstname)>20))
         {
             $everything_OK=false;
             $_SESSION['e_firstname']="Imię musi posiadać od 3 do 20 znaków!";
+        }
+        // if(ctype_alnum($email)==false)
+        // {
+        //     $everything_OK=false;
+        //     $_SESSION['e_email']="Adres e-mail może składać się tylko z liter i cyfr (bez polskich znaków)";
+        // }
+
+        // Sprawdź poprawność adresu email
+        $email = $_POST['email'];
+        $emailB = filter_var($email, FILTER_SANITIZE_EMAIL);
+        if((filter_var($emailB, FILTER_VALIDATE_EMAIL)==false) || ($emailB!=$email))
+        {
+            $everything_OK=false;
+            $_SESSION['e_email']="Podaj poprawny adres e-mail!";
         }
 
         if($everything_OK==true)
@@ -54,6 +66,14 @@
 
         Nazwisko: <input type="text" name="lastname"><br>
         E-mail: <input type="text" name="email"><br>
+        <?php
+            if(isset($_SESSION['e_email']))
+            {
+                echo '<div class="error">'.$_SESSION['e_email'].'</div>';
+                unset($_SESSION['e_email']);
+            }
+        ?>
+
         Telefon: <input type="text" name="phone"><br>
         Dodatkowe informacje: <input type="text" name="info"><br>
         <label>
