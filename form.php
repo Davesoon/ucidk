@@ -66,6 +66,14 @@
         //     $_SESSION['e_bot']="Potwierdź, że nie jesteś botem!";
         // }
 
+        //Zapamiętaj wprowadzone dane
+        $_SESSION['fr_firstname'] = $firstname;
+        $_SESSION['fr_lastname'] = $lastname;
+        $_SESSION['fr_email'] = $email;
+        $_SESSION['fr_phone'] = $phone;
+        $_SESSION['fr_info'] = $info;
+        if(isset($_POST['regulations'])) $_SESSION['fr_regulations'] = true;
+
         require_once "connect.php";
         mysqli_report(MYSQLI_REPORT_STRICT);
 
@@ -145,7 +153,13 @@
 </head>
 <body>
     <form method="post">
-        Imię: <input type="text" name="firstname"><br>
+        Imię: <input type="text" value="<?php
+        if(isset($_SESSION['fr_firstname']))
+        {
+            echo $_SESSION['fr_firstname'];
+            unset($_SESSION['fr_firstname']);
+        }
+        ?>" name="firstname"><br>
         <?php
             if(isset($_SESSION['e_firstname']))
             {
@@ -154,7 +168,13 @@
             }
         ?>
 
-        Nazwisko: <input type="text" name="lastname"><br>
+        Nazwisko: <input type="text" value="<?php
+        if(isset($_SESSION['fr_lastname']))
+        {
+            echo $_SESSION['fr_lastname'];
+            unset($_SESSION['fr_lastname']);
+        }
+        ?>" name="lastname"><br>
         <?php
             if(isset($_SESSION['e_lastname']))
             {
@@ -163,7 +183,13 @@
             }
         ?>
 
-        E-mail: <input type="text" name="email"><br>
+        E-mail: <input type="text" value="<?php
+        if(isset($_SESSION['fr_email']))
+        {
+            echo $_SESSION['fr_email'];
+            unset($_SESSION['fr_email']);
+        }
+        ?>" name="email"><br>
         <?php
             if(isset($_SESSION['e_email']))
             {
@@ -172,7 +198,13 @@
             }
         ?>
 
-        Telefon: <input type="text" name="phone"><br>
+        Telefon: <input type="text" value="<?php
+        if(isset($_SESSION['fr_phone']))
+        {
+            echo $_SESSION['fr_phone'];
+            unset($_SESSION['fr_phone']);
+        }
+        ?>" name="phone"><br>
         <?php
             if(isset($_SESSION['e_phone']))
             {
@@ -181,7 +213,13 @@
             }
         ?>
 
-        Dodatkowe informacje: <input type="text" name="info"><br>
+        Dodatkowe informacje: <input type="text" value="<?php
+        if(isset($_SESSION['fr_info']))
+        {
+            echo $_SESSION['fr_info'];
+            unset($_SESSION['fr_info']);
+        }
+        ?>" name="info"><br>
         <?php
             if(isset($_SESSION['e_info']))
             {
@@ -191,7 +229,13 @@
         ?>
 
         <label>
-            <input type="checkbox" name="regulations"> Akceptuję regulamin
+            <input type="checkbox" name="regulations" <?php
+            if(isset($_SESSION['fr_regulations']))
+            {
+                echo "checked";
+                unset($_SESSION['fr_regulations']);
+            }
+            ?>> Akceptuję regulamin
         </label>
         <?php
             if(isset($_SESSION['e_regulations']))
