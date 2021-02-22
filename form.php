@@ -76,7 +76,22 @@
             {
                 throw new Exception(mysqli_connect_errno());
             }
+            else
+            {
+                //czy mail juz isnieje?
+                $result = $connection->query("SELECT id FROM members WHERE email='$email'");
+                if(!$result) throw new Exception($connection->error);
 
+                $how_many_emails = $result->num_rows;
+                if($how_many_emails>0)
+                {
+                    $everything_OK=false;
+                    $_SESSION['e_email']="Podany adres e-mail jest już w bazie!";
+                }
+        
+
+                $connection->close();
+            }
         }
         catch(Exception $e)
         {
