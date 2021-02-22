@@ -78,7 +78,7 @@
             }
             else
             {
-                //czy mail juz isnieje?
+                //czy email juz isnieje?
                 $result = $connection->query("SELECT id FROM members WHERE email='$email'");
                 if(!$result) throw new Exception($connection->error);
 
@@ -88,7 +88,31 @@
                     $everything_OK=false;
                     $_SESSION['e_email']="Podany adres e-mail jest już w bazie!";
                 }
-        
+
+                //czy telefon juz isnieje?
+                $result = $connection->query("SELECT id FROM members WHERE phone='$phone'");
+                if(!$result) throw new Exception($connection->error);
+                
+                $how_many_phones = $result->num_rows;
+                if($how_many_phones>0)
+                {
+                    $everything_OK=false;
+                    $_SESSION['e_phone']="Podany numer telefonu jest już w bazie!";
+                }
+
+                if($everything_OK==true)
+                {
+                    //Hurra, wszystkie testy zaliczone!
+                    if($connection->query("INSERT INTO members VALUES(NULL, '$firstname', '$lastname', '$email', '$phone', '$info', NULL, NULL)"))
+                    {
+                        $_SESSION['sent']=true;
+                        header('Location: welcome.php');
+                    }
+                    else
+                    {
+                        throw new Exception($connection->error);
+                    }
+                }        
 
                 $connection->close();
             }
@@ -96,13 +120,7 @@
         catch(Exception $e)
         {
             echo '<span style="color:red;">Błąd serwera! Przepraszamy za niedogodności i prosimy o rejestrację w innym terminie!</span>';
-            // echo '<br>Informacja developerska: '.$e;
-        }
-
-        if($everything_OK==true)
-        {
-            //Hurra, wszystkie testy zaliczone!
-            echo "Udana walidacja!"; exit();
+            echo '<br>Informacja developerska: '.$e;
         }
     }
 
