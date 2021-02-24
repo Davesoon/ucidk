@@ -222,21 +222,51 @@
             }
         ?>
 
-    Województwo: <select name="province" <?php
-        if(isset($_SESSION['fr_province']))
-        {
-            echo $_SESSION['fr_province'];
-            unset($_SESSION['fr_province']);
-        }
-    ?>>
-        <option>-- wybierz --</option>
-        <option>opcja2</option>
-    </select><br>
-    <?php
-            if(isset($_SESSION['e_province']))
+        Województwo: <select name="province" <?php
+            if(isset($_SESSION['fr_province']))
             {
-                echo '<div class="error">'.$_SESSION['e_province'].'</div>';
-                unset($_SESSION['e_province']);
+                echo $_SESSION['fr_province'];
+                unset($_SESSION['fr_province']);
+            }
+        ?>>
+            <option>-- wybierz --</option>
+            <option>dolnośląskie</option>
+            <option>kujawsko-pomorskie</option>
+            <option>lubelskie</option>
+            <option>lubuskie</option>
+            <option>łódzkie</option>
+            <option>małopolskie</option>
+            <option>mazowieckie</option>
+            <option>opolskie</option>
+            <option>podkarpackie</option>
+            <option>podlaskie</option>
+            <option>pomorskie</option>
+            <option>śląskie</option>
+            <option>świętokrzyskie</option>
+            <option>warmińsko-mazurskie</option>
+            <option>wielkopolskie</option>
+            <option>zachodniopomorskie</option>
+        </select><br>
+        <?php
+                if(isset($_SESSION['e_province']))
+                {
+                    echo '<div class="error">'.$_SESSION['e_province'].'</div>';
+                    unset($_SESSION['e_province']);
+                }
+            ?>
+
+        Gmina: <input type="text" value="<?php
+        if(isset($_SESSION['fr_info']))
+        {
+            echo $_SESSION['fr_info'];
+            unset($_SESSION['fr_info']);
+        }
+        ?>" name="info"><br>
+        <?php
+            if(isset($_SESSION['e_info']))
+            {
+                echo '<div class="error">'.$_SESSION['e_info'].'</div>';
+                unset($_SESSION['e_info']);
             }
         ?>
 
