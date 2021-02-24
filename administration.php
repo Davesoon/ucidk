@@ -14,41 +14,73 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>ZALOGUJ</title>
+    <style>
+        table thead tr
+        {
+            border: 5px, solid, black;
+        }
+    </style>
 </head>
 <body>
 <?php
     echo "<p>Witaj ".$_SESSION['login'].'!</p>';
     echo "<a href='logout.php'>Wyloguj się!</a>";
-
-    require_once "connect.php";
-    mysqli_report(MYSQLI_REPORT_STRICT);
-
-    try
-    {
-        $connection = new mysqli($host, $db_user, $db_password, $db_name);
-        if($connection->connect_errno!=0)
-        {
-            throw new Exception(mysqli_connect_errno());
-        }
-        else
-        {
-            $query = "SELECT * FROM members";
-            $result = $connection->query($query);
-            while($row = $result->fetch_assoc())
-                {
-                    echo "<br>";
-                    foreach($row as $value)
-                    {
-                        echo $value;
-                    }
-                }
-        }
-    }
-    catch(Exception $e)
-    {
-        echo '<span style="color:red;">Błąd serwera! Przepraszamy za niedogodności i prosimy o rejestrację w innym terminie!</span>';
-        echo '<br>Informacja developerska: '.$e;
-    }
-    
 ?>
+<table bgcolor="green">
+    <thead>
+        <tr bgcolor="blue">
+            <th bgcolor="red">Id</th>
+            <th>Imię</th>
+            <th>Nazwisko</th>
+            <th>Adres e-mail</th>
+            <th>Numer telefonu</th>
+            <th>Województwo</th>
+            <th>Gmina</th>
+            <th>Dodatkowe informacje</th>
+        </tr>
+    </thead>
+    <tbody>
+    <?php
+
+
+require_once "connect.php";
+mysqli_report(MYSQLI_REPORT_STRICT);
+
+try
+{
+    $connection = new mysqli($host, $db_user, $db_password, $db_name);
+    if($connection->connect_errno!=0)
+    {
+        throw new Exception(mysqli_connect_errno());
+    }
+    else
+    {
+        $query = "SELECT * FROM members";
+        $result = $connection->query($query);
+        while($row = $result->fetch_assoc())
+            {
+                echo "<br>";
+                echo "<tr>";
+                foreach($row as $value)
+                {
+                    echo "<td>".$value."</td>";
+                }
+                echo "</tr>";
+            }
+    }
+}
+catch(Exception $e)
+{
+    echo '<span style="color:red;">Błąd serwera! Przepraszamy za niedogodności i prosimy o rejestrację w innym terminie!</span>';
+    echo '<br>Informacja developerska: '.$e;
+}
+
+?>
+
+        <tr>
+        
+        </tr>
+    </tbody>
+</table>
+
 </body>
