@@ -15,9 +15,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>ZALOGUJ</title>
     <style>
-        table thead tr
+        table thead tr th, table tbody tr td
         {
-            border: 5px, solid, black;
+            padding: 10px;
         }
     </style>
 </head>
@@ -26,10 +26,10 @@
     echo "<p>Witaj ".$_SESSION['login'].'!</p>';
     echo "<a href='logout.php'>Wyloguj się!</a>";
 ?>
-<table bgcolor="green">
+<table border= "1px, solid, black">
     <thead>
-        <tr bgcolor="blue">
-            <th bgcolor="red">Id</th>
+        <tr style="color:white; background-color:black;">
+            <th>Id</th>
             <th>Imię</th>
             <th>Nazwisko</th>
             <th>Adres e-mail</th>
