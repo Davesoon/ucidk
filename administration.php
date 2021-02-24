@@ -34,10 +34,10 @@
         {
             $query = "SELECT * FROM members";
             $result = $connection->query($query);
-            while($row = $result->fetch_assoc()) 
+            while($row = $result->fetch_assoc())
                 {
                     echo "<br>";
-                    foreach($row as $value) 
+                    foreach($row as $value)
                     {
                         echo $value;
                     }

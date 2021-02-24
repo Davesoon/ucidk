@@ -41,6 +41,14 @@
             $_SESSION['e_phone']="Numer telefonu może składać się tylko z cyfr (bez kierunkowego, myślników i spacji) oraz powinien zawierać od 7 do 15 cyfr!";
         }
 
+        // Sprawdź poprawność województwa
+        $province = $_POST['province'];
+        if($province=='-- wybierz --')
+        {
+            $everything_OK=false;
+            $_SESSION['e_province']="Wybierz województwo!";
+        }
+        
         //Sprawdź poprawność informacji dodatkowej
         $info = $_POST['info'];
         if(strlen($info)>300)
@@ -71,6 +79,7 @@
         $_SESSION['fr_lastname'] = $lastname;
         $_SESSION['fr_email'] = $email;
         $_SESSION['fr_phone'] = $phone;
+        $_SESSION['fr_province'] = $province;
         $_SESSION['fr_info'] = $info;
         if(isset($_POST['regulations'])) $_SESSION['fr_regulations'] = true;
 
@@ -111,7 +120,7 @@
                 if($everything_OK==true)
                 {
                     //Hurra, wszystkie testy zaliczone!
-                    if($connection->query("INSERT INTO members VALUES(NULL, '$firstname', '$lastname', '$email', '$phone', '$info', NULL, NULL)"))
+                    if($connection->query("INSERT INTO members VALUES(NULL, '$firstname', '$lastname', '$email', '$phone', '$province', '$info', NULL, NULL)"))
                     {
                         $_SESSION['sent']=true;
                         header('Location: welcome.php');
@@ -128,7 +137,7 @@
         catch(Exception $e)
         {
             echo '<span style="color:red;">Błąd serwera! Przepraszamy za niedogodności i prosimy o rejestrację w innym terminie!</span>';
-            // echo '<br>Informacja developerska: '.$e;
+            echo '<br>Informacja developerska: '.$e;
         }
     }
 
@@ -210,6 +219,24 @@
             {
                 echo '<div class="error">'.$_SESSION['e_phone'].'</div>';
                 unset($_SESSION['e_phone']);
+            }
+        ?>
+
+    Województwo: <select name="province" <?php
+        if(isset($_SESSION['fr_province']))
+        {
+            echo $_SESSION['fr_province'];
+            unset($_SESSION['fr_province']);
+        }
+    ?>>
+        <option>-- wybierz --</option>
+        <option>opcja2</option>
+    </select><br>
+    <?php
+            if(isset($_SESSION['e_province']))
+            {
+                echo '<div class="error">'.$_SESSION['e_province'].'</div>';
+                unset($_SESSION['e_province']);
             }
         ?>
 
