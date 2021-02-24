@@ -48,6 +48,14 @@
             $everything_OK=false;
             $_SESSION['e_province']="Wybierz województwo!";
         }
+
+        // Sprawdź poprawność gminy
+        $community = $_POST['community'];
+        if((ctype_alpha($community)==false) || ((strlen($community)<3) || (strlen($community)>30)))
+        {
+            $everything_OK=false;
+            $_SESSION['e_community']="Nazwa gminy powinna zawierać od 3 do 30 liter!";
+        }
         
         //Sprawdź poprawność informacji dodatkowej
         $info = $_POST['info'];
@@ -80,6 +88,7 @@
         $_SESSION['fr_email'] = $email;
         $_SESSION['fr_phone'] = $phone;
         $_SESSION['fr_province'] = $province;
+        $_SESSION['fr_community'] = $community;
         $_SESSION['fr_info'] = $info;
         if(isset($_POST['regulations'])) $_SESSION['fr_regulations'] = true;
 
@@ -120,7 +129,7 @@
                 if($everything_OK==true)
                 {
                     //Hurra, wszystkie testy zaliczone!
-                    if($connection->query("INSERT INTO members VALUES(NULL, '$firstname', '$lastname', '$email', '$phone', '$province', '$info', NULL, NULL)"))
+                    if($connection->query("INSERT INTO members VALUES(NULL, '$firstname', '$lastname', '$email', '$phone', '$province', '$community', '$info', NULL, NULL)"))
                     {
                         $_SESSION['sent']=true;
                         header('Location: welcome.php');
@@ -256,17 +265,17 @@
             ?>
 
         Gmina: <input type="text" value="<?php
-        if(isset($_SESSION['fr_info']))
+        if(isset($_SESSION['fr_community']))
         {
-            echo $_SESSION['fr_info'];
-            unset($_SESSION['fr_info']);
+            echo $_SESSION['fr_community'];
+            unset($_SESSION['fr_community']);
         }
-        ?>" name="info"><br>
+        ?>" name="community"><br>
         <?php
-            if(isset($_SESSION['e_info']))
+            if(isset($_SESSION['e_community']))
             {
-                echo '<div class="error">'.$_SESSION['e_info'].'</div>';
-                unset($_SESSION['e_info']);
+                echo '<div class="error">'.$_SESSION['e_community'].'</div>';
+                unset($_SESSION['e_community']);
             }
         ?>
 
