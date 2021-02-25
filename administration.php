@@ -44,6 +44,11 @@
         </select><br>
         <input type="submit" value="Sortuj">
     </form>
+    <form action="administration.php" method="get">
+        Gmina: <input type="text" name="community">
+        <input type="submit" value="Sortuj">
+    </form>
+
 <?php
     echo "<p>Witaj ".$_SESSION['login'].'!</p>';
     echo "<a href='logout.php'>Wyloguj się!</a>";
@@ -78,8 +83,18 @@ try
     else
     {
         $province = $_GET['province'];
-        if($province=="wszystkie" || $province==NULL) $query = "SELECT * FROM members";
-        else $query = "SELECT * FROM members WHERE province = '$province'";
+        $community = $_GET['community'];
+
+        if(!isset($_GET['province'])) $province="wszystkie";
+        if(!isset($_GET['community'])) $community="wszystkie";
+
+        if($province=="wszystkie" && $community=="wszystkie") $query = "SELECT * FROM members";
+        if($province!="wszystkie" && $community=="wszystkie") $query = "SELECT * FROM members WHERE province = '$province'";
+        if($province=="wszystkie" && $community!="wszystkie") $query = "SELECT * FROM members WHERE community = '$community'";
+
+        echo "1".$province;
+        echo "2".$community;
+        
         $result = $connection->query($query);
         while($row = $result->fetch_assoc())
             {
@@ -91,6 +106,9 @@ try
                     }
                 echo "</tr>";
             }
+        // unset($_GET['province']);
+        // unset($_GET['community']);
+        $connection->close();
     }
 }
 catch(Exception $e)
