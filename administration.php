@@ -22,6 +22,28 @@
     </style>
 </head>
 <body>
+    <form action="administration.php" method="get">
+        Województwo: <br><select name="province">
+            <option>wszystkie</option>
+            <option>dolnośląskie</option>
+            <option>kujawsko-pomorskie</option>
+            <option>lubelskie</option>
+            <option>lubuskie</option>
+            <option>łódzkie</option>
+            <option>małopolskie</option>
+            <option>mazowieckie</option>
+            <option>opolskie</option>
+            <option>podkarpackie</option>
+            <option>podlaskie</option>
+            <option>pomorskie</option>
+            <option>śląskie</option>
+            <option>świętokrzyskie</option>
+            <option>warmińsko-mazurskie</option>
+            <option>wielkopolskie</option>
+            <option>zachodniopomorskie</option>
+        </select><br>
+        <input type="submit" value="Sortuj">
+    </form>
 <?php
     echo "<p>Witaj ".$_SESSION['login'].'!</p>';
     echo "<a href='logout.php'>Wyloguj się!</a>";
@@ -55,16 +77,18 @@ try
     }
     else
     {
-        $query = "SELECT * FROM members";
+        $province = $_GET['province'];
+        if($province=="wszystkie" || $province==NULL) $query = "SELECT * FROM members";
+        else $query = "SELECT * FROM members WHERE province = '$province'";
         $result = $connection->query($query);
         while($row = $result->fetch_assoc())
             {
                 echo "<br>";
                 echo "<tr>";
-                foreach($row as $value)
-                {
-                    echo "<td>".$value."</td>";
-                }
+                    foreach($row as $value)
+                    {
+                        echo "<td>".$value."</td>";
+                    }
                 echo "</tr>";
             }
     }
