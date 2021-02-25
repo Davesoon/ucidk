@@ -16,6 +16,8 @@
     if(isset($_SESSION['fr_lastname'])) unset($_SESSION['fr_lastname']);
     if(isset($_SESSION['fr_email'])) unset($_SESSION['fr_email']);
     if(isset($_SESSION['fr_phone'])) unset($_SESSION['fr_phone']);
+    if(isset($_SESSION['fr_province'])) unset($_SESSION['fr_province']);
+    if(isset($_SESSION['fr_community'])) unset($_SESSION['fr_community']);
     if(isset($_SESSION['fr_info'])) unset($_SESSION['fr_info']);
     if(isset($_SESSION['fr_regulations'])) unset($_SESSION['fr_regulations']);
 
@@ -24,6 +26,8 @@
     if(isset($_SESSION['e_lastname'])) unset($_SESSION['e_lastname']);
     if(isset($_SESSION['e_email'])) unset($_SESSION['e_email']);
     if(isset($_SESSION['e_phone'])) unset($_SESSION['e_phone']);
+    if(isset($_SESSION['e_province'])) unset($_SESSION['e_province']);
+    if(isset($_SESSION['e_community'])) unset($_SESSION['e_community']);
     if(isset($_SESSION['e_info'])) unset($_SESSION['e_info']);
     if(isset($_SESSION['e_regulations'])) unset($_SESSION['e_regulations']);
     if(isset($_SESSION['e_bot'])) unset($_SESSION['e_bot']);
