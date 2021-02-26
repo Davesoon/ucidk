@@ -146,7 +146,7 @@
         catch(Exception $e)
         {
             echo '<span style="color:red;">Błąd serwera! Przepraszamy za niedogodności i prosimy o rejestrację w innym terminie!</span>';
-            echo '<br>Informacja developerska: '.$e;
+            // echo '<br>Informacja developerska: '.$e;
         }
     }
 
@@ -231,9 +231,9 @@
             }
         ?>
 
-        Województwo: <select name="province">
+        Województwo: <select name="province" <?php error_reporting(0); ?>>
             <option
-                <?php if ($_SESSION['fr_province'] == "-- wybierz --") echo 'selected="selected" ';?>
+                <?php  if ($_SESSION['fr_province'] == "-- wybierz --") echo 'selected="selected" ';?>
             >-- wybierz --</option>
             <option
                 <?php if ($_SESSION['fr_province'] == "dolnośląskie") echo 'selected="selected" ';?>
