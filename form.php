@@ -6,14 +6,14 @@
         $everything_OK=true;
         //Sprawdź poprawność imienia
         $firstname = $_POST['firstname'];
-        if((strlen($firstname)<3) || (strlen($firstname)>20))
+        if(strlen($firstname)<3 || strlen($firstname)>20)
         {
             $everything_OK=false;
             $_SESSION['e_firstname']="Imię musi posiadać od 3 do 20 znaków!";
         }
         //Sprawdź poprawność nazwiska
         $lastname = $_POST['lastname'];
-        if((strlen($lastname)<3) || (strlen($lastname)>30))
+        if(strlen($lastname)<3 || strlen($lastname)>30)
         {
             $everything_OK=false;
             $_SESSION['e_lastname']="Nazwisko musi posiadać od 3 do 30 znaków!";
@@ -22,7 +22,7 @@
         // Sprawdź poprawność adresu email
         $email = $_POST['email'];
         $emailB = filter_var($email, FILTER_SANITIZE_EMAIL);
-        if((filter_var($emailB, FILTER_VALIDATE_EMAIL)==false) || ($emailB!=$email))
+        if(filter_var($emailB, FILTER_VALIDATE_EMAIL)==false || $emailB!=$email)
         {
             $everything_OK=false;
             $_SESSION['e_email']="Podaj poprawny adres e-mail!";
@@ -35,7 +35,7 @@
 
         // Sprawdź poprawność telefonu
         $phone = $_POST['phone'];
-        if((ctype_digit($phone)==false) || ((strlen($phone)<7) || (strlen($phone)>15)))
+        if(ctype_digit($phone)==false || strlen($phone)<7 || strlen($phone)>15)
         {
             $everything_OK=false;
             $_SESSION['e_phone']="Numer telefonu może składać się tylko z cyfr (bez kierunkowego, myślników i spacji) oraz powinien zawierać od 7 do 15 cyfr!";
@@ -51,7 +51,7 @@
 
         // Sprawdź poprawność gminy
         $community = $_POST['community'];
-        if((ctype_alpha($community)==false) || ((strlen($community)<3) || (strlen($community)>30)))
+        if(strlen($community)<3 || strlen($community)>30)
         {
             $everything_OK=false;
             $_SESSION['e_community']="Nazwa gminy powinna zawierać od 3 do 30 liter!";
