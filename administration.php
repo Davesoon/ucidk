@@ -22,8 +22,20 @@
     </style>
 </head>
 <body>
+<?php
+    echo "<p>Witaj ".$_SESSION['login'].'!</p>';
+    echo "<a href='logout.php'>Wyloguj się!</a>";
+    error_reporting(0);
+
+    //Zapamiętaj wprowadzone dane
+    $_SESSION['fr_province'] = $province;
+    $_SESSION['fr_community'] = $community;
+    $_SESSION['fr_sort'] = $sort;
+    $_SESSION['fr_orderby'] = $orderby;
+    
+?>
     <form action="administration.php" method="get">
-        Województwo: <select name="province">
+        <br>Województwo: <select name="province">
             <option>wszystkie</option>
             <option>dolnośląskie</option>
             <option>kujawsko-pomorskie</option>
@@ -42,14 +54,29 @@
             <option>wielkopolskie</option>
             <option>zachodniopomorskie</option>
         </select><br>
-        Gmina: <input type="text" name="community"><br>
+
+        Gmina: <input type="text" value="<?php
+        if(isset($_SESSION['fr_community']))
+        {
+            echo $_SESSION['fr_community'];
+            unset($_SESSION['fr_community']);
+        }
+        ?>" name="community"><br>
+
+        Uporządkuj: 
+        <input type="radio" id="asc" name="sort" value="asc">
+        <label for="asc">rosnąco</label>
+        <input type="radio" id="desc" name="sort" value="desc">
+        <label for="desc">malejąco</label><br>
+        Według: <select name="orderby">
+            <option value="province">województwo</option>
+            <option value="community">gmina</option>
+            <option value="firstname">imię</option>
+            <option value="lastname">nazwisko</option>
+        </select><br>
+
         <input type="submit" value="Filtruj">
 
-<?php
-    echo "<p>Witaj ".$_SESSION['login'].'!</p>';
-    echo "<a href='logout.php'>Wyloguj się!</a>";
-    error_reporting(0);
-?>
 <table border= "1px, solid, black">
     <thead>
         <tr style="color:white; background-color:black;">
@@ -80,14 +107,20 @@ try
     {
         $province = $_GET['province'];
         $community = $_GET['community'];
+        $orderby = $_GET['orderby'];
+        $sort = $_GET['sort'];
 
         if(!isset($_GET['province'])) $province="wszystkie";
         if(!isset($_GET['community']) || $_GET['community']=="") $community="wszystkie";
 
-        if($province=="wszystkie" && $community=="wszystkie") $query = "SELECT * FROM members";
-        if($province!="wszystkie" && $community=="wszystkie") $query = "SELECT * FROM members WHERE province = '$province'";
-        if($province=="wszystkie" && $community!="wszystkie") $query = "SELECT * FROM members WHERE community = '$community'";
-        if($province!="wszystkie" && $community!="wszystkie") $query = "SELECT * FROM members WHERE province = '$province' AND community = '$community'";
+        if($province=="wszystkie" && $community=="wszystkie") $query = 
+        "SELECT * FROM members ORDER BY $orderby $sort";
+        if($province!="wszystkie" && $community=="wszystkie") $query = 
+        "SELECT * FROM members WHERE province = '$province' ORDER BY $orderby $sort";
+        if($province=="wszystkie" && $community!="wszystkie") $query = 
+        "SELECT * FROM members WHERE community = '$community' ORDER BY $orderby $sort";
+        if($province!="wszystkie" && $community!="wszystkie") $query = 
+        "SELECT * FROM members WHERE province = '$province' AND community = '$community' ORDER BY $orderby $sort";
         
         $result = $connection->query($query);
         while($row = $result->fetch_assoc())
