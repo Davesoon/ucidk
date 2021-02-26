@@ -23,7 +23,7 @@
 </head>
 <body>
     <form action="administration.php" method="get">
-        Województwo: <br><select name="province">
+        Województwo: <select name="province">
             <option>wszystkie</option>
             <option>dolnośląskie</option>
             <option>kujawsko-pomorskie</option>
@@ -42,12 +42,13 @@
             <option>wielkopolskie</option>
             <option>zachodniopomorskie</option>
         </select><br>
-        <input type="submit" value="Sortuj">
-    </form>
+        Gmina: <input type="text" name="community"><br>
+        <input type="submit" value="Filtruj">
+    <!-- </form>
     <form action="administration.php" method="get">
         Gmina: <input type="text" name="community">
-        <input type="submit" value="Sortuj">
-    </form>
+        <input type="submit" value="Filtruj">
+    </form> -->
 
 <?php
     echo "<p>Witaj ".$_SESSION['login'].'!</p>';
@@ -86,14 +87,12 @@ try
         $community = $_GET['community'];
 
         if(!isset($_GET['province'])) $province="wszystkie";
-        if(!isset($_GET['community'])) $community="wszystkie";
+        if(!isset($_GET['community']) || $_GET['community']=="") $community="wszystkie";
 
         if($province=="wszystkie" && $community=="wszystkie") $query = "SELECT * FROM members";
         if($province!="wszystkie" && $community=="wszystkie") $query = "SELECT * FROM members WHERE province = '$province'";
         if($province=="wszystkie" && $community!="wszystkie") $query = "SELECT * FROM members WHERE community = '$community'";
-
-        echo "1".$province;
-        echo "2".$community;
+        if($province!="wszystkie" && $community!="wszystkie") $query = "SELECT * FROM members WHERE province = '$province' AND community = '$community'";
         
         $result = $connection->query($query);
         while($row = $result->fetch_assoc())
