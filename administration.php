@@ -44,15 +44,11 @@
         </select><br>
         Gmina: <input type="text" name="community"><br>
         <input type="submit" value="Filtruj">
-    <!-- </form>
-    <form action="administration.php" method="get">
-        Gmina: <input type="text" name="community">
-        <input type="submit" value="Filtruj">
-    </form> -->
 
 <?php
     echo "<p>Witaj ".$_SESSION['login'].'!</p>';
     echo "<a href='logout.php'>Wyloguj się!</a>";
+    error_reporting(0);
 ?>
 <table border= "1px, solid, black">
     <thead>
@@ -112,7 +108,7 @@ try
 catch(Exception $e)
 {
     echo '<span style="color:red;">Błąd serwera! Przepraszamy za niedogodności i prosimy o rejestrację w innym terminie!</span>';
-    echo '<br>Informacja developerska: '.$e;
+    // echo '<br>Informacja developerska: '.$e;
 }
 
 ?>
