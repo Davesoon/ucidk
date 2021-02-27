@@ -201,7 +201,7 @@
             }
         ?>
 
-        E-mail: <input type="text" value="<?php
+        E-mail: <input type="email" value="<?php
         if(isset($_SESSION['fr_email']))
         {
             echo $_SESSION['fr_email'];
@@ -216,7 +216,7 @@
             }
         ?>
 
-        Telefon: <input type="text" value="<?php
+        Telefon: <input type="tel" value="<?php
         if(isset($_SESSION['fr_phone']))
         {
             echo $_SESSION['fr_phone'];
@@ -307,13 +307,13 @@
             }
         ?>
 
-        Dodatkowe informacje: <input type="text" value="<?php
+        Dodatkowe informacje: <textarea value="<?php
         if(isset($_SESSION['fr_info']))
         {
             echo $_SESSION['fr_info'];
             unset($_SESSION['fr_info']);
         }
-        ?>" name="info"><br>
+        ?>" name="info"></textarea><br>
         <?php
             if(isset($_SESSION['e_info']))
             {
