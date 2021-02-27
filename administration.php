@@ -28,10 +28,10 @@
     error_reporting(0);
 
     //Zapamiętaj wprowadzone dane
-    $_SESSION['fr_province'] = $province;
-    $_SESSION['fr_community'] = $community;
-    $_SESSION['fr_sort'] = $sort;
-    $_SESSION['fr_orderby'] = $orderby;
+    // $_SESSION['fr_province'] = $province;
+    // $_SESSION['fr_community'] = $community;
+    // $_SESSION['fr_sort'] = $sort;
+    // $_SESSION['fr_orderby'] = $orderby;
     
 ?>
     <form action="administration.php" method="get">
@@ -55,13 +55,7 @@
             <option>zachodniopomorskie</option>
         </select><br>
 
-        Gmina: <input type="text" value="<?php
-        if(isset($_SESSION['fr_community']))
-        {
-            echo $_SESSION['fr_community'];
-            unset($_SESSION['fr_community']);
-        }
-        ?>" name="community"><br>
+        Gmina: <input type="text" name="community"><br>
 
         Uporządkuj: 
         <input type="radio" id="asc" name="sort" value="asc">
@@ -80,7 +74,6 @@
 <table border= "1px, solid, black">
     <thead>
         <tr style="color:white; background-color:black;">
-            <th>Id</th>
             <th>Imię</th>
             <th>Nazwisko</th>
             <th>Adres e-mail</th>
@@ -112,15 +105,16 @@ try
 
         if(!isset($_GET['province'])) $province="wszystkie";
         if(!isset($_GET['community']) || $_GET['community']=="") $community="wszystkie";
+        if(!isset($_GET['orderby'])) $orderby="province";
 
         if($province=="wszystkie" && $community=="wszystkie") $query = 
-        "SELECT * FROM members ORDER BY $orderby $sort";
+        "SELECT firstname, lastname, email, phone, province, community, info FROM members ORDER BY $orderby $sort";
         if($province!="wszystkie" && $community=="wszystkie") $query = 
-        "SELECT * FROM members WHERE province = '$province' ORDER BY $orderby $sort";
+        "SELECT firstname, lastname, email, phone, province, community, info FROM members WHERE province = '$province' ORDER BY $orderby $sort";
         if($province=="wszystkie" && $community!="wszystkie") $query = 
-        "SELECT * FROM members WHERE community = '$community' ORDER BY $orderby $sort";
+        "SELECT firstname, lastname, email, phone, province, community, info FROM members WHERE community = '$community' ORDER BY $orderby $sort";
         if($province!="wszystkie" && $community!="wszystkie") $query = 
-        "SELECT * FROM members WHERE province = '$province' AND community = '$community' ORDER BY $orderby $sort";
+        "SELECT firstname, lastname, email, phone, province, community, info FROM members WHERE province = '$province' AND community = '$community' ORDER BY $orderby $sort";
         
         $result = $connection->query($query);
         while($row = $result->fetch_assoc())
