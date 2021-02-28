@@ -4,6 +4,9 @@
     {
         //Udana walidacja? Załóżmy, że tak!
         $everything_OK=true;
+
+        $date = $_POST['date'];
+
         //Sprawdź poprawność imienia
         $firstname = $_POST['firstname'];
         if(strlen($firstname)<3 || strlen($firstname)>20)
@@ -129,7 +132,7 @@
                 if($everything_OK==true)
                 {
                     //Hurra, wszystkie testy zaliczone!
-                    if($connection->query("INSERT INTO members VALUES(NULL, '$firstname', '$lastname', '$email', '$phone', '$province', '$community', '$info', NULL, NULL)"))
+                    if($connection->query("INSERT INTO members VALUES(NULL, '$date', '$firstname', '$lastname', '$email', '$phone', '$province', '$community', '$info', NULL)"))
                     {
                         $_SESSION['sent']=true;
                         header('Location: welcome.php');
@@ -171,6 +174,9 @@
 </head>
 <body>
     <form method="post">
+    
+        <input type="hidden" value="<?php echo date('d.m.Y'); ?>" name="date">
+
         Imię: <input type="text" value="<?php
         if(isset($_SESSION['fr_firstname']))
         {

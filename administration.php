@@ -74,6 +74,7 @@
 <table border= "1px, solid, black">
     <thead>
         <tr style="color:white; background-color:black;">
+            <th>Data rejestracji</th>
             <th>Imię</th>
             <th>Nazwisko</th>
             <th>Adres e-mail</th>
@@ -108,7 +109,7 @@ try
         if(!isset($_GET['orderby'])) $orderby="province";
 
         if($province=="wszystkie" && $community=="wszystkie") $query = 
-        "SELECT firstname, lastname, email, phone, province, community, info FROM members ORDER BY $orderby $sort";
+        "SELECT date, firstname, lastname, email, phone, province, community, info FROM members ORDER BY $orderby $sort";
         if($province!="wszystkie" && $community=="wszystkie") $query = 
         "SELECT firstname, lastname, email, phone, province, community, info FROM members WHERE province = '$province' ORDER BY $orderby $sort";
         if($province=="wszystkie" && $community!="wszystkie") $query = 
