@@ -68,6 +68,16 @@
             $_SESSION['e_info']="Informacja dodatkowa nie może przekroczyć 300 znaków!";
         }
 
+        //Sprawdź plik
+        #upload directory path
+        $target_dir = 'uploads/';
+        #file name with a random number so that similar dont get replaced
+        // $pname = rand(1000,10000)."-".$_FILES["file"]["name"];
+        $imageFileType = strtolower(pathinfo($_FILES["file"]["name"],PATHINFO_EXTENSION));
+        $pname = $firstname.$lastname."-".$phone.".".$imageFileType;
+        #temporary file name to store file
+        $tname = $_FILES["file"]["tmp_name"];
+
         //Sprawdź checkboxa
         if(!isset($_POST['regulations']))
         {
@@ -118,7 +128,7 @@
                     $_SESSION['e_email']="Podany adres e-mail jest już w bazie!";
                 }
 
-                //czy telefon juz isnieje?
+                //czy telefon juz istnieje?
                 $result = $connection->query("SELECT id FROM members WHERE phone='$phone'");
                 if(!$result) throw new Exception($connection->error);
                 
@@ -132,18 +142,11 @@
                 if($everything_OK==true)
                 {
                     //Hurra, wszystkie testy zaliczone!
-                    #retrieve file title
-                    $title = $_POST["title"];
-                    #file name with a random number so that similar dont get replaced
-                    $pname = rand(1000,10000)."-".$_FILES["file"]["name"];
-                    #temporary file name to store file
-                    $tname = $_FILES["file"]["tmp_name"];
-                    #upload directory path
-                    $uploads_dir = 'images';
                     #TO move the uploaded file to specific location
-                    move_uploaded_file($tname, $uploads_dir.'/'.$pname);
+                    move_uploaded_file($tname, $target_dir.$pname);
+
                     #sql query to insert into database
-                    $sql = "INSERT INTO members VALUES(NULL, '$date', '$firstname', '$lastname', '$email', '$phone', '$province', '$community', '$info', '$title', '$pname')";
+                    $sql = "INSERT INTO members VALUES(NULL, '$date', '$firstname', '$lastname', '$email', '$phone', '$province', '$community', '$info', '$pname')";
 
                     if(mysqli_query($connection,$sql))
                     {
@@ -186,11 +189,7 @@
 </head>
 <body>
     <form method="post" enctype="multipart/form-data">
-    
-        <input type="text" name="title">
-        
-        <input type="File" name="file">
-        
+                    
         <input type="hidden" value="<?php echo date('Y.m.d'); ?>" name="date">
 
         Imię: <input type="text" value="<?php
@@ -343,6 +342,8 @@
                 unset($_SESSION['e_info']);
             }
         ?>
+
+        <input type="File" name="file"><br>
 
         <label>
             <input type="checkbox" name="regulations" <?php
