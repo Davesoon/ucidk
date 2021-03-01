@@ -132,7 +132,20 @@
                 if($everything_OK==true)
                 {
                     //Hurra, wszystkie testy zaliczone!
-                    if($connection->query("INSERT INTO members VALUES(NULL, '$date', '$firstname', '$lastname', '$email', '$phone', '$province', '$community', '$info', NULL)"))
+                    #retrieve file title
+                    $title = $_POST["title"];
+                    #file name with a random number so that similar dont get replaced
+                    $pname = rand(1000,10000)."-".$_FILES["file"]["name"];
+                    #temporary file name to store file
+                    $tname = $_FILES["file"]["tmp_name"];
+                    #upload directory path
+                    $uploads_dir = 'images';
+                    #TO move the uploaded file to specific location
+                    move_uploaded_file($tname, $uploads_dir.'/'.$pname);
+                    #sql query to insert into database
+                    $sql = "INSERT INTO members VALUES(NULL, '$date', '$firstname', '$lastname', '$email', '$phone', '$province', '$community', '$info', '$title', '$pname')";
+
+                    if(mysqli_query($connection,$sql))
                     {
                         $_SESSION['sent']=true;
                         header('Location: welcome.php');
@@ -142,14 +155,13 @@
                         throw new Exception($connection->error);
                     }
                 }        
-
                 $connection->close();
             }
         }
         catch(Exception $e)
         {
             echo '<span style="color:red;">Błąd serwera! Przepraszamy za niedogodności i prosimy o rejestrację w innym terminie!</span>';
-            // echo '<br>Informacja developerska: '.$e;
+            echo '<br>Informacja developerska: '.$e;
         }
     }
 
@@ -173,9 +185,13 @@
     </style>
 </head>
 <body>
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
     
-        <input type="hidden" value="<?php echo date('d.m.Y'); ?>" name="date">
+        <input type="text" name="title">
+        
+        <input type="File" name="file">
+        
+        <input type="hidden" value="<?php echo date('Y.m.d'); ?>" name="date">
 
         Imię: <input type="text" value="<?php
         if(isset($_SESSION['fr_firstname']))
@@ -358,7 +374,7 @@
             }
         ?> -->
 
-        <input type="submit" value="Wyślij formularz">
+        <input type="submit" value="Wyślij formularz" name="submit">
 
     </form>
     <script>
