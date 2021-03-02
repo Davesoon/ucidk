@@ -72,11 +72,18 @@
         #upload directory path
         $target_dir = 'uploads/';
         #file name with a random number so that similar dont get replaced
-        // $pname = rand(1000,10000)."-".$_FILES["file"]["name"];
-        $imageFileType = strtolower(pathinfo($_FILES["file"]["name"],PATHINFO_EXTENSION));
-        $pname = $firstname.$lastname."-".$phone.".".$imageFileType;
+        // $file = rand(1000,10000)."-".$_FILES["file"]["name"];
         #temporary file name to store file
         $tname = $_FILES["file"]["tmp_name"];
+        $imageFileType = strtolower(pathinfo($_FILES["file"]["name"],PATHINFO_EXTENSION));
+        $file = $firstname.$lastname."-".$phone.".".$imageFileType;
+
+        // Check file size (<= 1 MB)
+        if ($_FILES["file"]["size"] > 1048576) 
+        {
+            $everything_OK=false;
+            $_SESSION['e_file']="Sorry, your file is too large.";
+        }
 
         //Sprawdź checkboxa
         if(!isset($_POST['regulations']))
@@ -143,10 +150,10 @@
                 {
                     //Hurra, wszystkie testy zaliczone!
                     #TO move the uploaded file to specific location
-                    move_uploaded_file($tname, $target_dir.$pname);
+                    move_uploaded_file($tname, $target_dir.$file);
 
                     #sql query to insert into database
-                    $sql = "INSERT INTO members VALUES(NULL, '$date', '$firstname', '$lastname', '$email', '$phone', '$province', '$community', '$info', '$pname')";
+                    $sql = "INSERT INTO members VALUES(NULL, '$date', '$firstname', '$lastname', '$email', '$phone', '$province', '$community', '$info', '$file')";
 
                     if(mysqli_query($connection,$sql))
                     {
@@ -344,6 +351,14 @@
         ?>
 
         <input type="File" name="file"><br>
+        <?php
+            if(isset($_SESSION['e_file']))
+            {
+                echo '<div class="error">'.$_SESSION['e_file'].'</div>';
+                unset($_SESSION['e_file']);
+            }
+        ?>
+
 
         <label>
             <input type="checkbox" name="regulations" <?php
