@@ -75,8 +75,8 @@
         // $file = rand(1000,10000)."-".$_FILES["file"]["name"];
         #temporary file name to store file
         $tname = $_FILES["file"]["tmp_name"];
-        $imageFileType = strtolower(pathinfo($_FILES["file"]["name"],PATHINFO_EXTENSION));
-        $file = $firstname.$lastname."-".$phone.".".$imageFileType;
+        $fileType = strtolower(pathinfo($_FILES["file"]["name"],PATHINFO_EXTENSION));
+        $file = $firstname.$lastname."-".$phone.".".$fileType;
 
         // Check file size (<= 1 MB)
         if ($_FILES["file"]["size"] > 1048576) 
@@ -84,6 +84,14 @@
             $everything_OK=false;
             $_SESSION['e_file']="Sorry, your file is too large.";
         }
+        // Allow certain file formats
+        if($fileType != "jpg" && $fileType != "png" && $fileType != "jpeg"
+        && $fileType != "pdf" )
+        {
+            $everything_OK=false;
+            $_SESSION['e_file']="Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+        }
+  
 
         //Sprawdź checkboxa
         if(!isset($_POST['regulations']))
@@ -198,6 +206,10 @@
     <form method="post" enctype="multipart/form-data">
                     
         <input type="hidden" value="<?php echo date('Y.m.d'); ?>" name="date">
+<?php
+        echo $_SESSION['fr_community'];
+        echo $_SESSION['fr_info'];
+?>
 
         Imię: <input type="text" value="<?php
         if(isset($_SESSION['fr_firstname']))
@@ -335,13 +347,15 @@
             }
         ?>
 
-        Dodatkowe informacje: <textarea value="<?php
-        if(isset($_SESSION['fr_info']))
-        {
-            echo $_SESSION['fr_info'];
-            unset($_SESSION['fr_info']);
-        }
-        ?>" name="info"></textarea><br>
+        Dodatkowe informacje: <textarea name="info">
+            <?php
+            if(isset($_SESSION['fr_info']))
+            {
+                echo $_SESSION['fr_info'];
+                unset($_SESSION['fr_info']);
+            }
+            ?>
+        </textarea><br>
         <?php
             if(isset($_SESSION['e_info']))
             {
