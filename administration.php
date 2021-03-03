@@ -121,16 +121,38 @@ try
         "SELECT date, firstname, lastname, email, phone, province, community, info, file FROM members WHERE province = '$province' AND community = '$community' ORDER BY $orderby $sort";
         
         $result = $connection->query($query);
-        while($row = $result->fetch_assoc())
+        // while($row = $result->fetch_assoc())
+        //     {
+        //         echo "<br>";
+        //         echo "<tr>";
+        //             foreach($row as $value)
+        //             {
+        //                 echo "<td>".$value."</td>";
+        //             }
+        //         echo "</tr>";
+        //     }
+        if ($result->num_rows > 0)
+        {
+            while($row = $result->fetch_assoc())
             {
-                echo "<br>";
-                echo "<tr>";
-                    foreach($row as $value)
-                    {
-                        echo "<td>".$value."</td>";
-                    }
-                echo "</tr>";
+                echo "<br><tr>"
+                    ."<td>".$row["date"]."</td>"
+                    ."<td>".$row["firstname"]."</td>"
+                    ."<td>".$row["lastname"]."</td>"
+                    ."<td>".$row["email"]."</td>"
+                    ."<td>".$row["phone"]."</td>"
+                    ."<td>".$row["province"]."</td>"
+                    ."<td>".$row["community"]."</td>"
+                    ."<td>".$row["info"]."</td>"
+                    ."<td><a href=uploads/".$row["file"].">".$row["file"]."</a></td>"
+                    ."</tr>";
             }
+        }
+        else 
+        {
+            echo "No data!";
+        }
+        
         // unset($_GET['province']);
         // unset($_GET['community']);
         $connection->close();
