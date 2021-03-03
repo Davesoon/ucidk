@@ -63,6 +63,7 @@
         <input type="radio" id="desc" name="sort" value="desc">
         <label for="desc">malejąco</label><br>
         Według: <select name="orderby">
+            <option value="date">data rejestracji</option>
             <option value="province">województwo</option>
             <option value="community">gmina</option>
             <option value="firstname">imię</option>
@@ -82,6 +83,7 @@
             <th>Województwo</th>
             <th>Gmina</th>
             <th>Dodatkowe informacje</th>
+            <th>Plik</th>
         </tr>
     </thead>
     <tbody>
@@ -106,16 +108,17 @@ try
 
         if(!isset($_GET['province'])) $province="wszystkie";
         if(!isset($_GET['community']) || $_GET['community']=="") $community="wszystkie";
-        if(!isset($_GET['orderby'])) $orderby="province";
+        if(!isset($_GET['orderby'])) $orderby="date";
+        if(!isset($_GET['sort'])) $sort="desc";
 
         if($province=="wszystkie" && $community=="wszystkie") $query = 
-        "SELECT date, firstname, lastname, email, phone, province, community, info FROM members ORDER BY $orderby $sort";
+        "SELECT date, firstname, lastname, email, phone, province, community, info, file FROM members ORDER BY $orderby $sort";
         if($province!="wszystkie" && $community=="wszystkie") $query = 
-        "SELECT firstname, lastname, email, phone, province, community, info FROM members WHERE province = '$province' ORDER BY $orderby $sort";
+        "SELECT date, firstname, lastname, email, phone, province, community, info, file FROM members WHERE province = '$province' ORDER BY $orderby $sort";
         if($province=="wszystkie" && $community!="wszystkie") $query = 
-        "SELECT firstname, lastname, email, phone, province, community, info FROM members WHERE community = '$community' ORDER BY $orderby $sort";
+        "SELECT date, firstname, lastname, email, phone, province, community, info, file FROM members WHERE community = '$community' ORDER BY $orderby $sort";
         if($province!="wszystkie" && $community!="wszystkie") $query = 
-        "SELECT firstname, lastname, email, phone, province, community, info FROM members WHERE province = '$province' AND community = '$community' ORDER BY $orderby $sort";
+        "SELECT date, firstname, lastname, email, phone, province, community, info, file FROM members WHERE province = '$province' AND community = '$community' ORDER BY $orderby $sort";
         
         $result = $connection->query($query);
         while($row = $result->fetch_assoc())
