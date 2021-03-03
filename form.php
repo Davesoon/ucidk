@@ -179,7 +179,7 @@
         catch(Exception $e)
         {
             echo '<span style="color:red;">Błąd serwera! Przepraszamy za niedogodności i prosimy o rejestrację w innym terminie!</span>';
-            echo '<br>Informacja developerska: '.$e;
+            // echo '<br>Informacja developerska: '.$e;
         }
     }
 
@@ -206,10 +206,6 @@
     <form method="post" enctype="multipart/form-data">
                     
         <input type="hidden" value="<?php echo date('Y.m.d'); ?>" name="date">
-<?php
-        echo $_SESSION['fr_community'];
-        echo $_SESSION['fr_info'];
-?>
 
         Imię: <input type="text" value="<?php
         if(isset($_SESSION['fr_firstname']))
