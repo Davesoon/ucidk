@@ -205,7 +205,7 @@
 <body>
     <form method="post" enctype="multipart/form-data">
                     
-        <input type="hidden" value="<?php echo date('Y.m.d'); ?>" name="date">
+        <input type="hidden" value="<?php echo date('Y-m-d'); ?>" name="date">
 
         Imię: <input type="text" value="<?php
         if(isset($_SESSION['fr_firstname']))

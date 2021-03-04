@@ -31,14 +31,16 @@
     // $_SESSION['fr_province'] = $province;
     // $_SESSION['test'] = $test;
     $community = $_GET['community'];
+    $date = $_GET['date'];
 
     // $_SESSION['fr_sort'] = $sort;
     // $_SESSION['fr_orderby'] = $orderby;
-    
 ?>
-    <form action="administration.php" method="get">
+    <form action="administration.php" method="get"><br>
 
-        <br>Data rejestracji: <input type="text" name="date"><br>
+
+        <label for="date">Data rejestracji:</label>
+        <input type="date" name="date"><br>
         
         Województwo: <select name="province">
             <option>wszystkie</option>
