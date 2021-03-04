@@ -29,7 +29,9 @@
 
     //Zapamiętaj wprowadzone dane
     // $_SESSION['fr_province'] = $province;
-    // $_SESSION['fr_community'] = $community;
+    // $_SESSION['test'] = $test;
+    $community = $_GET['community'];
+
     // $_SESSION['fr_sort'] = $sort;
     // $_SESSION['fr_orderby'] = $orderby;
     
@@ -58,7 +60,10 @@
             <option>zachodniopomorskie</option>
         </select><br>
 
-        Gmina: <input type="text" name="community"><br>
+        Gmina: <input type="text" value=<?php 
+                    if(!isset($community)||$community=='') echo 'wszystkie';
+                    else echo $community;
+        ?> name="community"><br>
 
         Uporządkuj: 
         <input type="radio" id="asc" name="sort" value="asc">
