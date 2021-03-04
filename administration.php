@@ -35,7 +35,10 @@
     
 ?>
     <form action="administration.php" method="get">
-        <br>Województwo: <select name="province">
+
+        <br>Data rejestracji: <input type="text" name="date"><br>
+        
+        Województwo: <select name="province">
             <option>wszystkie</option>
             <option>dolnośląskie</option>
             <option>kujawsko-pomorskie</option>
@@ -59,9 +62,10 @@
 
         Uporządkuj: 
         <input type="radio" id="asc" name="sort" value="asc">
-        <label for="asc">rosnąco</label>
+        <label for="desc">malejąco</label>
         <input type="radio" id="desc" name="sort" value="desc">
-        <label for="desc">malejąco</label><br>
+        <label for="asc">rosnąco</label>
+<br>
         Według: <select name="orderby">
             <option value="date">data rejestracji</option>
             <option value="province">województwo</option>
@@ -70,7 +74,7 @@
             <option value="lastname">nazwisko</option>
         </select><br>
 
-        <input type="submit" value="Filtruj">
+        <input type="submit" value="Przetwórz">
 
 <table border= "1px, solid, black">
     <thead>
@@ -101,24 +105,48 @@ try
     }
     else
     {
+        $date = $_GET['date'];
         $province = $_GET['province'];
         $community = $_GET['community'];
         $orderby = $_GET['orderby'];
         $sort = $_GET['sort'];
 
+        if(!isset($_GET['date']) || $_GET['date']=="") $date="wszystkie";
         if(!isset($_GET['province'])) $province="wszystkie";
         if(!isset($_GET['community']) || $_GET['community']=="") $community="wszystkie";
         if(!isset($_GET['orderby'])) $orderby="date";
         if(!isset($_GET['sort'])) $sort="desc";
 
-        if($province=="wszystkie" && $community=="wszystkie") $query = 
-        "SELECT date, firstname, lastname, email, phone, province, community, info, file FROM members ORDER BY $orderby $sort";
-        if($province!="wszystkie" && $community=="wszystkie") $query = 
-        "SELECT date, firstname, lastname, email, phone, province, community, info, file FROM members WHERE province = '$province' ORDER BY $orderby $sort";
-        if($province=="wszystkie" && $community!="wszystkie") $query = 
-        "SELECT date, firstname, lastname, email, phone, province, community, info, file FROM members WHERE community = '$community' ORDER BY $orderby $sort";
-        if($province!="wszystkie" && $community!="wszystkie") $query = 
-        "SELECT date, firstname, lastname, email, phone, province, community, info, file FROM members WHERE province = '$province' AND community = '$community' ORDER BY $orderby $sort";
+        if($date=="wszystkie" && $province=="wszystkie" && $community=="wszystkie") $query = 
+        "SELECT * FROM members ORDER BY $orderby $sort";
+
+        if($date!="wszystkie" && $province=="wszystkie" && $community=="wszystkie") $query = 
+        "SELECT * FROM members WHERE date = '$date' ORDER BY $orderby $sort";
+
+        if($date=="wszystkie" && $province!="wszystkie" && $community=="wszystkie") $query = 
+        "SELECT * FROM members WHERE province = '$province' ORDER BY $orderby $sort";
+
+        if($date=="wszystkie" && $province=="wszystkie" && $community!="wszystkie") $query = 
+        "SELECT * FROM members WHERE community = '$community' ORDER BY $orderby $sort";
+
+        if($date!="wszystkie" && $province!="wszystkie" && $community=="wszystkie") $query = 
+        "SELECT * FROM members WHERE date = '$date' AND province = '$province' ORDER BY $orderby $sort";
+
+        if($date!="wszystkie" && $province=="wszystkie" && $community!="wszystkie") $query = 
+        "SELECT * FROM members WHERE date = '$date' AND community = '$community' ORDER BY $orderby $sort";
+
+        if($date=="wszystkie" && $province!="wszystkie" && $community!="wszystkie") $query = 
+        "SELECT * FROM members WHERE province = '$province' AND community = '$community' ORDER BY $orderby $sort";
+
+        if($date!="wszystkie" && $province!="wszystkie" && $community!="wszystkie") $query = 
+        "SELECT * FROM members WHERE date = '$date' AND province = '$province' AND community = '$community' ORDER BY $orderby $sort";
+
+        // if($province!="wszystkie" && $community=="wszystkie") $query = 
+        // "SELECT * FROM members WHERE province = '$province' ORDER BY $orderby $sort";
+        // if($province=="wszystkie" && $community!="wszystkie") $query = 
+        // "SELECT * FROM members WHERE community = '$community' ORDER BY $orderby $sort";
+        // if($province!="wszystkie" && $community!="wszystkie") $query = 
+        // "SELECT * FROM members WHERE province = '$province' AND community = '$community' ORDER BY $orderby $sort";
         
         $result = $connection->query($query);
         // while($row = $result->fetch_assoc())
