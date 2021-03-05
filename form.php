@@ -8,14 +8,16 @@
         $date = $_POST['date'];
 
         //Sprawdź poprawność imienia
-        $firstname = $_POST['firstname'];
+        $tmpFirstname = $_POST['firstname'];
+        $firstname = filter_var($tmpFirstname, FILTER_SANITIZE_STRING);
         if(strlen($firstname)<3 || strlen($firstname)>20)
         {
             $everything_OK=false;
             $_SESSION['e_firstname']="Imię musi posiadać od 3 do 20 znaków!";
         }
         //Sprawdź poprawność nazwiska
-        $lastname = $_POST['lastname'];
+        $tmpLastname = $_POST['lastname'];
+        $lastname = filter_var($tmpLastname, FILTER_SANITIZE_STRING);
         if(strlen($lastname)<3 || strlen($lastname)>30)
         {
             $everything_OK=false;
