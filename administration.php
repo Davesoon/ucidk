@@ -40,7 +40,12 @@
 
 
         <label for="date">Data rejestracji:</label>
-        <input type="date" name="date"><br>
+        <input type="date" value=<?php
+            if(!isset($date)||$date=='') echo 'wszystkie';
+            else echo $date;
+        ?> name="date"><?php 
+            if(!isset($date)||$date=='') echo ' wszystkie'; 
+        ?><br>
         
         Województwo: <select name="province">
             <option>wszystkie</option>
