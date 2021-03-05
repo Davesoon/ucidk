@@ -257,7 +257,7 @@
                             ."<td>".$row["province"]."</td>"
                             ."<td>".$row["community"]."</td>"
                             ."<td>".$row["info"]."</td>"
-                            ."<td><a href=uploads/".$row["file"].">".$row["file"]."</a></td>"
+                            ."<td><a href=uploads/".$row["file"]." target='_blank'>".$row["file"]."</a></td>"
                             ."</tr>";
                     }
                 }
