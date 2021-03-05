@@ -34,6 +34,7 @@
     $community = $_GET['community'];
     $date = $_GET['date'];
     $sort = $_GET['sort'];
+    $orderby = $_GET['orderby'];
 
     // $_SESSION['fr_sort'] = $sort;
     // $_SESSION['fr_orderby'] = $orderby;
@@ -138,11 +139,27 @@
         <br>
 
         Według: <select name="orderby">
-            <option value="date">data rejestracji</option>
-            <option value="province">województwo</option>
-            <option value="community">gmina</option>
-            <option value="firstname">imię</option>
-            <option value="lastname">nazwisko</option>
+
+            <option value="date" <?php
+                if((!isset($orderby)||$orderby=='date')) echo 'selected="selected" ';
+            ?>>data rejestracji</option>
+
+            <option value="province" <?php
+                if(($orderby=='province')) echo 'selected="selected" ';
+            ?>>województwo</option>
+
+            <option value="community" <?php
+                if(($orderby=='community')) echo 'selected="selected" ';
+            ?>>gmina</option>
+
+            <option value="firstname" <?php
+                if(($orderby=='firstname')) echo 'selected="selected" ';
+            ?>>imię</option>
+
+            <option value="lastname" <?php
+                if(($orderby=='lastname')) echo 'selected="selected" ';
+            ?>>nazwisko</option>
+
         </select><br>
 
         <input type="submit" value="Przetwórz">
