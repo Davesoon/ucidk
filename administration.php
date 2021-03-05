@@ -30,6 +30,7 @@
     //Zapamiętaj wprowadzone dane
     // $_SESSION['fr_province'] = $province;
     // $_SESSION['test'] = $test;
+    $province = $_GET['province'];
     $community = $_GET['community'];
     $date = $_GET['date'];
 
@@ -38,7 +39,6 @@
 ?>
     <form action="administration.php" method="get"><br>
 
-
         <label for="date">Data rejestracji:</label>
         <input type="date" value=<?php
             if(!isset($date)||$date=='') echo 'wszystkie';
@@ -46,25 +46,77 @@
         ?> name="date"><?php 
             if(!isset($date)||$date=='') echo ' wszystkie'; 
         ?><br>
-        
+
         Województwo: <select name="province">
-            <option>wszystkie</option>
-            <option>dolnośląskie</option>
-            <option>kujawsko-pomorskie</option>
-            <option>lubelskie</option>
-            <option>lubuskie</option>
-            <option>łódzkie</option>
-            <option>małopolskie</option>
-            <option>mazowieckie</option>
-            <option>opolskie</option>
-            <option>podkarpackie</option>
-            <option>podlaskie</option>
-            <option>pomorskie</option>
-            <option>śląskie</option>
-            <option>świętokrzyskie</option>
-            <option>warmińsko-mazurskie</option>
-            <option>wielkopolskie</option>
-            <option>zachodniopomorskie</option>
+
+            <option <?php 
+                if((!isset($province)||$province=='wszystkie')) echo 'selected="selected" ';
+            ?>>wszystkie</option>
+
+            <option <?php
+                if($province=='dolnośląskie') echo 'selected="selected" ';
+            ?>>dolnośląskie</option>
+
+            <option <?php
+                if($province=='kujawsko-pomorskie') echo 'selected="selected" ';
+            ?>>kujawsko-pomorskie</option>
+
+            <option <?php
+                if($province=='lubelskie') echo 'selected="selected" ';
+            ?>>lubelskie</option>
+
+            <option <?php
+                if($province=='lubuskie') echo 'selected="selected" ';
+            ?>>lubuskie</option>
+
+            <option <?php
+                if($province=='łódzkie') echo 'selected="selected" ';
+            ?>>łódzkie</option>
+
+            <option <?php
+                if($province=='małopolskie') echo 'selected="selected" ';
+            ?>>małopolskie</option>
+
+            <option <?php
+                if($province=='mazowieckie') echo 'selected="selected" ';
+            ?>>mazowieckie</option>
+
+            <option <?php
+                if($province=='opolskie') echo 'selected="selected" ';
+            ?>>opolskie</option>
+
+            <option <?php
+                if($province=='podkarpackie') echo 'selected="selected" ';
+            ?>>podkarpackie</option>
+
+            <option <?php
+                if($province=='podlaskie') echo 'selected="selected" ';
+            ?>>podlaskie</option>
+
+            <option <?php
+                if($province=='pomorskie') echo 'selected="selected" ';
+            ?>>pomorskie</option>
+
+            <option <?php
+                if($province=='śląskie') echo 'selected="selected" ';
+            ?>>śląskie</option>
+
+            <option <?php
+                if($province=='świętokrzyskie') echo 'selected="selected" ';
+            ?>>świętokrzyskie</option>
+
+            <option <?php
+                if($province=='warmińsko-mazurskie') echo 'selected="selected" ';
+            ?>>warmińsko-mazurskie</option>
+
+            <option <?php
+                if($province=='wielkopolskie') echo 'selected="selected" ';
+            ?>>wielkopolskie</option>
+
+            <option <?php
+                if($province=='zachodniopomorskie') echo 'selected="selected" ';
+            ?>>zachodniopomorskie</option>
+
         </select><br>
 
         Gmina: <input type="text" value=<?php 
