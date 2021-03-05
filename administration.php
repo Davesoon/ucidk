@@ -33,6 +33,7 @@
     $province = $_GET['province'];
     $community = $_GET['community'];
     $date = $_GET['date'];
+    $sort = $_GET['sort'];
 
     // $_SESSION['fr_sort'] = $sort;
     // $_SESSION['fr_orderby'] = $orderby;
@@ -124,12 +125,18 @@
                     else echo $community;
         ?> name="community"><br>
 
-        Uporządkuj: 
-        <input type="radio" id="asc" name="sort" value="asc">
-        <label for="desc">malejąco</label>
-        <input type="radio" id="desc" name="sort" value="desc">
+        Uporządkuj:
+        <input type="radio" id="desc" name="sort" value="desc" <?php
+            if((!isset($sort)||$sort=='desc')) echo 'checked';
+        ?>>
+        <label for="desc"> malejąco</label>
+
+        <input type="radio" id="asc" name="sort" value="asc" <?php
+            if($sort=='asc') echo 'checked';
+        ?>>
         <label for="asc">rosnąco</label>
-<br>
+        <br>
+
         Według: <select name="orderby">
             <option value="date">data rejestracji</option>
             <option value="province">województwo</option>
