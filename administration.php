@@ -28,18 +28,16 @@
     error_reporting(0);
 
     //Zapamiętaj wprowadzone dane
-    // $_SESSION['fr_province'] = $province;
-    // $_SESSION['test'] = $test;
     $province = $_GET['province'];
     $community = $_GET['community'];
     $date = $_GET['date'];
     $sort = $_GET['sort'];
     $orderby = $_GET['orderby'];
-
-    // $_SESSION['fr_sort'] = $sort;
-    // $_SESSION['fr_orderby'] = $orderby;
 ?>
-    <form action="administration.php" method="get"><br>
+<form action="administration.php" method="get"><br>
+
+    <fieldset>
+        <legend>filtrowanie</legend>
 
         <label for="date">Data rejestracji:</label>
         <input type="date" value=<?php
@@ -126,6 +124,11 @@
                     else echo $community;
         ?> name="community"><br>
 
+    </fieldset>
+
+    <fieldset>
+        <legend>sortowanie</legend>
+
         Uporządkuj:
         <input type="radio" id="desc" name="sort" value="desc" <?php
             if((!isset($sort)||$sort=='desc')) echo 'checked';
@@ -161,8 +164,10 @@
             ?>>nazwisko</option>
 
         </select><br>
+    </fieldset>
 
-        <input type="submit" value="Przetwórz">
+    <input type="submit" value="Przetwórz">
+</form>
 
 <table border= "1px, solid, black">
     <thead>
@@ -178,114 +183,97 @@
             <th>Plik</th>
         </tr>
     </thead>
-    <tbody>
-    <?php
+    <tbody><?php
 
-require_once "connect.php";
-mysqli_report(MYSQLI_REPORT_STRICT);
+        require_once "connect.php";
+        mysqli_report(MYSQLI_REPORT_STRICT);
 
-try
-{
-    $connection = new mysqli($host, $db_user, $db_password, $db_name);
-    if($connection->connect_errno!=0)
-    {
-        throw new Exception(mysqli_connect_errno());
-    }
-    else
-    {
-        $date = $_GET['date'];
-        $province = $_GET['province'];
-        $community = $_GET['community'];
-        $orderby = $_GET['orderby'];
-        $sort = $_GET['sort'];
-
-        if(!isset($_GET['date']) || $_GET['date']=="") $date="wszystkie";
-        if(!isset($_GET['province'])) $province="wszystkie";
-        if(!isset($_GET['community']) || $_GET['community']=="") $community="wszystkie";
-        if(!isset($_GET['orderby'])) $orderby="date";
-        if(!isset($_GET['sort'])) $sort="desc";
-
-        if($date=="wszystkie" && $province=="wszystkie" && $community=="wszystkie") $query = 
-        "SELECT * FROM members ORDER BY $orderby $sort";
-
-        if($date!="wszystkie" && $province=="wszystkie" && $community=="wszystkie") $query = 
-        "SELECT * FROM members WHERE date = '$date' ORDER BY $orderby $sort";
-
-        if($date=="wszystkie" && $province!="wszystkie" && $community=="wszystkie") $query = 
-        "SELECT * FROM members WHERE province = '$province' ORDER BY $orderby $sort";
-
-        if($date=="wszystkie" && $province=="wszystkie" && $community!="wszystkie") $query = 
-        "SELECT * FROM members WHERE community = '$community' ORDER BY $orderby $sort";
-
-        if($date!="wszystkie" && $province!="wszystkie" && $community=="wszystkie") $query = 
-        "SELECT * FROM members WHERE date = '$date' AND province = '$province' ORDER BY $orderby $sort";
-
-        if($date!="wszystkie" && $province=="wszystkie" && $community!="wszystkie") $query = 
-        "SELECT * FROM members WHERE date = '$date' AND community = '$community' ORDER BY $orderby $sort";
-
-        if($date=="wszystkie" && $province!="wszystkie" && $community!="wszystkie") $query = 
-        "SELECT * FROM members WHERE province = '$province' AND community = '$community' ORDER BY $orderby $sort";
-
-        if($date!="wszystkie" && $province!="wszystkie" && $community!="wszystkie") $query = 
-        "SELECT * FROM members WHERE date = '$date' AND province = '$province' AND community = '$community' ORDER BY $orderby $sort";
-
-        // if($province!="wszystkie" && $community=="wszystkie") $query = 
-        // "SELECT * FROM members WHERE province = '$province' ORDER BY $orderby $sort";
-        // if($province=="wszystkie" && $community!="wszystkie") $query = 
-        // "SELECT * FROM members WHERE community = '$community' ORDER BY $orderby $sort";
-        // if($province!="wszystkie" && $community!="wszystkie") $query = 
-        // "SELECT * FROM members WHERE province = '$province' AND community = '$community' ORDER BY $orderby $sort";
-        
-        $result = $connection->query($query);
-        // while($row = $result->fetch_assoc())
-        //     {
-        //         echo "<br>";
-        //         echo "<tr>";
-        //             foreach($row as $value)
-        //             {
-        //                 echo "<td>".$value."</td>";
-        //             }
-        //         echo "</tr>";
-        //     }
-        if ($result->num_rows > 0)
+        try
         {
-            while($row = $result->fetch_assoc())
+            $connection = new mysqli($host, $db_user, $db_password, $db_name);
+            if($connection->connect_errno!=0)
             {
-                echo "<br><tr>"
-                    ."<td>".$row["date"]."</td>"
-                    ."<td>".$row["firstname"]."</td>"
-                    ."<td>".$row["lastname"]."</td>"
-                    ."<td>".$row["email"]."</td>"
-                    ."<td>".$row["phone"]."</td>"
-                    ."<td>".$row["province"]."</td>"
-                    ."<td>".$row["community"]."</td>"
-                    ."<td>".$row["info"]."</td>"
-                    ."<td><a href=uploads/".$row["file"].">".$row["file"]."</a></td>"
-                    ."</tr>";
+                throw new Exception(mysqli_connect_errno());
+            }
+            else
+            {
+                $date = $_GET['date'];
+                $province = $_GET['province'];
+                $community = $_GET['community'];
+                $orderby = $_GET['orderby'];
+                $sort = $_GET['sort'];
+
+                if(!isset($_GET['date']) || $_GET['date']=="") $date="wszystkie";
+                if(!isset($_GET['province'])) $province="wszystkie";
+                if(!isset($_GET['community']) || $_GET['community']=="") $community="wszystkie";
+                if(!isset($_GET['orderby'])) $orderby="date";
+                if(!isset($_GET['sort'])) $sort="desc";
+
+                if($date=="wszystkie" && $province=="wszystkie" && $community=="wszystkie") $query = 
+                "SELECT * FROM members ORDER BY $orderby $sort";
+
+                if($date!="wszystkie" && $province=="wszystkie" && $community=="wszystkie") $query = 
+                "SELECT * FROM members WHERE date = '$date' ORDER BY $orderby $sort";
+
+                if($date=="wszystkie" && $province!="wszystkie" && $community=="wszystkie") $query = 
+                "SELECT * FROM members WHERE province = '$province' ORDER BY $orderby $sort";
+
+                if($date=="wszystkie" && $province=="wszystkie" && $community!="wszystkie") $query = 
+                "SELECT * FROM members WHERE community = '$community' ORDER BY $orderby $sort";
+
+                if($date!="wszystkie" && $province!="wszystkie" && $community=="wszystkie") $query = 
+                "SELECT * FROM members WHERE date = '$date' AND province = '$province' ORDER BY $orderby $sort";
+
+                if($date!="wszystkie" && $province=="wszystkie" && $community!="wszystkie") $query = 
+                "SELECT * FROM members WHERE date = '$date' AND community = '$community' ORDER BY $orderby $sort";
+
+                if($date=="wszystkie" && $province!="wszystkie" && $community!="wszystkie") $query = 
+                "SELECT * FROM members WHERE province = '$province' AND community = '$community' ORDER BY $orderby $sort";
+
+                if($date!="wszystkie" && $province!="wszystkie" && $community!="wszystkie") $query = 
+                "SELECT * FROM members WHERE date = '$date' AND province = '$province' AND community = '$community' ORDER BY $orderby $sort";
+                
+                $result = $connection->query($query);
+                // while($row = $result->fetch_assoc())
+                //     {
+                //         echo "<br>";
+                //         echo "<tr>";
+                //             foreach($row as $value)
+                //             {
+                //                 echo "<td>".$value."</td>";
+                //             }
+                //         echo "</tr>";
+                //     }
+                if ($result->num_rows > 0)
+                {
+                    while($row = $result->fetch_assoc())
+                    {
+                        echo "<br><tr>"
+                            ."<td>".$row["date"]."</td>"
+                            ."<td>".$row["firstname"]."</td>"
+                            ."<td>".$row["lastname"]."</td>"
+                            ."<td>".$row["email"]."</td>"
+                            ."<td>".$row["phone"]."</td>"
+                            ."<td>".$row["province"]."</td>"
+                            ."<td>".$row["community"]."</td>"
+                            ."<td>".$row["info"]."</td>"
+                            ."<td><a href=uploads/".$row["file"].">".$row["file"]."</a></td>"
+                            ."</tr>";
+                    }
+                }
+                else 
+                {
+                    echo "No data!";
+                }
+                $connection->close();
             }
         }
-        else 
+        catch(Exception $e)
         {
-            echo "No data!";
+            echo '<span style="color:red;">Błąd serwera! Przepraszamy za niedogodności i prosimy o rejestrację w innym terminie!</span>';
+            // echo '<br>Informacja developerska: '.$e;
         }
-        
-        // unset($_GET['province']);
-        // unset($_GET['community']);
-        $connection->close();
-    }
-}
-catch(Exception $e)
-{
-    echo '<span style="color:red;">Błąd serwera! Przepraszamy za niedogodności i prosimy o rejestrację w innym terminie!</span>';
-    // echo '<br>Informacja developerska: '.$e;
-}
-
-?>
-
-        <tr>
-        
-        </tr>
-    </tbody>
+    ?></tbody>
 </table>
 
 </body>
