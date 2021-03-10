@@ -74,25 +74,27 @@
         #file name with a random number so that similar dont get replaced
         // $file = rand(1000,10000)."-".$_FILES["file"]["name"];
         #temporary file name to store file
-        $tname = $_FILES["file"]["tmp_name"];
-        $fileType = strtolower(pathinfo($_FILES["file"]["name"],PATHINFO_EXTENSION));
-        $file = $firstname.$lastname."-".$phone.".".$fileType;
+        $tmpFile = $_FILES["file"]["tmp_name"];
+        if($tmpFile != null)
+        {
+            $fileType = strtolower(pathinfo($_FILES["file"]["name"],PATHINFO_EXTENSION));
+            $file = $firstname.$lastname."-".$phone.".".$fileType;
 
-        // Check file size (<= 1 MB)
-        if ($_FILES["file"]["size"] > 1048576) 
-        {
-            $everything_OK=false;
-            $_SESSION['e_file']="Sorry, your file is too large.";
-        }
-        // Allow certain file formats
-        if($fileType != "jpg" && $fileType != "png" && $fileType != "jpeg"
-        && $fileType != "pdf" )
-        {
-            $everything_OK=false;
-            $_SESSION['e_file']="Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+            // Check file size (<= 1 MB)
+            if($_FILES["file"]["size"] > 1048576) 
+            {
+                $everything_OK=false;
+                $_SESSION['e_file']="Sorry, your file is too large.";
+            }
+            // Allow certain file formats
+            if($fileType != "jpg" && $fileType != "png" && $fileType != "jpeg"
+            && $fileType != "pdf" && $fileType != "" )
+            {
+                $everything_OK=false;
+                $_SESSION['e_file']="Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+            }
         }
   
-
         //Sprawdź checkboxa
         if(!isset($_POST['regulations']))
         {
@@ -158,7 +160,7 @@
                 {
                     //Hurra, wszystkie testy zaliczone!
                     #TO move the uploaded file to specific location
-                    move_uploaded_file($tname, $target_dir.$file);
+                    move_uploaded_file($tmpFile, $target_dir.$file);
 
                     #sql query to insert into database
                     $sql = "INSERT INTO members VALUES(NULL, '$date', '$firstname', '$lastname', '$email', '$phone', '$province', '$community', '$info', '$file')";
@@ -192,7 +194,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>FORMULARZ</title>
     <script src="https://www.google.com/recaptcha/api.js"></script>
-
     <style>
         .error
         {
