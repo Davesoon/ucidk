@@ -25,21 +25,17 @@
         }
 
         // Sprawdź poprawność adresu email
-        $email = $_POST['email'];
-        $emailB = filter_var($email, FILTER_SANITIZE_EMAIL);
-        if(filter_var($emailB, FILTER_VALIDATE_EMAIL)==false || $emailB!=$email)
+        $tmpEmail = $_POST['email'];
+        $email = filter_var($tmpEmail, FILTER_SANITIZE_EMAIL);
+        if(filter_var($email, FILTER_VALIDATE_EMAIL)==false || $email!=$tmpEmail)
         {
             $everything_OK=false;
             $_SESSION['e_email']="Podaj poprawny adres e-mail!";
         }
-        // if(ctype_alnum($email)==false)
-        // {
-        //     $everything_OK=false;
-        //     $_SESSION['e_email']="Adres e-mail może składać się tylko z liter i cyfr (bez polskich znaków)";
-        // }
 
         // Sprawdź poprawność telefonu
-        $phone = $_POST['phone'];
+        $tmpPhone = $_POST['phone'];
+        $phone = filter_var($tmpPhone, FILTER_SANITIZE_NUMBER_INT);
         if(ctype_digit($phone)==false || strlen($phone)<7 || strlen($phone)>15)
         {
             $everything_OK=false;
@@ -55,7 +51,8 @@
         }
 
         // Sprawdź poprawność gminy
-        $community = $_POST['community'];
+        $tmpCommunity = $_POST['community'];
+        $community = filter_var($tmpCommunity, FILTER_SANITIZE_STRING);
         if(strlen($community)<3 || strlen($community)>30)
         {
             $everything_OK=false;
@@ -63,7 +60,8 @@
         }
         
         //Sprawdź poprawność informacji dodatkowej
-        $info = $_POST['info'];
+        $tmpInfo = $_POST['info'];
+        $info = filter_var($tmpInfo, FILTER_SANITIZE_STRING);
         if(strlen($info)>300)
         {
             $everything_OK=false;
