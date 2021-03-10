@@ -12,8 +12,6 @@
 <body>
     <form method="post" enctype="multipart/form-data">
 
-    <p>test</p>
-                    
         <input type="hidden" value="<?php echo date('Y-m-d'); ?>" name="date">
 
         <?php include "form/name-mail-phone.php"; ?>
