@@ -25,7 +25,7 @@
         $password = htmlentities($password, ENT_QUOTES, "UTF-8");
 
         if($result = @$connection->query(
-        sprintf("SELECT * FROM admins WHERE login='%s' AND password='%s'",
+        sprintf("SELECT * FROM ucidk_admin WHERE login='%s' AND password='%s'",
         mysqli_real_escape_string($connection, $login),
         mysqli_real_escape_string($connection, $password))))
         {

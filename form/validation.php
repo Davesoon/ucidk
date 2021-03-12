@@ -134,7 +134,7 @@
             else
             {
                 //czy email juz isnieje?
-                $result = $connection->query("SELECT id FROM members WHERE email='$email'");
+                $result = $connection->query("SELECT id FROM ucidk_members WHERE email='$email'");
                 if(!$result) throw new Exception($connection->error);
 
                 $how_many_emails = $result->num_rows;
@@ -145,7 +145,7 @@
                 }
 
                 //czy telefon juz istnieje?
-                $result = $connection->query("SELECT id FROM members WHERE phone='$phone'");
+                $result = $connection->query("SELECT id FROM ucidk_members WHERE phone='$phone'");
                 if(!$result) throw new Exception($connection->error);
                 
                 $how_many_phones = $result->num_rows;
@@ -162,7 +162,7 @@
                     move_uploaded_file($tmpFile, $target_dir.$file);
 
                     #sql query to insert into database
-                    $sql = "INSERT INTO members VALUES(NULL, '$date', '$firstname', '$lastname', '$email', '$phone', '$province', '$community', '$info', '$file')";
+                    $sql = "INSERT INTO ucidk_members VALUES(NULL, '$date', '$firstname', '$lastname', '$email', '$phone', '$province', '$community', '$info', '$file')";
 
                     if(mysqli_query($connection,$sql))
                     {
