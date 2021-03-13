@@ -28,6 +28,8 @@ Gmina: <input type="text" value="<?php
             }
         ?>
 
+        <p>Jeżeli chcesz dołączyć do grona założycieli UCiDK, załącz podpisany przez siebie poniższy plik</p>
+        <a href="https://drive.google.com/file/d/1X3FUXDP23MnR3zTDnNUmyedsjxjZgW4c/view" target="_blank">Oświadczenie założycieli UCiDK</a><br>
         <input type="File" name="file"><br>
         <?php
             if(isset($_SESSION['e_file']))
@@ -36,9 +38,6 @@ Gmina: <input type="text" value="<?php
                 unset($_SESSION['e_file']);
             }
         ?>
-
-        <a href="https://drive.google.com/file/d/1X3FUXDP23MnR3zTDnNUmyedsjxjZgW4c/view" target="_blank">Oświadczenie założycieli UCiDK</a><br>
-        <a href="https://drive.google.com/file/d/1d2_Vw4c_E1ZJb4cVweCv9dLP-tdyo6_D/view" target="_blank">Pełnomocnictwo dla PRP (Pełnomocnika Rodu Polskiego)</a><br>
 
         <label>
             <input type="checkbox" name="regulations" <?php
