@@ -10,6 +10,9 @@
     <script src="https://www.google.com/recaptcha/api.js"></script>
 </head>
 <body>
+    <header>
+        <img src="images/dolacz.png" alt="">
+    </header>
     <form method="post" enctype="multipart/form-data">
 
         <input type="hidden" value="<?php echo date('Y-m-d'); ?>" name="date">
