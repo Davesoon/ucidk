@@ -1,21 +1,51 @@
+html
+{
+    display: flex;
+    justify-content: center;
+    background-color: white;
+}
 body
 {
-    margin: 0 !important;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+    width: 500px;
+    background-color: rgb(18, 140, 127);
+    color: white;
 }
 header
 {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
+    margin-bottom: 30px;
+}
+main
+{
+    display: flex;
+    flex-direction: row;
+}
+.space
+{
+    width: 33%;
+}
+form
+{
+    width: 34%;
+}
+input[type="text"], input[type="email"], input[type="tel"], textarea 
+{
+    background-color : rgb(18, 140, 127);
+    border: 1px solid black;
+    color: white;
 }
 img
 {
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
 }
 .error
 {
     color: red;
-    margin-top: 10px;
-    margin-bottom: 10px;
 }
