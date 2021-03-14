@@ -1,4 +1,4 @@
-Imię: <br>
+Imię <br>
 <input type="text" value="<?php
 if(isset($_SESSION['fr_firstname']))
 {
@@ -14,7 +14,7 @@ if(isset($_SESSION['fr_firstname']))
     }
 ?><br>
 
-Nazwisko: <br>
+Nazwisko <br>
 <input type="text" value="<?php
 if(isset($_SESSION['fr_lastname']))
 {
@@ -30,7 +30,7 @@ if(isset($_SESSION['fr_lastname']))
     }
 ?><br>
 
-E-mail: <br>
+Adres e-mail <br>
 <input type="email" value="<?php
 if(isset($_SESSION['fr_email']))
 {
@@ -46,7 +46,7 @@ if(isset($_SESSION['fr_email']))
     }
 ?><br>
 
-Telefon: <br>
+Telefon <br>
 <input type="tel" value="<?php
 if(isset($_SESSION['fr_phone']))
 {

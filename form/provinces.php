@@ -1,4 +1,4 @@
-Województwo: <select name="province" <?php error_reporting(0); ?>>
+Województwo <br> <select name="province" <?php error_reporting(0); ?>>
     <option
         <?php  if ($_SESSION['fr_province'] == "-- wybierz --") echo 'selected="selected" ';?>
     >-- wybierz --</option>

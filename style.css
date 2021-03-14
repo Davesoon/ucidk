@@ -2,13 +2,12 @@ html
 {
     display: flex;
     justify-content: center;
-    background-color: white;
+    background-image: url("img/brushed.png");
 }
 body
 {
     margin: 10px;
     padding: 10px;
-    border: 1px solid black;
     border-radius: 10px;
     width: 500px;
     background-color: rgb(18, 140, 127);
@@ -28,22 +27,30 @@ main
 }
 .space
 {
-    width: 33%;
+    width: 30%;
 }
-form
+input[type="text"], input[type="email"], input[type="tel"], textarea, select
 {
-    width: 34%;
-}
-input[type="text"], input[type="email"], input[type="tel"], textarea 
-{
-    background-color : rgb(18, 140, 127);
-    border: 1px solid black;
+    background-color : rgb(33, 168, 155);
+    border-radius: 5px;
+    border-width: 0px;
     color: white;
+    height: 30px;
+    width: 100%;
+    font-weight: bold;
+    padding-left: 10px;
+    padding-right: 10px;
 }
+textarea {height: 90px;}
 img
 {
     width: 150px;
     height: 150px;
+}
+a
+{
+    color: white;
+    font-weight: bold;
 }
 .error
 {
