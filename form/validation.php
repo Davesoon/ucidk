@@ -33,13 +33,18 @@
         }
 
         // Sprawdź poprawność telefonu
-        $tmpPhone = $_POST['phone'];
-        $phone = filter_var($tmpPhone, FILTER_SANITIZE_NUMBER_INT);
-        if(ctype_digit($phone)==false || strlen($phone)<7 || strlen($phone)>15)
+        $tmpDirection = $_POST['direction'];
+        $direction = filter_var($tmpDirection, FILTER_SANITIZE_STRING);
+
+        $tmpNumber = $_POST['phone'];
+        $number = filter_var($tmpNumber, FILTER_SANITIZE_STRING);
+        if(ctype_digit($number)==false || strlen($number)<7 || strlen($number)>15)
         {
             $everything_OK=false;
             $_SESSION['e_phone']="Numer telefonu może składać się tylko z cyfr (bez kierunkowego, myślników i spacji) oraz powinien zawierać od 7 do 15 cyfr!";
         }
+
+        $phone = "$direction $number";
 
         // Sprawdź poprawność województwa
         $province = $_POST['province'];
@@ -77,7 +82,7 @@
         if($tmpFile != null)
         {
             $fileType = strtolower(pathinfo($_FILES["file"]["name"],PATHINFO_EXTENSION));
-            $file = $firstname.$lastname."-".$phone.".".$fileType;
+            $file = $firstname.$lastname."-".$number.".".$fileType;
 
             // Check file size (<= 1 MB)
             if($_FILES["file"]["size"] > 1048576) 
@@ -115,7 +120,8 @@
         $_SESSION['fr_firstname'] = $firstname;
         $_SESSION['fr_lastname'] = $lastname;
         $_SESSION['fr_email'] = $email;
-        $_SESSION['fr_phone'] = $phone;
+        $_SESSION['fr_direction'] = $direction;
+        $_SESSION['fr_phone'] = $number;
         $_SESSION['fr_province'] = $province;
         $_SESSION['fr_community'] = $community;
         $_SESSION['fr_info'] = $info;

@@ -35,6 +35,12 @@
         </form>
         <div class="space"></div>
 
+        <?php 
+        echo $direction;
+        echo $number;
+        echo $phone;
+        ?>
+
     </main>
     <script>
         function onSubmit(token) {document.getElementById("demo-form").submit();}

@@ -4,7 +4,7 @@ if(isset($_SESSION['fr_community']))
     echo $_SESSION['fr_community'];
     unset($_SESSION['fr_community']);
 }
-?>" name="community"><br>
+?>" name="community" required><br>
 <?php
     if(isset($_SESSION['e_community']))
     {
