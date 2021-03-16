@@ -20,15 +20,17 @@ header
     align-items: center;
     margin-bottom: 30px;
 }
+img
+{
+    width: 150px;
+    height: 150px;
+}
 main
 {
     display: flex;
     flex-direction: row;
 }
-.space
-{
-    width: 30%;
-}
+.space{width: 30%;}
 input[type="text"], input[type="email"], input[type="tel"], textarea, select
 {
     background-color : rgb(33, 168, 155);
@@ -36,17 +38,13 @@ input[type="text"], input[type="email"], input[type="tel"], textarea, select
     border-width: 0px;
     color: white;
     height: 30px;
-    width: 100%;
+    width: calc(100% - 20px);
     font-weight: bold;
     padding-left: 10px;
     padding-right: 10px;
 }
+select{width: 100%;}
 textarea {height: 90px;}
-img
-{
-    width: 150px;
-    height: 150px;
-}
 a
 {
     color: white;
@@ -55,4 +53,20 @@ a
 .error
 {
     color: red;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border-radius: 5px;
+    width: auto;
+
 }
+#submit{text-align: center;}
+input[type="submit"]
+{
+    background-color: red;
+    color: white;
+    border-radius: 5px;
+    padding: 10px;
+    border-width: 0px;
+    font-weight: bold;
+}
+input[type="submit"]:hover{opacity: 0.8;}

@@ -12,7 +12,7 @@
         if(strlen($firstname)<3 || strlen($firstname)>20)
         {
             $everything_OK=false;
-            $_SESSION['e_firstname']="Imię musi posiadać od 3 do 20 znaków!";
+            $_SESSION['e_firstname']="Imię musi posiadać od 3 do 20 liter!";
         }
         //Sprawdź poprawność nazwiska
         $tmpLastname = $_POST['lastname'];
@@ -20,7 +20,7 @@
         if(strlen($lastname)<3 || strlen($lastname)>30)
         {
             $everything_OK=false;
-            $_SESSION['e_lastname']="Nazwisko musi posiadać od 3 do 30 znaków!";
+            $_SESSION['e_lastname']="Nazwisko musi posiadać od 3 do 30 liter!";
         }
 
         // Sprawdź poprawność adresu email
@@ -55,7 +55,7 @@
         if(strlen($community)<3 || strlen($community)>30)
         {
             $everything_OK=false;
-            $_SESSION['e_community']="Nazwa gminy powinna zawierać od 3 do 30 liter!";
+            $_SESSION['e_community']="Nazwa gminy musi posiadać od 3 do 30 liter!";
         }
         
         //Sprawdź poprawność informacji dodatkowej
@@ -83,14 +83,14 @@
             if($_FILES["file"]["size"] > 1048576) 
             {
                 $everything_OK=false;
-                $_SESSION['e_file']="Sorry, your file is too large.";
+                $_SESSION['e_file']="Plik nie może być większy niż 1 MB!";
             }
             // Allow certain file formats
             if($fileType != "jpg" && $fileType != "png" && $fileType != "jpeg"
             && $fileType != "pdf" && $fileType != "" )
             {
                 $everything_OK=false;
-                $_SESSION['e_file']="Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+                $_SESSION['e_file']="Plik może być tylko w formacie JPG, JPEG, PNG oraz PDF!";
             }
         }
   

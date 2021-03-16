@@ -16,7 +16,7 @@
         <h1>Dołącz do nas!</h1>
     </header>
     <main>
-    <div class="space"></div>
+        <div class="space"></div>
 
         <form method="post" enctype="multipart/form-data">
 
@@ -27,8 +27,10 @@
             <?php include "form/provinces.php"; ?>
 
             <?php include "form/community-info-file-regulations-captcha.php"; ?>
-
-            <input type="submit" value="Wyślij formularz" name="submit">
+            
+            <div id="submit">
+                <input type="submit" value="Wyślij formularz" name="submit">
+            </div>
 
         </form>
         <div class="space"></div>
