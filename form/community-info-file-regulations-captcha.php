@@ -29,7 +29,7 @@ Dodatkowe informacje <br> <textarea name="info"><?php
 ?><br>
 
 Jeżeli chcesz dołączyć do grona założycieli UCiDK, załącz podpisane przez siebie 
-<a href="doc/oswiadczenie-zalozyciela-UCiDK.pdf" target="_blank">Oświadczenie</a><br>
+<a href="doc/oswiadczenie-zalozyciela-UCiDK.pdf" target="_blank">OŚWIADCZENIE</a><br>
 
 <input type="File" name="file"><br>
 <?php

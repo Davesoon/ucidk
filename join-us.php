@@ -13,7 +13,7 @@
 <body>
     <header>
         <img src="img/logo.png">
-        <h1>Dołącz do nas!</h1>
+        <h1>Dołącz do NAS!</h1>
     </header>
     <main>
         <div class="space"></div>
