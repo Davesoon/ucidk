@@ -1,5 +1,4 @@
 <?php include "form/validation.php"; ?>
-
 <!DOCTYPE HTML>
 <html lang="pl">
 <head>
@@ -16,25 +15,25 @@
         <h1>Dołącz do NAS!</h1>
     </header>
     <main>
-        <div class="space"></div>
-
         <form method="post" enctype="multipart/form-data">
 
             <input type="hidden" value="<?php echo date('Y-m-d'); ?>" name="date">
 
-            <?php include "form/name-mail-phone.php"; ?>
+            <div class="row"><?php include "form/fullname.php"; ?></div>
 
-            <?php include "form/provinces.php"; ?>
+            <div class="row"><?php include "form/email-phone.php"; ?></div>
 
-            <?php include "form/community-info-file-regulations-captcha.php"; ?>
+            <div class="row"><?php include "form/province-community.php"; ?></div>
+
+            <div class="row"><?php include "form/file-info.php"; ?></div>
+
+            <div class="row"><?php include "form/regulations-recaptcha.php"; ?></div>
             
             <div id="submit">
-                <input type="submit" value="Wyślij formularz" name="submit">
+                <input type="submit" value="Wyślij FORMULARZ" name="submit">
             </div>
 
         </form>
-        <div class="space"></div>
-
     </main>
     <script>
         function onSubmit(token) {document.getElementById("demo-form").submit();}

@@ -24,13 +24,17 @@ img
     width: 150px;
     height: 150px;
 }
-main
+.row
 {
     display: flex;
-    flex-direction: row;
+    justify-content: space-around;
+    margin-bottom: 20px;
 }
-.space{width: 30%;}
-input[type="text"], input[type="email"], input[type="tel"], textarea, select
+.field
+{
+    width: 45%;
+}
+input[type="text"], textarea, select
 {
     background-color : rgb(33, 168, 155);
     border-radius: 5px;
@@ -42,15 +46,15 @@ input[type="text"], input[type="email"], input[type="tel"], textarea, select
     padding-left: 10px;
     padding-right: 10px;
 }
-input[name=phone]{width: 90%;}
+input[name=phone]{width: 150px;}
 input[name=direction]
 {
-    width: 10%;
+    width: 30px;
     margin-right: 5px;
 }
 #fullNumber{display: flex;}
 select{width: 100%;}
-textarea {height: 90px;}
+textarea {height: 50px;}
 a
 {
     color: white;
@@ -76,3 +80,5 @@ input[type="submit"]
     font-weight: bold;
 }
 input[type="submit"]:hover{opacity: 0.8;}
+#test
+{text-align: justify;}
