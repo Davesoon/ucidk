@@ -248,7 +248,7 @@
                 {
                     while($row = $result->fetch_assoc())
                     {
-                        echo "<br><tr>"
+                        echo "<tr>"
                             ."<td>".$row["date"]."</td>"
                             ."<td>".$row["firstname"]."</td>"
                             ."<td>".$row["lastname"]."</td>"
