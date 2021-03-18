@@ -15,8 +15,9 @@
     ?>
 </div>
 <div class="info">
-    Jeżeli chcesz dołączyć do grona założycieli UCiDK, załącz podpisane przez siebie 
-    <a href="doc/oswiadczenie-zalozyciela-UCiDK.pdf" target="_blank">OŚWIADCZENIE</a><br>
+    Załącz podpisane przez siebie 
+    <a href="doc/oswiadczenie-zalozyciela-UCiDK.pdf" target="_blank">OŚWIADCZENIE</a>
+    założyciela.<br>
 
     <input type="File" name="file"><br>
     <?php

@@ -11,8 +11,9 @@
 </head>
 <body>
     <header>
+        <h2>ZOSTAŃ ZAŁOŻYCIELEM UCiDK</h2>
         <img src="img/logo.png">
-        <h1>Dołącz do NAS!</h1>
+        <h3>DOŁĄCZ DO NAS!</h3>
     </header>
     <main>
         <form method="post" enctype="multipart/form-data">
