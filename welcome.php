@@ -39,8 +39,22 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>ZALOGUJ</title>
+    <link rel="stylesheet" href="style.css">
+    <title>Witamy!</title>
 </head>
 <body>
-    Dziękujemy za wysłanie formularza!
+    <header>
+        <img src="img/logo.png">
+        <h1>Dziękujemy za wysłanie formularza!</h1>
+    </header>
+    <main>
+        <p>Zostaniesz automatycznie przekierowany na stronę główną</p>
+    </main>
 </body>
+<script>
+    function redirection()
+    {
+        location.replace("http://www.ucidk.pl")
+    }
+    setTimeout("redirection()", 3000);
+</script>
