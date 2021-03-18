@@ -46,6 +46,12 @@ input[type="text"], textarea, select
     padding-left: 10px;
     padding-right: 10px;
 }
+.info
+{
+    width: calc(100% - 25px);
+    margin-left: 13px;
+    margin-bottom: 20px;
+}
 input[name=phone]{width: 150px;}
 input[name=direction]
 {
@@ -67,7 +73,6 @@ a
     padding: 10px;
     border-radius: 5px;
     width: auto;
-
 }
 #submit{text-align: center;}
 input[type="submit"]
@@ -80,5 +85,3 @@ input[type="submit"]
     font-weight: bold;
 }
 input[type="submit"]:hover{opacity: 0.8;}
-#test
-{text-align: justify;}
