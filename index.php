@@ -7,24 +7,34 @@
     <title>UCiDK</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body id="body">
+<body id="index">
     <header>
         <a href="http://www.ucidk.pl"><img src="images/logo.png"></a>
     </header>
     <main>
-        <section class="column">
+        <section>
             <h2>DOŁĄCZ DO NAS!</h2>
+            <div class="row"></div>
             <a href="/ucidk/dolacz.php" class="button">FORMULARZ ZGŁOSZENIOWY</a>
         </section>
-        <section class="column">
+        <!-- &nbsp; -->
+        <section>
             <h2>ZGŁOŚ BEZPRAWIE!</h2>
-           <a href="/ucidk/dolacz.php" class="button">POLICJA</a>
-           <a href="/ucidk/dolacz.php" class="button">SANEPID</a>
-           <a href="/ucidk/dolacz.php" class="button">URZĄD</a>
-           <a href="/ucidk/dolacz.php" class="button">SĄD</a>
-           <a href="/ucidk/dolacz.php" class="button">PROKURATURA</a>
-           <a href="/ucidk/dolacz.php" class="button">FIRMA/SKLEP</a>
-           <a href="/ucidk/dolacz.php" class="button">INNE</a>
+            <div class="row">
+                <a href="/ucidk/dolacz.php" class="button">POLICJA</a>
+                <a href="/ucidk/dolacz.php" class="button">SANEPID</a>
+            </div>
+            <div class="row">
+                <a href="/ucidk/dolacz.php" class="button">URZĄD</a>
+                <a href="/ucidk/dolacz.php" class="button">SĄD</a>
+            </div>
+            <div class="row">
+                <a href="/ucidk/dolacz.php" class="button">PROKURATURA</a>
+                <a href="/ucidk/dolacz.php" class="button">FIRMA/SKLEP</a>
+            </div>
+            <div class="row">
+                <a href="/ucidk/dolacz.php" class="button">INNE</a>
+            </div>
         </section>
     </main>
 </body>
