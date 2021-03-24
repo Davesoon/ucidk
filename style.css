@@ -88,37 +88,10 @@ a
     text-decoration: none;
 }
 .button:hover{opacity: 0.8;}
-p
-{
-    text-align: center;
-}
-h4, h2
-{
-    text-align: center;
-}
-/* .column
-{
-    margin-top: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-} */
-
+p, h4, h2, #index main{text-align: center;}
 #index a
 {
     margin-bottom: 10px;
     width: 150px;
 }
-#index main
-{
-    text-align: center;
-}
-#index main section:first-child
-{
-    margin-bottom: 50px;
-}
-/* #index main section:first-child a
-{
-    margin-top: 10px;
-} */
+#index main section:first-child{margin-bottom: 50px;}

@@ -17,7 +17,6 @@
             <div class="row"></div>
             <a href="/ucidk/dolacz.php" class="button">FORMULARZ ZGŁOSZENIOWY</a>
         </section>
-        <!-- &nbsp; -->
         <section>
             <h2>ZGŁOŚ BEZPRAWIE!</h2>
             <div class="row">
