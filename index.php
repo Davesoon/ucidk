@@ -9,7 +9,7 @@
 </head>
 <body>
     <header>
-        <img src="img/logo.png">
+        <img src="images/logo.png">
     </header>
     <main>
         <section>

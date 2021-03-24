@@ -16,7 +16,7 @@
 </div>
 <div class="info">
     Załącz podpisane przez siebie 
-    <a href="doc/oswiadczenie-zalozyciela-UCiDK.pdf" target="_blank">OŚWIADCZENIE</a>
+    <a href="documents/oswiadczenie-zalozyciela-UCiDK.pdf" target="_blank">OŚWIADCZENIE</a>
     założyciela.<br>
 
     <input type="File" name="file"><br>
