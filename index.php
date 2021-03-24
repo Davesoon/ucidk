@@ -7,24 +7,24 @@
     <title>UCiDK</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body id="body">
     <header>
-        <img src="images/logo.png">
+        <a href="http://www.ucidk.pl"><img src="images/logo.png"></a>
     </header>
     <main>
-        <section>
+        <section class="column">
             <h2>DOŁĄCZ DO NAS!</h2>
-            <a href="/ucidk/dolacz.php">FORMULARZ ZGŁOSZENIOWY</a>
+            <a href="/ucidk/dolacz.php" class="button">FORMULARZ ZGŁOSZENIOWY</a>
         </section>
-        <section>
+        <section class="column">
             <h2>ZGŁOŚ BEZPRAWIE!</h2>
-            <a href="">POLICJA</a>
-            <a href="">SANEPID</a>
-            <a href="">URZĄD</a>
-            <a href="">SĄD</a>
-            <a href="">PROKURATURA</a>
-            <a href="">FIRMA/SKLEP</a>
-            <a href="">INNE</a>
+           <a href="/ucidk/dolacz.php" class="button">POLICJA</a>
+           <a href="/ucidk/dolacz.php" class="button">SANEPID</a>
+           <a href="/ucidk/dolacz.php" class="button">URZĄD</a>
+           <a href="/ucidk/dolacz.php" class="button">SĄD</a>
+           <a href="/ucidk/dolacz.php" class="button">PROKURATURA</a>
+           <a href="/ucidk/dolacz.php" class="button">FIRMA/SKLEP</a>
+           <a href="/ucidk/dolacz.php" class="button">INNE</a>
         </section>
     </main>
 </body>

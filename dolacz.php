@@ -31,7 +31,7 @@
             <div class="row"><?php include "fields/regulations-recaptcha.php"; ?></div>
             
             <div id="submit">
-                <input type="submit" value="Wyślij FORMULARZ" name="submit">
+                <input type="submit" value="Wyślij FORMULARZ" name="submit" class="button">
             </div>
 
         </form>
