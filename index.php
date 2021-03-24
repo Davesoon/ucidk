@@ -20,7 +20,7 @@
         <section>
             <h2>ZGŁOŚ BEZPRAWIE!</h2>
             <div class="row">
-                <a href="/ucidk/dolacz.php" class="button">POLICJA</a>
+                <a href="/ucidk/policja.php" class="button">POLICJA</a>
                 <a href="/ucidk/dolacz.php" class="button">SANEPID</a>
             </div>
             <div class="row">
