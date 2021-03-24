@@ -3,7 +3,7 @@
 
     if(!isset($_SESSION['sent']))
     {
-        header('Location: index.php');
+        header('Location: zaloguj.php');
         exit();
     }
     else

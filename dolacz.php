@@ -1,4 +1,4 @@
-<?php include "form/validation.php"; ?>
+<?php include "validators/dolacz.php"; ?>
 <!DOCTYPE HTML>
 <html lang="pl">
 <head>
@@ -13,22 +13,22 @@
     <header>
         <h2>ZOSTAŃ ZAŁOŻYCIELEM UCiDK</h2>
         <img src="img/logo.png">
-        <h3>DOŁĄCZ DO NAS!</h3>
+        <h2>DOŁĄCZ DO NAS!</h2>
     </header>
     <main>
         <form method="post" enctype="multipart/form-data">
 
             <input type="hidden" value="<?php echo date('Y-m-d'); ?>" name="date">
 
-            <div class="row"><?php include "form/fullname.php"; ?></div>
+            <div class="row"><?php include "fields/fullname.php"; ?></div>
 
-            <div class="row"><?php include "form/email-phone.php"; ?></div>
+            <div class="row"><?php include "fields/email-phone.php"; ?></div>
 
-            <div class="row"><?php include "form/province-community.php"; ?></div>
+            <div class="row"><?php include "fields/province-community.php"; ?></div>
 
-            <?php include "form/file-info.php"; ?>
+            <?php include "fields/file-info.php"; ?>
 
-            <div class="row"><?php include "form/regulations-recaptcha.php"; ?></div>
+            <div class="row"><?php include "fields/regulations-recaptcha.php"; ?></div>
             
             <div id="submit">
                 <input type="submit" value="Wyślij FORMULARZ" name="submit">

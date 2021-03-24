@@ -4,7 +4,7 @@
 
     if(!isset($_POST['login']) || (!isset($_POST['password'])))
     {
-        header('Location: index.php');
+        header('Location: zaloguj.php');
         exit();
     }
 
@@ -39,12 +39,12 @@
                 
                 unset($_SESSION['error']);
                 $result->free_result();
-                header('Location: administration.php');
+                header('Location: administracja.php');
             }
             else
             {
                 $_SESSION['error'] = '<span style="color:red">Nieprawidłowy login lub hasło!</span>';
-                header('Location: index.php');
+                header('Location: zaloguj.php');
             }
         }
 

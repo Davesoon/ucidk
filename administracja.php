@@ -3,7 +3,7 @@
 
     if(!isset($_SESSION['logged']))
     {
-        header('Location: index.php');
+        header('Location: zaloguj.php');
         exit();
     }
 ?>
@@ -34,7 +34,7 @@
     $sort = $_GET['sort'];
     $orderby = $_GET['orderby'];
 ?>
-<form action="administration.php" method="get"><br>
+<form action="administracja.php" method="get"><br>
 
     <fieldset>
         <legend>filtrowanie</legend>

@@ -1,28 +1,30 @@
-<?php
-    session_start();
-
-    if((isset($_SESSION['logged'])) && ($_SESSION['logged']==true))
-    {
-        header('Location: administration.php');
-        exit();
-    }
-?>
-
 <!DOCTYPE HTML>
 <html lang="pl">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>ZALOGUJ</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UCiDK</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <form action="login.php" method="post">
-        Login:  <br><input type="text" name="login"><br>
-        Hasło:  <br><input type="password" name="password"><br><br>
-        <input type="submit" value="Zaloguj się">
-    </form>
-    
-    <?php
-        if(isset($_SESSION['error'])) echo $_SESSION['error'];
-    ?>
+    <header>
+        <img src="img/logo.png">
+    </header>
+    <main>
+        <section>
+            <h2>DOŁĄCZ DO NAS!</h2>
+            <a href="/ucidk/dolacz.php">FORMULARZ ZGŁOSZENIOWY</a>
+        </section>
+        <section>
+            <h2>ZGŁOŚ BEZPRAWIE!</h2>
+            <a href="">POLICJA</a>
+            <a href="">SANEPID</a>
+            <a href="">URZĄD</a>
+            <a href="">SĄD</a>
+            <a href="">PROKURATURA</a>
+            <a href="">FIRMA/SKLEP</a>
+            <a href="">INNE</a>
+        </section>
+    </main>
 </body>

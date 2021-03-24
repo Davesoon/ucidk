@@ -173,7 +173,7 @@
                     if(mysqli_query($connection,$sql))
                     {
                         $_SESSION['sent']=true;
-                        header('Location: welcome.php');
+                        header('Location: witamy.php');
                     }
                     else
                     {
