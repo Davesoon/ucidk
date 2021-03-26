@@ -26,7 +26,7 @@
 
             <div class="row"><?php include "fields/province-community.php"; ?></div>
 
-            <?php include "fields/file-info.php"; ?>
+            <?php include "fields/info-file.php"; ?>
 
             <div class="row"><?php include "fields/regulations-recaptcha.php"; ?></div>
             

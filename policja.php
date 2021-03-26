@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dołącz do nas!</title>
+    <title>Policja</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://www.google.com/recaptcha/api.js"></script>
 </head>
@@ -28,6 +28,10 @@
             <h4>OPIS ZDARZENIA</h4>
 
             <div class="row"><?php include "fields/province-community.php"; ?></div>
+            
+            <div class="row"><?php include "fields/policeman.php"; ?></div>
+
+            <div class="row"><?php include "fields/place-info.php"; ?></div>
 
             <div class="row"><?php include "fields/regulations-recaptcha.php"; ?></div>
             
