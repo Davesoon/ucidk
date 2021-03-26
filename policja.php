@@ -31,7 +31,7 @@
             
             <div class="row"><?php include "fields/policeman.php"; ?></div>
 
-            <div class="row"><?php include "fields/place-info.php"; ?></div>
+            <div class="row"><?php include "fields/info-place.php"; ?></div>
 
             <div class="row"><?php include "fields/regulations-recaptcha.php"; ?></div>
             
