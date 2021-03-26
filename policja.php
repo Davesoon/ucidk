@@ -31,9 +31,12 @@
             
             <div class="row"><?php include "fields/policeman.php"; ?></div>
 
-            <div class="row"><?php include "fields/info-place.php"; ?></div>
-
-            <div class="row"><?php include "fields/regulations-recaptcha.php"; ?></div>
+            <div class="row">
+                <?php include "fields/info.php"; ?>
+                <div class="column">
+                    <?php include "fields/place-checks.php"; ?>
+                </div>
+            </div>
             
             <div id="submit">
                 <input type="submit" value="Wyślij FORMULARZ" name="submit" class="button">

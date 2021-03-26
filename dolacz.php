@@ -28,7 +28,7 @@
 
             <?php include "fields/info-file.php"; ?>
 
-            <div class="row"><?php include "fields/regulations-recaptcha.php"; ?></div>
+            <div class="row"><?php include "fields/checks.php"; ?></div>
             
             <div id="submit">
                 <input type="submit" value="Wyślij FORMULARZ" name="submit" class="button">
