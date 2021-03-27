@@ -1,4 +1,4 @@
-<div>
+<div class="field">
     Komenda <br> <select name="hq" <?php error_reporting(0); ?>>
         <option
             <?php  if ($_SESSION['fr_hq'] == "-- wybierz --") echo 'selected="selected" ';?>
@@ -23,4 +23,4 @@
                 unset($_SESSION['e_hq']);
             }
     ?>
-</div><br>
+</div>

@@ -25,13 +25,13 @@
             <div class="row"><?php include "fields/email-phone.php"; ?></div>
 
             <div class="row">
-                <?php include "fields/province.php"; ?>
+                <div class="field"><?php include "fields/province.php"; ?></div>
                 <?php include "fields/community.php"; ?>
             </div>
 
             <div class="row">
                 <div class="fieldRow">
-                    <?php include "fields/info.php"; ?>
+                    Dodatkowe informacje<?php include "fields/info.php"; ?>
                 </div>
             </div>
 

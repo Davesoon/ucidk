@@ -25,21 +25,22 @@
 
             <div class="row"><?php include "fields/email-phone.php"; ?></div>
 
-            <h4>OPIS ZDARZENIA</h4>
+            <h4>ZGŁOSZENIE POLICJANTA</h4>
 
-            <div class="row">
-                <?php include "fields/province.php"; ?>
-                <?php include "fields/city.php"; ?>
-            </div>
-            
             <div class="row"><?php include "fields/policeman.php"; ?></div>
 
             <div class="row">
+                <?php include "fields/hq.php"; ?>
+                <?php include "fields/city.php"; ?>
+            </div>
+            
+            <div class="row">
                 <div class="field">
-                    <?php include "fields/info.php"; ?>
+                    Opis zdarzenia<?php include "fields/info.php"; ?>
                 </div>
                 <div class="column">
-                    <?php include "fields/hq.php"; ?>
+                    <div><?php include "fields/province.php"; ?></div>
+                    <br>
                     <?php include "fields/checks.php"; ?>
                 </div>
             </div>
