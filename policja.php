@@ -30,21 +30,23 @@
             <div class="row"><?php include "fields/policeman.php"; ?></div>
 
             <div class="row">
+                <?php include "fields/incDate.php"; ?>
                 <?php include "fields/hq.php"; ?>
-                <?php include "fields/city.php"; ?>
             </div>
-            
+
             <div class="row">
-                <div class="field">
+                <?php include "fields/city.php"; ?>
+                <div class="field"><?php include "fields/province.php"; ?></div>
+            </div>
+
+            <div class="row">
+                <div class="fieldRow">
                     Opis zdarzenia<?php include "fields/info.php"; ?>
                 </div>
-                <div class="column">
-                    <div><?php include "fields/province.php"; ?></div>
-                    <br>
-                    <?php include "fields/checks.php"; ?>
-                </div>
             </div>
             
+            <div class="row"><?php include "fields/checks.php"; ?></div>
+
             <div id="submit">
                 <input type="submit" value="Wyślij FORMULARZ" name="submit" class="button">
             </div>
