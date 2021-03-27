@@ -31,6 +31,7 @@ img
     margin-bottom: 10px;
 }
 .field{width: 45%;}
+.fieldRow{width: calc(100% - 25px);}
 input[type="text"], textarea, select
 {
     background-color : rgb(33, 168, 155);
@@ -42,12 +43,6 @@ input[type="text"], textarea, select
     font-weight: bold;
     padding-left: 10px;
     padding-right: 10px;
-}
-.info
-{
-    width: calc(100% - 25px);
-    margin-left: 13px;
-    margin-bottom: 20px;
 }
 input[name=phone]{width: 150px;}
 input[name=direction]

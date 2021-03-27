@@ -27,14 +27,20 @@
 
             <h4>OPIS ZDARZENIA</h4>
 
-            <div class="row"><?php include "fields/province-community.php"; ?></div>
+            <div class="row">
+                <?php include "fields/province.php"; ?>
+                <?php include "fields/city.php"; ?>
+            </div>
             
             <div class="row"><?php include "fields/policeman.php"; ?></div>
 
             <div class="row">
-                <?php include "fields/info.php"; ?>
+                <div class="field">
+                    <?php include "fields/info.php"; ?>
+                </div>
                 <div class="column">
-                    <?php include "fields/place-checks.php"; ?>
+                    <?php include "fields/hq.php"; ?>
+                    <?php include "fields/checks.php"; ?>
                 </div>
             </div>
             

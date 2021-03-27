@@ -24,9 +24,20 @@
 
             <div class="row"><?php include "fields/email-phone.php"; ?></div>
 
-            <div class="row"><?php include "fields/province-community.php"; ?></div>
+            <div class="row">
+                <?php include "fields/province.php"; ?>
+                <?php include "fields/community.php"; ?>
+            </div>
 
-            <?php include "fields/info-file.php"; ?>
+            <div class="row">
+                <div class="fieldRow">
+                    <?php include "fields/info.php"; ?>
+                </div>
+            </div>
+
+            <div class="row">
+                <?php include "fields/file.php"; ?>
+            </div>
 
             <div class="row"><?php include "fields/checks.php"; ?></div>
             
