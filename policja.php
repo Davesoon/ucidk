@@ -1,4 +1,4 @@
-<?php include "validators/dolacz.php"; ?>
+<?php include "validators/policja.php"; ?>
 <!DOCTYPE HTML>
 <html lang="pl">
 <head>
@@ -35,14 +35,17 @@
             </div>
 
             <div class="row">
-                <?php include "fields/city.php"; ?>
-                <div class="field"><?php include "fields/province.php"; ?></div>
+                <?php include "fields/incCity.php"; ?>
+                <div class="field">Miejscowość Komendy<?php include "fields/hqCity.php"; ?></div>
             </div>
 
             <div class="row">
-                <div class="fieldRow">
-                    Opis zdarzenia<?php include "fields/info.php"; ?>
-                </div>
+                <div class="field"><?php include "fields/incProvince.php"; ?></div>
+                <div class="field">Województwo Komendy<?php include "fields/hqProvince.php"; ?></div>
+            </div>
+
+            <div class="row">
+                <div class="fieldRow">Opis zdarzenia<?php include "fields/info.php"; ?></div>
             </div>
             
             <div class="row"><?php include "fields/checks.php"; ?></div>

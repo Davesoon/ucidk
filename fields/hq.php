@@ -4,11 +4,17 @@
             <?php  if ($_SESSION['fr_hq'] == "-- wybierz --") echo 'selected="selected" ';?>
         >-- wybierz --</option>
         <option
-            <?php if ($_SESSION['fr_hq'] == "Komenda Powiatowa") echo 'selected="selected" ';?>
-        >Komenda Powiatowa</option>
+            <?php if ($_SESSION['fr_hq'] == "Komenda Główna") echo 'selected="selected" ';?>
+        >Komenda Główna</option>
         <option
             <?php if ($_SESSION['fr_hq'] == "Komenda Miejska") echo 'selected="selected" ';?>
         >Komenda Miejska</option>
+        <option
+            <?php if ($_SESSION['fr_hq'] == "Komenda Powiatowa") echo 'selected="selected" ';?>
+        >Komenda Powiatowa</option>
+        <option
+            <?php if ($_SESSION['fr_hq'] == "Komenda Stołeczna") echo 'selected="selected" ';?>
+        >Komenda Stołeczna</option>
         <option
             <?php if ($_SESSION['fr_hq'] == "Komenda Wojewódzka") echo 'selected="selected" ';?>
         >Komenda Wojewódzka</option>

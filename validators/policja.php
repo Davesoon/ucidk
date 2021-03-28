@@ -41,10 +41,28 @@
         if(ctype_digit($number)==false || strlen($number)<7 || strlen($number)>15)
         {
             $everything_OK=false;
-            $_SESSION['e_phone']="Numer telefonu może składać się tylko z cyfr (myślników i spacji) oraz powinien zawierać od 7 do 15 cyfr!";
+            $_SESSION['e_phone']="Numer telefonu może składać się tylko z cyfr (bez myślników i spacji) oraz powinien zawierać od 7 do 15 cyfr!";
         }
 
         $phone = "$direction $number";
+
+        //Sprawdź poprawność policjanta
+        $tmpPoliceman = $_POST['policeman'];
+        $policeman = filter_var($tmpPoliceman, FILTER_SANITIZE_STRING);
+        if(strlen($policeman)<6 || strlen($policeman)>40)
+        {
+            $everything_OK=false;
+            $_SESSION['e_policeman']="Pole może zawierać od 6 do 40 znaków!";
+        }
+
+        //Sprawdź poprawność Id policjanta
+        $tmpPoliceId = $_POST['policeId'];
+        $policeId = filter_var($tmpPoliceId, FILTER_SANITIZE_STRING);
+        if(strlen($policeId)<6 || strlen($policeId)>40)
+        {
+            $everything_OK=false;
+            $_SESSION['e_policeId']="Pole może zawierać od 6 do 40 znaków!";
+        }
 
         // Sprawdź poprawność województwa
         $province = $_POST['province'];
@@ -122,6 +140,8 @@
         $_SESSION['fr_email'] = $email;
         $_SESSION['fr_direction'] = $direction;
         $_SESSION['fr_phone'] = $number;
+        $_SESSION['fr_policeman'] = $policeman;
+        $_SESSION['fr_policeId'] = $policeId;
         $_SESSION['fr_province'] = $province;
         $_SESSION['fr_community'] = $community;
         $_SESSION['fr_info'] = $info;
