@@ -24,11 +24,11 @@
 <body>
 <div class="row">
     <b>Założyciele</b>
-    <a href="adm/policja.php">Policja</a>
+    <a href="../adm/policja.php">Policja</a>
 </div>
 <?php
     echo "<p>Witaj ".$_SESSION['login'].'!</p>';
-    echo "<a href='../logout.php'>Wyloguj się!</a>";
+    echo "<a href='../redirect/logout.php'>Wyloguj się!</a>";
     error_reporting(0);
 
     //Zapamiętaj wprowadzone dane
@@ -38,7 +38,7 @@
     $sort = $_GET['sort'];
     $orderby = $_GET['orderby'];
 ?>
-<form action="adm/zalozyciele.php" method="get"><br>
+<form action="zalozyciele.php" method="get"><br>
 
     <fieldset>
         <legend>filtrowanie</legend>
