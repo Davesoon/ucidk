@@ -18,20 +18,20 @@
     <main>
         <form method="post" enctype="multipart/form-data">
 
-            <input type="hidden" value="<?php echo date('Y-m-d'); ?>" name="date">
+            <input type="hidden" value="<?php echo date('Y-m-d'); ?>" name="formDate">
 
             <div class="row"><?php include "fields/fullname.php"; ?></div>
 
             <div class="row"><?php include "fields/email-phone.php"; ?></div>
 
             <div class="row">
-                <div class="field"><?php include "fields/province.php"; ?></div>
-                <?php include "fields/community.php"; ?>
+                <div class="field"> Województwo <?php include "fields/hqProvince.php"; ?></div>
+                <div class="field"> Gmina <?php include "fields/hqCity.php"; ?></div>
             </div>
 
             <div class="row">
                 <div class="fieldRow">
-                    Dodatkowe informacje<?php include "fields/info.php"; ?>
+                    Dodatkowe informacje <?php include "fields/desc.php"; ?>
                 </div>
             </div>
 

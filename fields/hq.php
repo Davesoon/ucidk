@@ -5,19 +5,19 @@
         >-- wybierz --</option>
         <option
             <?php if ($_SESSION['fr_hq'] == "Komenda Główna") echo 'selected="selected" ';?>
-        >Komenda Główna</option>
-        <option
-            <?php if ($_SESSION['fr_hq'] == "Komenda Miejska") echo 'selected="selected" ';?>
-        >Komenda Miejska</option>
-        <option
-            <?php if ($_SESSION['fr_hq'] == "Komenda Powiatowa") echo 'selected="selected" ';?>
-        >Komenda Powiatowa</option>
+        >Główna</option>
         <option
             <?php if ($_SESSION['fr_hq'] == "Komenda Stołeczna") echo 'selected="selected" ';?>
-        >Komenda Stołeczna</option>
+        >Stołeczna</option>
         <option
             <?php if ($_SESSION['fr_hq'] == "Komenda Wojewódzka") echo 'selected="selected" ';?>
-        >Komenda Wojewódzka</option>
+        >Wojewódzka</option>
+        <option
+            <?php if ($_SESSION['fr_hq'] == "Komenda Miejska") echo 'selected="selected" ';?>
+        >Miejska</option>
+        <option
+            <?php if ($_SESSION['fr_hq'] == "Komenda Powiatowa") echo 'selected="selected" ';?>
+        >Powiatowa</option>
         <option
             <?php if ($_SESSION['fr_hq'] == "Posterunek Policji") echo 'selected="selected" ';?>
         >Posterunek Policji</option>

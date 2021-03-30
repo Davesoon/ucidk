@@ -4,7 +4,7 @@
     {
         $everything_OK=true;
 
-        $date = $_POST['date'];
+        $formDate = $_POST['formDate'];
 
         //Sprawdź poprawność imienia
         $tmpFirstname = $_POST['firstname'];
@@ -47,29 +47,29 @@
         $phone = "$direction $number";
 
         // Sprawdź poprawność województwa
-        $province = $_POST['province'];
-        if($province=='-- wybierz --')
+        $hqProvince = $_POST['hqProvince'];
+        if($hqProvince=='-- wybierz --')
         {
             $everything_OK=false;
-            $_SESSION['e_province']="Wybierz województwo!";
+            $_SESSION['e_hqProvince']="Wybierz województwo!";
         }
 
         // Sprawdź poprawność gminy
-        $tmpCommunity = $_POST['community'];
-        $community = filter_var($tmpCommunity, FILTER_SANITIZE_STRING);
-        if(strlen($community)<3 || strlen($community)>30)
+        $tmpHqCity = $_POST['hqCity'];
+        $hqCity = filter_var($tmpHqCity, FILTER_SANITIZE_STRING);
+        if(strlen($hqCity)<3 || strlen($hqCity)>30)
         {
             $everything_OK=false;
-            $_SESSION['e_community']="Nazwa gminy musi posiadać od 3 do 30 liter!";
+            $_SESSION['e_hqCity']="Nazwa gminy musi posiadać od 3 do 30 liter!";
         }
         
         //Sprawdź poprawność informacji dodatkowej
-        $tmpInfo = $_POST['info'];
-        $info = filter_var($tmpInfo, FILTER_SANITIZE_STRING);
-        if(strlen($info)>300)
+        $tmpDesc = $_POST['desc'];
+        $desc = filter_var($tmpDesc, FILTER_SANITIZE_STRING);
+        if(strlen($desc)>300)
         {
             $everything_OK=false;
-            $_SESSION['e_info']="Informacja dodatkowa nie może przekroczyć 300 znaków!";
+            $_SESSION['e_desc']="Informacja dodatkowa nie może przekroczyć 300 znaków!";
         }
 
         //Sprawdź plik
@@ -122,9 +122,9 @@
         $_SESSION['fr_email'] = $email;
         $_SESSION['fr_direction'] = $direction;
         $_SESSION['fr_phone'] = $number;
-        $_SESSION['fr_province'] = $province;
-        $_SESSION['fr_community'] = $community;
-        $_SESSION['fr_info'] = $info;
+        $_SESSION['fr_hqProvince'] = $hqProvince;
+        $_SESSION['fr_hqCity'] = $hqCity;
+        $_SESSION['fr_desc'] = $desc;
         if(isset($_POST['regulations'])) $_SESSION['fr_regulations'] = true;
 
         require_once "connect.php";
@@ -173,7 +173,7 @@
                     if(mysqli_query($connection,$sql))
                     {
                         $_SESSION['sent']=true;
-                        header('Location: witamy.php');
+                        header('Location: dziekujemy.php');
                     }
                     else
                     {

@@ -17,7 +17,7 @@
     <main>
         <form method="post" enctype="multipart/form-data">
 
-            <input type="hidden" value="<?php echo date('Y-m-d'); ?>" name="date">
+            <input type="hidden" value="<?php echo date('Y-m-d'); ?>" name="formDate">
 
             <h4>OSOBA ZGŁASZAJĄCA</h4>
 
@@ -36,16 +36,16 @@
 
             <div class="row">
                 <?php include "fields/incCity.php"; ?>
-                <div class="field">Miejscowość Komendy<?php include "fields/hqCity.php"; ?></div>
+                <div class="field">Miejscowość komendy<?php include "fields/hqCity.php"; ?></div>
             </div>
 
             <div class="row">
                 <div class="field"><?php include "fields/incProvince.php"; ?></div>
-                <div class="field">Województwo Komendy<?php include "fields/hqProvince.php"; ?></div>
+                <div class="field">Województwo komendy<?php include "fields/hqProvince.php"; ?></div>
             </div>
 
             <div class="row">
-                <div class="fieldRow">Opis zdarzenia<?php include "fields/info.php"; ?></div>
+                <div class="fieldRow">Opis zdarzenia<?php include "fields/desc.php"; ?></div>
             </div>
             
             <div class="row"><?php include "fields/checks.php"; ?></div>

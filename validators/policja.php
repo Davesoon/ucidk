@@ -4,7 +4,7 @@
     {
         $everything_OK=true;
 
-        $date = $_POST['date'];
+        $formDate = $_POST['formDate'];
 
         //Sprawdź poprawność imienia
         $tmpFirstname = $_POST['firstname'];
@@ -64,57 +64,55 @@
             $_SESSION['e_policeId']="Pole może zawierać od 6 do 40 znaków!";
         }
 
-        // Sprawdź poprawność województwa
-        $province = $_POST['province'];
-        if($province=='-- wybierz --')
+        // Sprawdź poprawność komendy
+        $hq = $_POST['hq'];
+        if($hq=='-- wybierz --')
         {
             $everything_OK=false;
-            $_SESSION['e_province']="Wybierz województwo!";
+            $_SESSION['e_hq']="Wybierz komende!";
         }
 
-        // Sprawdź poprawność gminy
-        $tmpCommunity = $_POST['community'];
-        $community = filter_var($tmpCommunity, FILTER_SANITIZE_STRING);
-        if(strlen($community)<3 || strlen($community)>30)
+        // Sprawdź poprawność miejscowości zdarzenia
+        $tmpIncCity = $_POST['incCity'];
+        $incCity = filter_var($tmpIncCity, FILTER_SANITIZE_STRING);
+        if(strlen($incCity)<3 || strlen($incCity)>30)
         {
             $everything_OK=false;
-            $_SESSION['e_community']="Nazwa gminy musi posiadać od 3 do 30 liter!";
+            $_SESSION['e_incCity']="Nazwa miejscowości musi posiadać od 3 do 30 liter!";
         }
+
+        // Sprawdź poprawność miejscowości komendy
+        $tmpHqCity = $_POST['hqCity'];
+        $hqCity = filter_var($tmpHqCity, FILTER_SANITIZE_STRING);
+        if(strlen($hqCity)<3 || strlen($hqCity)>30)
+        {
+            $everything_OK=false;
+            $_SESSION['e_hqCity']="Nazwa miejscowości musi posiadać od 3 do 30 liter!";
+        }
+
+        // Sprawdź poprawność województwa zdarzenia
+        $incProvince = $_POST['incProvince'];
+        if($incProvince=='-- wybierz --')
+        {
+            $everything_OK=false;
+            $_SESSION['e_incProvince']="Wybierz województwo!";
+        }
+
+        // Sprawdź poprawność województwa komendy
+        $hqProvince = $_POST['hqProvince'];
+        if($hqProvince=='-- wybierz --')
+        {
+            $everything_OK=false;
+            $_SESSION['e_hqProvince']="Wybierz województwo!";
+        }        
         
         //Sprawdź poprawność informacji dodatkowej
-        $tmpInfo = $_POST['info'];
-        $info = filter_var($tmpInfo, FILTER_SANITIZE_STRING);
-        if(strlen($info)>300)
+        $tmpDesc = $_POST['desc'];
+        $desc = filter_var($tmpDesc, FILTER_SANITIZE_STRING);
+        if(strlen($desc)>300)
         {
             $everything_OK=false;
-            $_SESSION['e_info']="Informacja dodatkowa nie może przekroczyć 300 znaków!";
-        }
-
-        //Sprawdź plik
-        #upload directory path
-        $target_dir = 'uploads/';
-        #file name with a random number so that similar dont get replaced
-        // $file = rand(1000,10000)."-".$_FILES["file"]["name"];
-        #temporary file name to store file
-        $tmpFile = $_FILES["file"]["tmp_name"];
-        if($tmpFile != null)
-        {
-            $fileType = strtolower(pathinfo($_FILES["file"]["name"],PATHINFO_EXTENSION));
-            $file = $firstname.$lastname."-".$number.".".$fileType;
-
-            // Check file size (<= 1 MB)
-            if($_FILES["file"]["size"] > 1048576) 
-            {
-                $everything_OK=false;
-                $_SESSION['e_file']="Plik nie może być większy niż 1 MB!";
-            }
-            // Allow certain file formats
-            if($fileType != "jpg" && $fileType != "png" && $fileType != "jpeg"
-            && $fileType != "pdf" && $fileType != "" )
-            {
-                $everything_OK=false;
-                $_SESSION['e_file']="Plik może być tylko w formacie JPG, JPEG, PNG oraz PDF!";
-            }
+            $_SESSION['e_desc']="Pole nie może przekroczyć 300 znaków!";
         }
   
         //Sprawdź checkboxa
@@ -142,9 +140,12 @@
         $_SESSION['fr_phone'] = $number;
         $_SESSION['fr_policeman'] = $policeman;
         $_SESSION['fr_policeId'] = $policeId;
-        $_SESSION['fr_province'] = $province;
-        $_SESSION['fr_community'] = $community;
-        $_SESSION['fr_info'] = $info;
+        $_SESSION['fr_hq'] = $hq;
+        $_SESSION['fr_incCity'] = $incCity;
+        $_SESSION['fr_hqCity'] = $hqCity;
+        $_SESSION['fr_incProvince'] = $incProvince;
+        $_SESSION['fr_hqProvince'] = $hqProvince;
+        $_SESSION['fr_desc'] = $desc;
         if(isset($_POST['regulations'])) $_SESSION['fr_regulations'] = true;
 
         require_once "connect.php";
@@ -159,41 +160,16 @@
             }
             else
             {
-                //czy email juz isnieje?
-                $result = $connection->query("SELECT id FROM ucidk_members WHERE email='$email'");
-                if(!$result) throw new Exception($connection->error);
-
-                $how_many_emails = $result->num_rows;
-                if($how_many_emails>0)
-                {
-                    $everything_OK=false;
-                    $_SESSION['e_email']="Podany adres e-mail jest już w bazie!";
-                }
-
-                //czy telefon juz istnieje?
-                $result = $connection->query("SELECT id FROM ucidk_members WHERE phone='$phone'");
-                if(!$result) throw new Exception($connection->error);
-                
-                $how_many_phones = $result->num_rows;
-                if($how_many_phones>0)
-                {
-                    $everything_OK=false;
-                    $_SESSION['e_phone']="Podany numer telefonu jest już w bazie!";
-                }
-
                 if($everything_OK==true)
                 {
                     //Hurra, wszystkie testy zaliczone!
-                    #TO move the uploaded file to specific location
-                    move_uploaded_file($tmpFile, $target_dir.$file);
-
                     #sql query to insert into database
                     $sql = "INSERT INTO ucidk_members VALUES(NULL, '$date', '$firstname', '$lastname', '$email', '$phone', '$province', '$community', '$info', '$file')";
 
                     if(mysqli_query($connection,$sql))
                     {
                         $_SESSION['sent']=true;
-                        header('Location: witamy.php');
+                        header('Location: dziekujemy.php');
                     }
                     else
                     {
