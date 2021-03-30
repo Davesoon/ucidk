@@ -74,7 +74,7 @@
 
         //Sprawdź plik
         #upload directory path
-        $target_dir = 'uploads/';
+        $target_dir = '../uploads/';
         #file name with a random number so that similar dont get replaced
         // $file = rand(1000,10000)."-".$_FILES["file"]["name"];
         #temporary file name to store file
@@ -127,7 +127,7 @@
         $_SESSION['fr_desc'] = $desc;
         if(isset($_POST['regulations'])) $_SESSION['fr_regulations'] = true;
 
-        require_once "connect.php";
+        require_once "../redirects/connect.php";
         mysqli_report(MYSQLI_REPORT_STRICT);
 
         try
@@ -173,7 +173,7 @@
                     if(mysqli_query($connection,$sql))
                     {
                         $_SESSION['sent']=true;
-                        header('Location: dziekujemy.php');
+                        header('Location: ../redirects/dziekujemy.php');
                     }
                     else
                     {

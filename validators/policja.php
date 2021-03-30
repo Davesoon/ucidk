@@ -148,7 +148,7 @@
         $_SESSION['fr_desc'] = $desc;
         if(isset($_POST['regulations'])) $_SESSION['fr_regulations'] = true;
 
-        require_once "connect.php";
+        require_once "../redirects/connect.php";
         mysqli_report(MYSQLI_REPORT_STRICT);
 
         try
@@ -164,12 +164,12 @@
                 {
                     //Hurra, wszystkie testy zaliczone!
                     #sql query to insert into database
-                    $sql = "INSERT INTO ucidk_members VALUES(NULL, '$date', '$firstname', '$lastname', '$email', '$phone', '$province', '$community', '$info', '$file')";
+                    $sql = "INSERT INTO ucidk_policja VALUES(NULL, '$date', '$firstname', '$lastname', '$email', '$phone', '$province', '$community', '$info', '$file')";
 
                     if(mysqli_query($connection,$sql))
                     {
                         $_SESSION['sent']=true;
-                        header('Location: dziekujemy.php');
+                        header('Location: ../redirects/dziekujemy.php');
                     }
                     else
                     {

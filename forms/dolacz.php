@@ -1,4 +1,4 @@
-<?php include "validators/dolacz.php"; ?>
+<?php include "../validators/dolacz.php"; ?>
 <!DOCTYPE HTML>
 <html lang="pl">
 <head>
@@ -6,13 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dołącz do nas!</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
     <script src="https://www.google.com/recaptcha/api.js"></script>
 </head>
 <body>
     <header>
         <h2>ZOSTAŃ ZAŁOŻYCIELEM UCiDK</h2>
-        <img src="images/logo.png">
+        <img src="../images/logo.png">
         <h2>DOŁĄCZ DO NAS!</h2>
     </header>
     <main>
@@ -20,26 +20,26 @@
 
             <input type="hidden" value="<?php echo date('Y-m-d'); ?>" name="formDate">
 
-            <div class="row"><?php include "fields/fullname.php"; ?></div>
+            <div class="row"><?php include "../fields/fullname.php"; ?></div>
 
-            <div class="row"><?php include "fields/email-phone.php"; ?></div>
+            <div class="row"><?php include "../fields/email-phone.php"; ?></div>
 
             <div class="row">
-                <div class="field"> Województwo <?php include "fields/hqProvince.php"; ?></div>
-                <div class="field"> Gmina <?php include "fields/hqCity.php"; ?></div>
+                <div class="field"> Województwo <?php include "../fields/hqProvince.php"; ?></div>
+                <div class="field"> Gmina <?php include "../fields/hqCity.php"; ?></div>
             </div>
 
             <div class="row">
                 <div class="fieldRow">
-                    Dodatkowe informacje <?php include "fields/desc.php"; ?>
+                    Dodatkowe informacje <?php include "../fields/desc.php"; ?>
                 </div>
             </div>
 
             <div class="row">
-                <?php include "fields/file.php"; ?>
+                <?php include "../fields/file.php"; ?>
             </div>
 
-            <div class="row"><?php include "fields/checks.php"; ?></div>
+            <div class="row"><?php include "../fields/checks.php"; ?></div>
             
             <div id="submit">
                 <input type="submit" value="Wyślij FORMULARZ" name="submit" class="button">

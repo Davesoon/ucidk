@@ -1,6 +1,6 @@
 <div class="fieldRow">
     Załącz podpisane przez siebie 
-    <a href="documents/oswiadczenie-zalozyciela-UCiDK.pdf" target="_blank">OŚWIADCZENIE</a>
+    <a href="../documents/oswiadczenie-zalozyciela-UCiDK.pdf" target="_blank">OŚWIADCZENIE</a>
     założyciela.<br>
     <input type="File" name="file"><br>
     <?php

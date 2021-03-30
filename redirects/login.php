@@ -39,7 +39,7 @@
                 
                 unset($_SESSION['error']);
                 $result->free_result();
-                header('Location: administracja.php');
+                header('Location: ../adm/zalozyciele.php');
             }
             else
             {

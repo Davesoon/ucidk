@@ -14,20 +14,20 @@
     <main>
         <h2>ZGŁOŚ BEZPRAWIE!</h2>
         <div class="row">
-            <a href="/ucidk/policja.php" class="button">POLICJA</a>
-            <a href="/ucidk/dolacz.php" class="button">SANEPID</a>
+            <a href="forms/policja.php" class="button">POLICJA</a>
+            <a href="forms/sanepid.php" class="button">SANEPID</a>
         </div>
         <div class="row">
-            <a href="/ucidk/dolacz.php" class="button">URZĄD</a>
-            <a href="/ucidk/dolacz.php" class="button">SĄD</a>
+            <a href="forms/urzad.php" class="button">URZĄD</a>
+            <a href="forms/sad.php" class="button">SĄD</a>
         </div>
         <div class="row">
-            <a href="/ucidk/dolacz.php" class="button">PROKURATURA</a>
-            <a href="/ucidk/dolacz.php" class="button">FIRMA</a>
+            <a href="forms/prokuratura.php" class="button">PROKURATURA</a>
+            <a href="forms/firma.php" class="button">FIRMA</a>
         </div>
         <div class="row">
-            <a href="/ucidk/dolacz.php" class="button">SKLEP</a>
-            <a href="/ucidk/dolacz.php" class="button">INNE</a>
+            <a href="forms/sklep.php" class="button">SKLEP</a>
+            <a href="forms/inne.php" class="button">INNE</a>
         </div>
     </main>
 </body>

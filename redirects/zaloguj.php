@@ -3,7 +3,7 @@
 
     if((isset($_SESSION['logged'])) && ($_SESSION['logged']==true))
     {
-        header('Location: administracja.php');
+        header('Location: ../adm/zalozyciele.php');
         exit();
     }
 ?>

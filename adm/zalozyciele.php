@@ -3,7 +3,7 @@
 
     if(!isset($_SESSION['logged']))
     {
-        header('Location: zaloguj.php');
+        header('Location: ../zaloguj.php');
         exit();
     }
 ?>
@@ -13,7 +13,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>ZALOGUJ</title>
+    <title>POLICJA</title>
     <style>
         table thead tr th, table tbody tr td
         {
@@ -22,9 +22,13 @@
     </style>
 </head>
 <body>
+<div class="row">
+    <b>Założyciele</b>
+    <a href="adm/policja.php">Policja</a>
+</div>
 <?php
     echo "<p>Witaj ".$_SESSION['login'].'!</p>';
-    echo "<a href='logout.php'>Wyloguj się!</a>";
+    echo "<a href='../logout.php'>Wyloguj się!</a>";
     error_reporting(0);
 
     //Zapamiętaj wprowadzone dane
@@ -34,7 +38,7 @@
     $sort = $_GET['sort'];
     $orderby = $_GET['orderby'];
 ?>
-<form action="administracja.php" method="get"><br>
+<form action="adm/zalozyciele.php" method="get"><br>
 
     <fieldset>
         <legend>filtrowanie</legend>
@@ -185,7 +189,7 @@
     </thead>
     <tbody><?php
 
-        require_once "connect.php";
+        require_once "../redirects/connect.php";
         mysqli_report(MYSQLI_REPORT_STRICT);
 
         try
