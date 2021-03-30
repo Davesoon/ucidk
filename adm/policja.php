@@ -13,7 +13,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>ZAŁOŻYCIELE</title>
+    <title>POLICJA</title>
     <style>
         table thead tr th, table tbody tr td
         {
@@ -23,8 +23,8 @@
 </head>
 <body>
 <div class="row">
-    <b>Założyciele</b>
-    <a href="policja.php">Policja</a>
+    <a href="zalozyciele.php">Założyciele</a>
+    <b>Policja</b>
     <a href="sanepid.php">Sanepid</a>
     <a href="urzad.php">Urząd</a>
     <a href="sad.php">Sąd</a>
