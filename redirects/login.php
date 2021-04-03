@@ -39,7 +39,7 @@
                 
                 unset($_SESSION['error']);
                 $result->free_result();
-                header('Location: ../adm/zalozyciele.php');
+                header('Location: ../panel/zalozyciele.php');
             }
             else
             {
