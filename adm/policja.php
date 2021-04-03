@@ -45,7 +45,7 @@
     $sort = $_GET['sort'];
     $orderby = $_GET['orderby'];
 ?>
-<form action="zalozyciele.php" method="get"><br>
+<form action="policja.php" method="get"><br>
 
     <fieldset>
         <legend>filtrowanie</legend>

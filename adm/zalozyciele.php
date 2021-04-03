@@ -35,7 +35,7 @@
 </div>
 <?php
     echo "<p>Witaj ".$_SESSION['login'].'!</p>';
-    echo "<a href='../redirect/logout.php'>Wyloguj się!</a>";
+    echo "<a href='../redirects/logout.php'>Wyloguj się!</a>";
     error_reporting(0);
 
     //Zapamiętaj wprowadzone dane
@@ -268,7 +268,7 @@
                             ."<td>".$row["province"]."</td>"
                             ."<td>".$row["community"]."</td>"
                             ."<td>".$row["info"]."</td>"
-                            ."<td><a href=uploads/".$row["file"]." target='_blank'>".$row["file"]."</a></td>"
+                            ."<td><a href=../uploads/".$row["file"]." target='_blank'>".$row["file"]."</a></td>"
                             ."</tr>";
                     }
                 }

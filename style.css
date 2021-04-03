@@ -51,7 +51,7 @@ input[name=direction]
     width: 30px;
     margin-right: 5px;
 }
-#fullNumber{display: flex;}
+#phone{display: flex;}
 select{width: 100%;}
 .fieldRow textarea {height: 50px;}
 .field textarea {height: 100px;}
