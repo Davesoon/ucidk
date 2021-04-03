@@ -22,6 +22,12 @@
     if(isset($_SESSION['fr_desc'])) unset($_SESSION['fr_desc']);
     if(isset($_SESSION['fr_regulations'])) unset($_SESSION['fr_regulations']);
 
+    if(isset($_SESSION['fr_policeman'])) unset($_SESSION['fr_policeman']);
+    if(isset($_SESSION['fr_policeId'])) unset($_SESSION['fr_policeId']);
+    if(isset($_SESSION['fr_hq'])) unset($_SESSION['fr_hq']);
+    if(isset($_SESSION['fr_incCity'])) unset($_SESSION['fr_incCity']);
+    if(isset($_SESSION['fr_incProvince'])) unset($_SESSION['fr_incProvince']);
+
     //Usuwanie błędów rejestracji
     if(isset($_SESSION['e_firstname'])) unset($_SESSION['e_firstname']);
     if(isset($_SESSION['e_lastname'])) unset($_SESSION['e_lastname']);
@@ -33,6 +39,12 @@
     if(isset($_SESSION['e_desc'])) unset($_SESSION['e_desc']);
     if(isset($_SESSION['e_regulations'])) unset($_SESSION['e_regulations']);
     if(isset($_SESSION['e_bot'])) unset($_SESSION['e_bot']);
+
+    if(isset($_SESSION['e_policeman'])) unset($_SESSION['e_policeman']);
+    if(isset($_SESSION['e_policeId'])) unset($_SESSION['e_policeId']);
+    if(isset($_SESSION['e_hq'])) unset($_SESSION['e_hq']);
+    if(isset($_SESSION['e_incCity'])) unset($_SESSION['e_incCity']);
+    if(isset($_SESSION['e_incProvince'])) unset($_SESSION['e_incProvince']);
     
 ?>
 

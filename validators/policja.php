@@ -12,7 +12,7 @@
         if(strlen($firstname)<3 || strlen($firstname)>20)
         {
             $everything_OK=false;
-            $_SESSION['e_firstname']="Imię musi posiadać od 3 do 20 liter!";
+            $_SESSION['e_firstname']="Od 3 do 20 liter!";
         }
         //Sprawdź poprawność nazwiska
         $tmpLastname = $_POST['lastname'];
@@ -20,7 +20,7 @@
         if(strlen($lastname)<3 || strlen($lastname)>30)
         {
             $everything_OK=false;
-            $_SESSION['e_lastname']="Nazwisko musi posiadać od 3 do 30 liter!";
+            $_SESSION['e_lastname']="Od 3 do 30 liter!";
         }
 
         // Sprawdź poprawność adresu email
@@ -36,12 +36,17 @@
         $tmpDirection = $_POST['direction'];
         $direction = filter_var($tmpDirection, FILTER_SANITIZE_STRING);
 
-        $tmpNumber = $_POST['phone'];
+        $tmpNumber = $_POST['number'];
         $number = filter_var($tmpNumber, FILTER_SANITIZE_STRING);
-        if(ctype_digit($number)==false || strlen($number)<7 || strlen($number)>15)
+        if(ctype_digit($number)==false)
         {
             $everything_OK=false;
-            $_SESSION['e_phone']="Numer telefonu może składać się tylko z cyfr (bez myślników i spacji) oraz powinien zawierać od 7 do 15 cyfr!";
+            $_SESSION['e_number']="Tylko cyfry, bez myślników i spacji!";
+        }
+        else if (strlen($number)<7 || strlen($number)>15)
+        {
+            $everything_OK=false;
+            $_SESSION['e_number']="Od 7 do 15 cyfr!";
         }
 
         $phone = "$direction $number";
@@ -49,10 +54,10 @@
         //Sprawdź poprawność policjanta
         $tmpPoliceman = $_POST['policeman'];
         $policeman = filter_var($tmpPoliceman, FILTER_SANITIZE_STRING);
-        if(strlen($policeman)<6 || strlen($policeman)>40)
+        if(strlen($policeman)<6 || strlen($policeman)>50)
         {
             $everything_OK=false;
-            $_SESSION['e_policeman']="Pole może zawierać od 6 do 40 znaków!";
+            $_SESSION['e_policeman']="Od 6 do 50 znaków!";
         }
 
         //Sprawdź poprawność Id policjanta
@@ -61,7 +66,15 @@
         if(strlen($policeId)<6 || strlen($policeId)>40)
         {
             $everything_OK=false;
-            $_SESSION['e_policeId']="Pole może zawierać od 6 do 40 znaków!";
+            $_SESSION['e_policeId']="Od 6 do 40 znaków!";
+        }
+
+        // Sprawdź poprawność daty zdarzenia
+        $incDate = $_POST['incDate'];
+        if($incDate > date("Y-m-d"))
+        {
+            $everything_OK=false;
+            $_SESSION['e_incDate']="Wykracza poza dzisiejszą datę!";
         }
 
         // Sprawdź poprawność komendy
@@ -78,7 +91,7 @@
         if(strlen($incCity)<3 || strlen($incCity)>30)
         {
             $everything_OK=false;
-            $_SESSION['e_incCity']="Nazwa miejscowości musi posiadać od 3 do 30 liter!";
+            $_SESSION['e_incCity']="Od 3 do 30 liter!";
         }
 
         // Sprawdź poprawność miejscowości komendy
@@ -87,7 +100,7 @@
         if(strlen($hqCity)<3 || strlen($hqCity)>30)
         {
             $everything_OK=false;
-            $_SESSION['e_hqCity']="Nazwa miejscowości musi posiadać od 3 do 30 liter!";
+            $_SESSION['e_hqCity']="Od 3 do 30 liter!";
         }
 
         // Sprawdź poprawność województwa zdarzenia
@@ -109,10 +122,10 @@
         //Sprawdź poprawność informacji dodatkowej
         $tmpDesc = $_POST['desc'];
         $desc = filter_var($tmpDesc, FILTER_SANITIZE_STRING);
-        if(strlen($desc)>300)
+        if(strlen($desc)>1000)
         {
             $everything_OK=false;
-            $_SESSION['e_desc']="Pole nie może przekroczyć 300 znaków!";
+            $_SESSION['e_desc']="Do 1000 znaków!";
         }
   
         //Sprawdź checkboxa
@@ -137,9 +150,10 @@
         $_SESSION['fr_lastname'] = $lastname;
         $_SESSION['fr_email'] = $email;
         $_SESSION['fr_direction'] = $direction;
-        $_SESSION['fr_phone'] = $number;
+        $_SESSION['fr_number'] = $number;
         $_SESSION['fr_policeman'] = $policeman;
         $_SESSION['fr_policeId'] = $policeId;
+        $_SESSION['fr_incDate'] = $incDate;
         $_SESSION['fr_hq'] = $hq;
         $_SESSION['fr_incCity'] = $incCity;
         $_SESSION['fr_hqCity'] = $hqCity;
@@ -164,12 +178,12 @@
                 {
                     //Hurra, wszystkie testy zaliczone!
                     #sql query to insert into database
-                    $sql = "INSERT INTO ucidk_policja VALUES(NULL, '$date', '$firstname', '$lastname', '$email', '$phone', '$province', '$community', '$info', '$file')";
+                    $sql = "INSERT INTO ucidk_policja VALUES(NULL, '$formDate', '$firstname', '$lastname', '$email', '$phone', '$policeman', '$policeId', '$incDate', '$hq', '$incCity', '$hqCity', '$incProvince', '$hqProvince', '$desc')";
 
                     if(mysqli_query($connection,$sql))
                     {
                         $_SESSION['sent']=true;
-                        header('Location: ../redirects/dziekujemy.php');
+                        header('Location: ../dziekujemy.php');
                     }
                     else
                     {
@@ -182,7 +196,7 @@
         catch(Exception $e)
         {
             echo '<span style="color:red;">Błąd serwera! Przepraszamy za niedogodności i prosimy o rejestrację w innym terminie!</span>';
-            // echo '<br>Informacja developerska: '.$e;
+            echo '<br>Informacja developerska: '.$e;
         }
     }
 

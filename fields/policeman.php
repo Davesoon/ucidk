@@ -23,7 +23,7 @@
         echo $_SESSION['fr_policeId'];
         unset($_SESSION['fr_policeId']);
     }
-    ?>" name="policeId" required><br>
+    ?>" name="policeId" placeholder="Nieobowiązkowe..."><br>
     <?php
         if(isset($_SESSION['e_policeId']))
         {

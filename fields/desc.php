@@ -1,4 +1,4 @@
-<br><textarea name="desc" placeholder="Pole nieobowiązkowe..."><?php
+<br><textarea name="desc" placeholder="Nieobowiązkowe..."><?php
     if(isset($_SESSION['fr_desc']))
     {
         echo $_SESSION['fr_desc'];
