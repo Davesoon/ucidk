@@ -36,16 +36,16 @@
 <?php
     echo "<p>Witaj ".$_SESSION['login'].'!</p>';
     echo "<a href='../redirects/logout.php'>Wyloguj się!</a>";
-    error_reporting(0);
+    // error_reporting(0);
 
     //Zapamiętaj wprowadzone dane
-    $province = $_GET['province'];
-    $community = $_GET['community'];
-    $date = $_GET['date'];
-    $sort = $_GET['sort'];
+    $formDate = $_GET['formDate'];
+    $incDate = $_GET['incDate'];
+    $incProvince = $_GET['incProvince'];
     $orderby = $_GET['orderby'];
+    $sort = $_GET['sort'];
 
-    // include '../process/policja.php';
+    include '../process/policja.php';
 ?>
 
 <table border= "1px, solid, black">
@@ -81,41 +81,41 @@
             }
             else
             {
-                $date = $_GET['date'];
-                $province = $_GET['province'];
-                $community = $_GET['community'];
+                $formDate = $_GET['formDate'];
+                $incDate = $_GET['incDate'];
+                $incProvince = $_GET['incProvince'];
                 $orderby = $_GET['orderby'];
                 $sort = $_GET['sort'];
 
-                if(!isset($_GET['date']) || $_GET['date']=="") $date="wszystkie";
-                if(!isset($_GET['province'])) $province="wszystkie";
-                if(!isset($_GET['community']) || $_GET['community']=="") $community="wszystkie";
-                if(!isset($_GET['orderby'])) $orderby="date";
+                if(!isset($_GET['formDate']) || $_GET['formDate']=="") $formDate="wszystkie";
+                if(!isset($_GET['incDate']) || $_GET['incDate']=="") $incDate="wszystkie";
+                if(!isset($_GET['incProvince']) || $_GET['incProvince']=="") $incProvince="wszystkie";
+                if(!isset($_GET['orderby'])) $orderby="formDate";
                 if(!isset($_GET['sort'])) $sort="desc";
 
-                if($date=="wszystkie" && $province=="wszystkie" && $community=="wszystkie") 
-                $query = "SELECT * FROM ucidk_members ORDER BY $orderby $sort";
+                if($formDate=="wszystkie" && $incDate=="wszystkie" && $incProvince=="wszystkie") 
+                $query = "SELECT * FROM ucidk_policja ORDER BY $orderby $sort";
 
-                if($date!="wszystkie" && $province=="wszystkie" && $community=="wszystkie") 
-                $query = "SELECT * FROM ucidk_members WHERE date = '$date' ORDER BY $orderby $sort";
+                if($formDate!="wszystkie" && $incDate=="wszystkie" && $incProvince=="wszystkie") 
+                $query = "SELECT * FROM ucidk_policja WHERE formDate = '$formDate' ORDER BY $orderby $sort";
 
-                if($date=="wszystkie" && $province!="wszystkie" && $community=="wszystkie") 
-                $query = "SELECT * FROM ucidk_members WHERE province = '$province' ORDER BY $orderby $sort";
+                if($formDate=="wszystkie" && $incDate!="wszystkie" && $incProvince=="wszystkie") 
+                $query = "SELECT * FROM ucidk_policja WHERE incDate = '$incDate' ORDER BY $orderby $sort";
 
-                if($date=="wszystkie" && $province=="wszystkie" && $community!="wszystkie") 
-                $query = "SELECT * FROM ucidk_members WHERE community = '$community' ORDER BY $orderby $sort";
+                if($formDate=="wszystkie" && $incDate=="wszystkie" && $incProvince!="wszystkie") 
+                $query = "SELECT * FROM ucidk_policja WHERE incProvince = '$incProvince' ORDER BY $orderby $sort";
 
-                if($date!="wszystkie" && $province!="wszystkie" && $community=="wszystkie") 
-                $query = "SELECT * FROM ucidk_members WHERE date = '$date' AND province = '$province' ORDER BY $orderby $sort";
+                if($formDate!="wszystkie" && $incDate!="wszystkie" && $incProvince=="wszystkie") 
+                $query = "SELECT * FROM ucidk_policja WHERE formDate = '$formDate' AND incDate = '$incDate' ORDER BY $orderby $sort";
 
-                if($date!="wszystkie" && $province=="wszystkie" && $community!="wszystkie") 
-                $query = "SELECT * FROM ucidk_members WHERE date = '$date' AND community = '$community' ORDER BY $orderby $sort";
+                if($formDate!="wszystkie" && $incDate=="wszystkie" && $incProvince!="wszystkie") 
+                $query = "SELECT * FROM ucidk_policja WHERE formDate = '$formDate' AND incProvince = '$incProvince' ORDER BY $orderby $sort";
 
-                if($date=="wszystkie" && $province!="wszystkie" && $community!="wszystkie") 
-                $query = "SELECT * FROM ucidk_members WHERE province = '$province' AND community = '$community' ORDER BY $orderby $sort";
+                if($formDate=="wszystkie" && $incDate!="wszystkie" && $incProvince!="wszystkie") 
+                $query = "SELECT * FROM ucidk_policja WHERE incDate = '$incDate' AND incProvince = '$incProvince' ORDER BY $orderby $sort";
 
-                if($date!="wszystkie" && $province!="wszystkie" && $community!="wszystkie") 
-                $query = "SELECT * FROM ucidk_members WHERE date = '$date' AND province = '$province' AND community = '$community' ORDER BY $orderby $sort";
+                if($formDate!="wszystkie" && $incDate!="wszystkie" && $incProvince!="wszystkie") 
+                $query = "SELECT * FROM ucidk_policja WHERE formDate = '$formDate' AND incDate = '$incDate' AND incProvince = '$incProvince' ORDER BY $orderby $sort";
                 
                 $result = $connection->query($query);
                 // while($row = $result->fetch_assoc())
