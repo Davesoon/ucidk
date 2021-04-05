@@ -31,17 +31,17 @@
 
             <div class="row">
                 <?php include "../fields/incDate.php"; ?>
-                <?php include "../fields/hq.php"; ?>
+                <?php include "../fields/hqSanepid.php"; ?>
             </div>
 
             <div class="row">
                 <?php include "../fields/incCity.php"; ?>
-                <div class="field">Miejscowość komendy<?php include "../fields/hqCity.php"; ?></div>
+                <div class="field">Miejscowość siedziby<?php include "../fields/hqCity.php"; ?></div>
             </div>
 
             <div class="row">
                 <div class="field"><?php include "../fields/incProvince.php"; ?></div>
-                <div class="field">Województwo komendy<?php include "../fields/hqProvince.php"; ?></div>
+                <div class="field">Województwo siedziby<?php include "../fields/hqProvince.php"; ?></div>
             </div>
 
             <div class="row">

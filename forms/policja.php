@@ -31,7 +31,7 @@
 
             <div class="row">
                 <?php include "../fields/incDate.php"; ?>
-                <?php include "../fields/hq.php"; ?>
+                <?php include "../fields/hqPolice.php"; ?>
             </div>
 
             <div class="row">
