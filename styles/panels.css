@@ -1,0 +1,10 @@
+table thead tr th, table tbody tr td
+{
+    padding: 10px;
+}
+#test
+{
+    background-color:black;
+    color:white;
+    position: sticky;
+}

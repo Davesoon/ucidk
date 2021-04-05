@@ -3,7 +3,7 @@
 
     if((isset($_SESSION['logged'])) && ($_SESSION['logged']==true))
     {
-        header('Location: ../panel/zalozyciele.php');
+        header('Location: ../panels/zalozyciele.php');
         exit();
     }
 ?>

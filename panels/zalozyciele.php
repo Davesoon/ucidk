@@ -14,12 +14,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>ZAŁOŻYCIELE</title>
-    <style>
-        table thead tr th, table tbody tr td
-        {
-            padding: 10px;
-        }
-    </style>
+    <link rel="stylesheet" href="../styles/panels.css">
 </head>
 <body>
 <div class="row">
@@ -50,7 +45,7 @@
 
 <table border= "1px, solid, black">
     <thead>
-        <tr style="color:white; background-color:black;">
+        <tr id="test">
             <th>Data rejestracji</th>
             <th>Imię</th>
             <th>Nazwisko</th>
