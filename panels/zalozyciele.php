@@ -45,7 +45,7 @@
 
 <table border= "1px, solid, black">
     <thead>
-        <tr id="test">
+        <tr id="table-header">
             <th>Data rejestracji</th>
             <th>Imię</th>
             <th>Nazwisko</th>
