@@ -52,21 +52,21 @@
         $phone = "$direction $number";
 
         //Sprawdź poprawność policjanta
-        $tmpPoliceman = $_POST['policeman'];
-        $policeman = filter_var($tmpPoliceman, FILTER_SANITIZE_STRING);
-        if(strlen($policeman)<6 || strlen($policeman)>50)
+        $tmpSuspect = $_POST['suspect'];
+        $suspect = filter_var($tmpSuspect, FILTER_SANITIZE_STRING);
+        if(strlen($suspect)<6 || strlen($suspect)>50)
         {
             $everything_OK=false;
-            $_SESSION['e_policeman']="Od 6 do 50 znaków!";
+            $_SESSION['e_suspect']="Od 6 do 50 znaków!";
         }
 
         //Sprawdź poprawność Id policjanta
-        $tmpPoliceId = $_POST['policeId'];
-        $policeId = filter_var($tmpPoliceId, FILTER_SANITIZE_STRING);
-        if(strlen($policeId)<6 || strlen($policeId)>40)
+        $tmpSuspectId = $_POST['suspectId'];
+        $suspectId = filter_var($tmpSuspectId, FILTER_SANITIZE_STRING);
+        if(strlen($suspectId)>40)
         {
             $everything_OK=false;
-            $_SESSION['e_policeId']="Od 6 do 40 znaków!";
+            $_SESSION['e_suspectId']="Do 40 znaków!";
         }
 
         // Sprawdź poprawność daty zdarzenia
@@ -151,8 +151,8 @@
         $_SESSION['fr_email'] = $email;
         $_SESSION['fr_direction'] = $direction;
         $_SESSION['fr_number'] = $number;
-        $_SESSION['fr_policeman'] = $policeman;
-        $_SESSION['fr_policeId'] = $policeId;
+        $_SESSION['fr_suspect'] = $suspect;
+        $_SESSION['fr_suspectId'] = $suspectId;
         $_SESSION['fr_incDate'] = $incDate;
         $_SESSION['fr_hq'] = $hq;
         $_SESSION['fr_incCity'] = $incCity;
@@ -178,7 +178,7 @@
                 {
                     //Hurra, wszystkie testy zaliczone!
                     #sql query to insert into database
-                    $sql = "INSERT INTO ucidk_policja VALUES(NULL, '$formDate', '$firstname', '$lastname', '$email', '$phone', '$policeman', '$policeId', '$incDate', '$hq', '$incCity', '$hqCity', '$incProvince', '$hqProvince', '$desc')";
+                    $sql = "INSERT INTO ucidk_policja VALUES(NULL, '$formDate', '$firstname', '$lastname', '$email', '$phone', '$suspect', '$suspectId', '$incDate', '$hq', '$incCity', '$hqCity', '$incProvince', '$hqProvince', '$desc')";
 
                     if(mysqli_query($connection,$sql))
                     {

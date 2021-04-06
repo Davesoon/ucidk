@@ -22,8 +22,8 @@
     if(isset($_SESSION['fr_desc'])) unset($_SESSION['fr_desc']);
     if(isset($_SESSION['fr_regulations'])) unset($_SESSION['fr_regulations']);
 
-    if(isset($_SESSION['fr_policeman'])) unset($_SESSION['fr_policeman']);
-    if(isset($_SESSION['fr_policeId'])) unset($_SESSION['fr_policeId']);
+    if(isset($_SESSION['fr_suspect'])) unset($_SESSION['fr_suspect']);
+    if(isset($_SESSION['fr_suspectId'])) unset($_SESSION['fr_suspectId']);
     if(isset($_SESSION['fr_hq'])) unset($_SESSION['fr_hq']);
     if(isset($_SESSION['fr_incCity'])) unset($_SESSION['fr_incCity']);
     if(isset($_SESSION['fr_incProvince'])) unset($_SESSION['fr_incProvince']);
@@ -40,8 +40,8 @@
     if(isset($_SESSION['e_regulations'])) unset($_SESSION['e_regulations']);
     if(isset($_SESSION['e_bot'])) unset($_SESSION['e_bot']);
 
-    if(isset($_SESSION['e_policeman'])) unset($_SESSION['e_policeman']);
-    if(isset($_SESSION['e_policeId'])) unset($_SESSION['e_policeId']);
+    if(isset($_SESSION['e_suspect'])) unset($_SESSION['e_suspect']);
+    if(isset($_SESSION['e_suspectId'])) unset($_SESSION['e_suspectId']);
     if(isset($_SESSION['e_hq'])) unset($_SESSION['e_hq']);
     if(isset($_SESSION['e_incCity'])) unset($_SESSION['e_incCity']);
     if(isset($_SESSION['e_incProvince'])) unset($_SESSION['e_incProvince']);
@@ -53,7 +53,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles/forms.css">
     <title>Dziękujemy!</title>
 </head>
 <body>

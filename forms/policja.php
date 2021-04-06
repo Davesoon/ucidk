@@ -1,4 +1,4 @@
-<?php include "../validators/sanepid.php"; ?>
+<?php include "../validators/policja.php"; ?>
 <!DOCTYPE HTML>
 <html lang="pl">
 <head>
@@ -27,7 +27,7 @@
 
             <h4>ZGŁOSZENIE POLICJANTA</h4>
 
-            <div class="row"><?php include "../fields/policeman.php"; ?></div>
+            <div class="row"><?php include "../fields/suspect.php"; ?></div>
 
             <div class="row">
                 <?php include "../fields/incDate.php"; ?>
