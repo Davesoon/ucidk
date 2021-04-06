@@ -1,4 +1,4 @@
-<?php include "../validators/zalozyciele.php"; ?>
+<?php include "validators/zalozyciele.php"; ?>
 <!DOCTYPE HTML>
 <html lang="pl">
 <head>

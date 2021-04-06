@@ -19,14 +19,7 @@
 <body>
 <div class="row">
     <a href="zalozyciele.php">Założyciele</a>
-    <b>Policja</b>
-    <a href="sanepid.php">Sanepid</a>
-    <a href="urzad.php">Urząd</a>
-    <a href="sad.php">Sąd</a>
-    <a href="prokuratura.php">Prokuratura</a>
-    <a href="firma.php">Firma</a>
-    <a href="sklep.php">Sklep</a>
-    <a href="inne.php">Inne</a>
+    <b>Zgłoszenia</b>
 </div>
 <?php
     echo "<p>Witaj ".$_SESSION['login'].'!</p>';
@@ -40,7 +33,7 @@
     $orderby = $_GET['orderby'];
     $sort = $_GET['sort'];
 
-    include '../process/policja.php';
+    include 'process/zgloszenia.php';
 ?>
 
 <table border= "1px, solid, black">

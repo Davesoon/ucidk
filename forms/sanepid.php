@@ -1,4 +1,4 @@
-<?php include "../validators/policja.php"; ?>
+<?php include "validators/zgloszenia.php"; ?>
 <!DOCTYPE HTML>
 <html lang="pl">
 <head>
