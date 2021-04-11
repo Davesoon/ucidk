@@ -6,6 +6,100 @@
 
         $formDate = $_POST['formDate'];
 
+        //Sprawdź poprawność oskarżonego
+        $tmpSuspect = $_POST['suspect'];
+        $suspect = filter_var($tmpSuspect, FILTER_SANITIZE_STRING);
+        if(strlen($suspect)<6 || strlen($suspect)>50)
+        {
+            $everything_OK=false;
+            $_SESSION['e_suspect']="Od 6 do 50 znaków!";
+        }
+    
+        //Sprawdź poprawność Id policjanta
+        $tmpSuspectId = $_POST['suspectId'];
+        $suspectId = filter_var($tmpSuspectId, FILTER_SANITIZE_STRING);
+        if(strlen($suspectId)>40)
+        {
+            $everything_OK=false;
+            $_SESSION['e_suspectId']="Do 40 znaków!";
+        }
+
+        // Sprawdź poprawność instytucji
+        $institution = $_POST['institution'];
+        if($institution == '-- wybierz --')
+        {
+            $everything_OK=false;
+            $_SESSION['e_institution']="Wybierz instytucję!";
+        }
+
+        // Sprawdź poprawność siedziby
+        $hq = $_POST['hq'];
+        if($hq=='-- wybierz --')
+        {
+            $everything_OK=false;
+            $_SESSION['e_hq']="Wybierz siedzibę!";
+        }
+
+        // Sprawdź poprawność województwa siedziby
+        $hqProvince = $_POST['hqProvince'];
+        if($hqProvince=='-- wybierz --')
+        {
+            $everything_OK=false;
+            $_SESSION['e_hqProvince']="Wybierz województwo!";
+        }
+
+        // Sprawdź poprawność miejscowości siedziby
+        $tmpHqCity = $_POST['hqCity'];
+        $hqCity = filter_var($tmpHqCity, FILTER_SANITIZE_STRING);
+        if(strlen($hqCity)<3 || strlen($hqCity)>30)
+        {
+            $everything_OK=false;
+            $_SESSION['e_hqCity']="Od 3 do 30 liter!";
+        }
+
+        //Sprawdź poprawność tematu
+        $tmpSubject = $_POST['subject'];
+        $subject = filter_var($tmpSubject, FILTER_SANITIZE_STRING);
+        if(strlen($subject)<5 || strlen($subject)>40)
+        {
+            $everything_OK=false;
+            $_SESSION['e_subject']="Od 5 do 40 znaków!";
+        }
+
+        // Sprawdź poprawność daty zdarzenia
+        $incDate = $_POST['incDate'];
+        if($incDate > date("Y-m-d"))
+        {
+            $everything_OK=false;
+            $_SESSION['e_incDate']="Wykracza poza dzisiejszą datę!";
+        }
+
+        //Sprawdź poprawność opisu
+        $tmpDesc = $_POST['desc'];
+        $desc = filter_var($tmpDesc, FILTER_SANITIZE_STRING);
+        if(strlen($desc)>1000)
+        {
+            $everything_OK=false;
+            $_SESSION['e_desc']="Do 1000 znaków!";
+        }        
+
+        // Sprawdź poprawność województwa zdarzenia
+        $incProvince = $_POST['incProvince'];
+        if($incProvince=='-- wybierz --')
+        {
+            $everything_OK=false;
+            $_SESSION['e_incProvince']="Wybierz województwo!";
+        }
+
+        // Sprawdź poprawność miejscowości zdarzenia
+        $tmpIncCity = $_POST['incCity'];
+        $incCity = filter_var($tmpIncCity, FILTER_SANITIZE_STRING);
+        if(strlen($incCity)<3 || strlen($incCity)>30)
+        {
+            $everything_OK=false;
+            $_SESSION['e_incCity']="Od 3 do 30 liter!";
+        }        
+
         //Sprawdź poprawność imienia
         $tmpFirstname = $_POST['firstname'];
         $firstname = filter_var($tmpFirstname, FILTER_SANITIZE_STRING);
@@ -14,6 +108,7 @@
             $everything_OK=false;
             $_SESSION['e_firstname']="Od 3 do 20 liter!";
         }
+
         //Sprawdź poprawność nazwiska
         $tmpLastname = $_POST['lastname'];
         $lastname = filter_var($tmpLastname, FILTER_SANITIZE_STRING);
@@ -50,83 +145,6 @@
         }
 
         $phone = "$direction $number";
-
-        //Sprawdź poprawność policjanta
-        $tmpSuspect = $_POST['suspect'];
-        $suspect = filter_var($tmpSuspect, FILTER_SANITIZE_STRING);
-        if(strlen($suspect)<6 || strlen($suspect)>50)
-        {
-            $everything_OK=false;
-            $_SESSION['e_suspect']="Od 6 do 50 znaków!";
-        }
-
-        //Sprawdź poprawność Id policjanta
-        $tmpSuspectId = $_POST['suspectId'];
-        $suspectId = filter_var($tmpSuspectId, FILTER_SANITIZE_STRING);
-        if(strlen($suspectId)>40)
-        {
-            $everything_OK=false;
-            $_SESSION['e_suspectId']="Do 40 znaków!";
-        }
-
-        // Sprawdź poprawność daty zdarzenia
-        $incDate = $_POST['incDate'];
-        if($incDate > date("Y-m-d"))
-        {
-            $everything_OK=false;
-            $_SESSION['e_incDate']="Wykracza poza dzisiejszą datę!";
-        }
-
-        // Sprawdź poprawność komendy
-        $hq = $_POST['hq'];
-        if($hq=='-- wybierz --')
-        {
-            $everything_OK=false;
-            $_SESSION['e_hq']="Wybierz komende!";
-        }
-
-        // Sprawdź poprawność miejscowości zdarzenia
-        $tmpIncCity = $_POST['incCity'];
-        $incCity = filter_var($tmpIncCity, FILTER_SANITIZE_STRING);
-        if(strlen($incCity)<3 || strlen($incCity)>30)
-        {
-            $everything_OK=false;
-            $_SESSION['e_incCity']="Od 3 do 30 liter!";
-        }
-
-        // Sprawdź poprawność miejscowości komendy
-        $tmpHqCity = $_POST['hqCity'];
-        $hqCity = filter_var($tmpHqCity, FILTER_SANITIZE_STRING);
-        if(strlen($hqCity)<3 || strlen($hqCity)>30)
-        {
-            $everything_OK=false;
-            $_SESSION['e_hqCity']="Od 3 do 30 liter!";
-        }
-
-        // Sprawdź poprawność województwa zdarzenia
-        $incProvince = $_POST['incProvince'];
-        if($incProvince=='-- wybierz --')
-        {
-            $everything_OK=false;
-            $_SESSION['e_incProvince']="Wybierz województwo!";
-        }
-
-        // Sprawdź poprawność województwa komendy
-        $hqProvince = $_POST['hqProvince'];
-        if($hqProvince=='-- wybierz --')
-        {
-            $everything_OK=false;
-            $_SESSION['e_hqProvince']="Wybierz województwo!";
-        }        
-        
-        //Sprawdź poprawność informacji dodatkowej
-        $tmpDesc = $_POST['desc'];
-        $desc = filter_var($tmpDesc, FILTER_SANITIZE_STRING);
-        if(strlen($desc)>1000)
-        {
-            $everything_OK=false;
-            $_SESSION['e_desc']="Do 1000 znaków!";
-        }
   
         //Sprawdź checkboxa
         if(!isset($_POST['regulations']))
@@ -146,20 +164,23 @@
         // }
 
         //Zapamiętaj wprowadzone dane
+        $_SESSION['fr_formDate'] = $formDate;
+        $_SESSION['fr_suspect'] = $suspect;
+        $_SESSION['fr_suspectId'] = $suspectId;
+        $_SESSION['fr_institution'] = $institution;
+        $_SESSION['fr_hq'] = $hq;
+        $_SESSION['fr_hqProvince'] = $hqProvince;
+        $_SESSION['fr_hqCity'] = $hqCity;
+        $_SESSION['fr_subject'] = $subject;
+        $_SESSION['fr_incDate'] = $incDate;
+        $_SESSION['fr_desc'] = $desc;
+        $_SESSION['fr_incProvince'] = $incProvince;
+        $_SESSION['fr_incCity'] = $incCity;
         $_SESSION['fr_firstname'] = $firstname;
         $_SESSION['fr_lastname'] = $lastname;
         $_SESSION['fr_email'] = $email;
         $_SESSION['fr_direction'] = $direction;
         $_SESSION['fr_number'] = $number;
-        $_SESSION['fr_suspect'] = $suspect;
-        $_SESSION['fr_suspectId'] = $suspectId;
-        $_SESSION['fr_incDate'] = $incDate;
-        $_SESSION['fr_hq'] = $hq;
-        $_SESSION['fr_incCity'] = $incCity;
-        $_SESSION['fr_hqCity'] = $hqCity;
-        $_SESSION['fr_incProvince'] = $incProvince;
-        $_SESSION['fr_hqProvince'] = $hqProvince;
-        $_SESSION['fr_desc'] = $desc;
         if(isset($_POST['regulations'])) $_SESSION['fr_regulations'] = true;
 
         require_once "../redirects/connect.php";
@@ -178,7 +199,7 @@
                 {
                     //Hurra, wszystkie testy zaliczone!
                     #sql query to insert into database
-                    $sql = "INSERT INTO ucidk_policja VALUES(NULL, '$formDate', '$firstname', '$lastname', '$email', '$phone', '$suspect', '$suspectId', '$incDate', '$hq', '$incCity', '$hqCity', '$incProvince', '$hqProvince', '$desc')";
+                    $sql = "INSERT INTO ucidk_policja VALUES(NULL, '$formDate', '$suspect', '$suspectId', '$institution', '$hq', '$hqProvince', '$hqCity', '$subject', '$incDate', '$desc', '$incProvince', '$incCity', '$firstname', '$lastname', '$email', '$phone')";
 
                     if(mysqli_query($connection,$sql))
                     {

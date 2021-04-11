@@ -1,5 +1,5 @@
 <div class="field">
-    Miejscowość zdarzenia<br><input type="text" value="<?php
+    Miejscowość<br><input type="text" value="<?php
     if(isset($_SESSION['fr_incCity']))
     {
         echo $_SESSION['fr_incCity'];

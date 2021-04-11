@@ -1,5 +1,5 @@
 <div class="field">
-    Data zdarzenia <br> <input type="date" value="<?php
+    Data <br> <input type="date" value="<?php
     if(isset($_SESSION['fr_incDate']))
     {
         echo $_SESSION['fr_incDate'];

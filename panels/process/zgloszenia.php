@@ -1,4 +1,4 @@
-<form action="policja.php" method="get"><br>
+<form action="zgloszenia.php" method="get"><br>
 
 <fieldset>
     <legend>filtrowanie</legend>
@@ -19,75 +19,43 @@
         if(!isset($incDate)||$incDate=='') echo ' wszystkie'; 
     ?><br>
 
-    Województwo zdarzenia: <select name="incProvince">
+    Instytucja: <select name="institution">
 
         <option <?php 
-            if((!isset($incProvince)||$incProvince=='wszystkie')) echo 'selected="selected" ';
+            if((!isset($institution)||$institution=='wszystkie')) echo 'selected="selected" ';
         ?>>wszystkie</option>
 
         <option <?php
-            if($incProvince=='dolnośląskie') echo 'selected="selected" ';
-        ?>>dolnośląskie</option>
+            if($institution=='policja') echo 'selected="selected" ';
+        ?>>policja</option>
 
         <option <?php
-            if($incProvince=='kujawsko-pomorskie') echo 'selected="selected" ';
-        ?>>kujawsko-pomorskie</option>
+            if($institution=='sanepid') echo 'selected="selected" ';
+        ?>>sanepid</option>
 
         <option <?php
-            if($incProvince=='lubelskie') echo 'selected="selected" ';
-        ?>>lubelskie</option>
+            if($institution=='urząd') echo 'selected="selected" ';
+        ?>>urząd</option>
 
         <option <?php
-            if($incProvince=='lubuskie') echo 'selected="selected" ';
-        ?>>lubuskie</option>
+            if($institution=='sąd') echo 'selected="selected" ';
+        ?>>sąd</option>
 
         <option <?php
-            if($incProvince=='łódzkie') echo 'selected="selected" ';
-        ?>>łódzkie</option>
+            if($institution=='prokuratura') echo 'selected="selected" ';
+        ?>>prokuratura</option>
 
         <option <?php
-            if($incProvince=='małopolskie') echo 'selected="selected" ';
-        ?>>małopolskie</option>
+            if($institution=='firma') echo 'selected="selected" ';
+        ?>>firma</option>
 
         <option <?php
-            if($incProvince=='mazowieckie') echo 'selected="selected" ';
-        ?>>mazowieckie</option>
+            if($institution=='sklep') echo 'selected="selected" ';
+        ?>>sklep</option>
 
         <option <?php
-            if($incProvince=='opolskie') echo 'selected="selected" ';
-        ?>>opolskie</option>
-
-        <option <?php
-            if($incProvince=='podkarpackie') echo 'selected="selected" ';
-        ?>>podkarpackie</option>
-
-        <option <?php
-            if($incProvince=='podlaskie') echo 'selected="selected" ';
-        ?>>podlaskie</option>
-
-        <option <?php
-            if($incProvince=='pomorskie') echo 'selected="selected" ';
-        ?>>pomorskie</option>
-
-        <option <?php
-            if($incProvince=='śląskie') echo 'selected="selected" ';
-        ?>>śląskie</option>
-
-        <option <?php
-            if($incProvince=='świętokrzyskie') echo 'selected="selected" ';
-        ?>>świętokrzyskie</option>
-
-        <option <?php
-            if($incProvince=='warmińsko-mazurskie') echo 'selected="selected" ';
-        ?>>warmińsko-mazurskie</option>
-
-        <option <?php
-            if($incProvince=='wielkopolskie') echo 'selected="selected" ';
-        ?>>wielkopolskie</option>
-
-        <option <?php
-            if($incProvince=='zachodniopomorskie') echo 'selected="selected" ';
-        ?>>zachodniopomorskie</option>
+            if($institution=='inne') echo 'selected="selected" ';
+        ?>>inne</option>
 
     </select><br>
 

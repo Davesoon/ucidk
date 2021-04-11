@@ -29,7 +29,7 @@
     //Zapamiętaj wprowadzone dane
     $formDate = $_GET['formDate'];
     $incDate = $_GET['incDate'];
-    $incProvince = $_GET['incProvince'];
+    $institution = $_GET['institution'];
     $orderby = $_GET['orderby'];
     $sort = $_GET['sort'];
 
@@ -40,19 +40,21 @@
     <thead>
         <tr id="table-header">
             <th>Data rejestracji</th>
+            <th>Sprawca</th>
+            <th>Id sprawcy</th>
+            <th>Instytucja</th>
+            <th>Siedziba</th>
+            <th>Województwo siedziby</th>
+            <th>Miejscowość siedziby</th>
+            <th>Temat</th>
+            <th>Data zdarzenia</th>
+            <th>Opis zdarzenia</th>
+            <th>Województwo zdarzenia</th>
+            <th>Miejscowość zdarzenia</th>
             <th>Imię</th>
             <th>Nazwisko</th>
             <th>Adres e-mail</th>
             <th>Numer telefonu</th>
-            <th>Imię i nazwisko policjanta</th>
-            <th>Numer identyfikacyjny policjanta</th>
-            <th>Data zdarzenia</th>
-            <th>Komenda</th>
-            <th>Miejscowość zdarzenia</th>
-            <th>Miejscowość komendy</th>
-            <th>Województwo zdarzenia</th>
-            <th>Województwo komendy</th>
-            <th>Opis zdarzenia</th>
         </tr>
     </thead>
     <tbody><?php
@@ -71,39 +73,39 @@
             {
                 $formDate = $_GET['formDate'];
                 $incDate = $_GET['incDate'];
-                $incProvince = $_GET['incProvince'];
+                $institution = $_GET['institution'];
                 $orderby = $_GET['orderby'];
                 $sort = $_GET['sort'];
 
                 if(!isset($_GET['formDate']) || $_GET['formDate']=="") $formDate="wszystkie";
                 if(!isset($_GET['incDate']) || $_GET['incDate']=="") $incDate="wszystkie";
-                if(!isset($_GET['incProvince']) || $_GET['incProvince']=="") $incProvince="wszystkie";
+                if(!isset($_GET['institution']) || $_GET['institution']=="") $institution="wszystkie";
                 if(!isset($_GET['orderby'])) $orderby="formDate";
                 if(!isset($_GET['sort'])) $sort="desc";
 
-                if($formDate=="wszystkie" && $incDate=="wszystkie" && $incProvince=="wszystkie") 
+                if($formDate=="wszystkie" && $incDate=="wszystkie" && $institution=="wszystkie") 
                 $query = "SELECT * FROM ucidk_policja ORDER BY $orderby $sort";
 
-                if($formDate!="wszystkie" && $incDate=="wszystkie" && $incProvince=="wszystkie") 
+                if($formDate!="wszystkie" && $incDate=="wszystkie" && $institution=="wszystkie") 
                 $query = "SELECT * FROM ucidk_policja WHERE formDate = '$formDate' ORDER BY $orderby $sort";
 
-                if($formDate=="wszystkie" && $incDate!="wszystkie" && $incProvince=="wszystkie") 
+                if($formDate=="wszystkie" && $incDate!="wszystkie" && $institution=="wszystkie") 
                 $query = "SELECT * FROM ucidk_policja WHERE incDate = '$incDate' ORDER BY $orderby $sort";
 
-                if($formDate=="wszystkie" && $incDate=="wszystkie" && $incProvince!="wszystkie") 
-                $query = "SELECT * FROM ucidk_policja WHERE incProvince = '$incProvince' ORDER BY $orderby $sort";
+                if($formDate=="wszystkie" && $incDate=="wszystkie" && $institution!="wszystkie") 
+                $query = "SELECT * FROM ucidk_policja WHERE institution = '$institution' ORDER BY $orderby $sort";
 
-                if($formDate!="wszystkie" && $incDate!="wszystkie" && $incProvince=="wszystkie") 
+                if($formDate!="wszystkie" && $incDate!="wszystkie" && $institution=="wszystkie") 
                 $query = "SELECT * FROM ucidk_policja WHERE formDate = '$formDate' AND incDate = '$incDate' ORDER BY $orderby $sort";
 
-                if($formDate!="wszystkie" && $incDate=="wszystkie" && $incProvince!="wszystkie") 
-                $query = "SELECT * FROM ucidk_policja WHERE formDate = '$formDate' AND incProvince = '$incProvince' ORDER BY $orderby $sort";
+                if($formDate!="wszystkie" && $incDate=="wszystkie" && $institution!="wszystkie") 
+                $query = "SELECT * FROM ucidk_policja WHERE formDate = '$formDate' AND institution = '$institution' ORDER BY $orderby $sort";
 
-                if($formDate=="wszystkie" && $incDate!="wszystkie" && $incProvince!="wszystkie") 
-                $query = "SELECT * FROM ucidk_policja WHERE incDate = '$incDate' AND incProvince = '$incProvince' ORDER BY $orderby $sort";
+                if($formDate=="wszystkie" && $incDate!="wszystkie" && $institution!="wszystkie") 
+                $query = "SELECT * FROM ucidk_policja WHERE incDate = '$incDate' AND institution = '$institution' ORDER BY $orderby $sort";
 
-                if($formDate!="wszystkie" && $incDate!="wszystkie" && $incProvince!="wszystkie") 
-                $query = "SELECT * FROM ucidk_policja WHERE formDate = '$formDate' AND incDate = '$incDate' AND incProvince = '$incProvince' ORDER BY $orderby $sort";
+                if($formDate!="wszystkie" && $incDate!="wszystkie" && $institution!="wszystkie") 
+                $query = "SELECT * FROM ucidk_policja WHERE formDate = '$formDate' AND incDate = '$incDate' AND institution = '$institution' ORDER BY $orderby $sort";
                 
                 $result = $connection->query($query);
                 // while($row = $result->fetch_assoc())
@@ -122,19 +124,21 @@
                     {
                         echo "<tr>"
                             ."<td>".$row["formDate"]."</td>"
+                            ."<td>".$row["suspect"]."</td>"
+                            ."<td>".$row["suspectId"]."</td>"
+                            ."<td>".$row["institution"]."</td>"
+                            ."<td>".$row["hq"]."</td>"
+                            ."<td>".$row["hqProvince"]."</td>"
+                            ."<td>".$row["hqCity"]."</td>"
+                            ."<td>".$row["subject"]."</td>"
+                            ."<td>".$row["incDate"]."</td>"
+                            ."<td>".$row["desc"]."</td>"
+                            ."<td>".$row["incProvince"]."</td>"
+                            ."<td>".$row["incCity"]."</td>"
                             ."<td>".$row["firstname"]."</td>"
                             ."<td>".$row["lastname"]."</td>"
                             ."<td>".$row["email"]."</td>"
                             ."<td>".$row["phone"]."</td>"
-                            ."<td>".$row["suspect"]."</td>"
-                            ."<td>".$row["suspectId"]."</td>"
-                            ."<td>".$row["incDate"]."</td>"
-                            ."<td>".$row["hq"]."</td>"
-                            ."<td>".$row["incCity"]."</td>"
-                            ."<td>".$row["hqCity"]."</td>"
-                            ."<td>".$row["incProvince"]."</td>"
-                            ."<td>".$row["hqProvince"]."</td>"
-                            ."<td>".$row["desc"]."</td>"
                             ."</tr>";
                     }
                 }
@@ -148,7 +152,7 @@
         catch(Exception $e)
         {
             echo '<span style="color:red;">Błąd serwera! Przepraszamy za niedogodności i prosimy o rejestrację w innym terminie!</span>';
-            // echo '<br>Informacja developerska: '.$e;
+            echo '<br>Informacja developerska: '.$e;
         }
     ?></tbody>
 </table>

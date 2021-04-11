@@ -1,5 +1,5 @@
 <div class="field">
-    Imię i nazwisko policjanta <br>
+    <span id="suspect">Imię i nazwisko lub nazwa</span><br>
     <input type="text" value="<?php
     if(isset($_SESSION['fr_suspect']))
     {
@@ -16,7 +16,7 @@
     ?>
 </div>
 <div class="field">
-    Numer identyfikacyjny policjanta <br>
+    Numer identyfikacyjny lub NIP <br>
     <input type="text" value="<?php
     if(isset($_SESSION['fr_suspectId']))
     {

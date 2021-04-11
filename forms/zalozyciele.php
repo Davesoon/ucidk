@@ -25,19 +25,15 @@
             <div class="row"><?php include "../fields/email-phone.php"; ?></div>
 
             <div class="row">
-                <div class="field"> Województwo <?php include "../fields/hqProvince.php"; ?></div>
+                <?php include "../fields/hqProvince.php"; ?>
                 <div class="field"> Gmina <?php include "../fields/hqCity.php"; ?></div>
             </div>
 
             <div class="row">
-                <div class="fieldRow">
-                    Dodatkowe informacje <?php include "../fields/desc.php"; ?>
-                </div>
+                <div class="fieldRow">Dodatkowe informacje <?php include "../fields/desc.php"; ?></div>
             </div>
 
-            <div class="row">
-                <?php include "../fields/file.php"; ?>
-            </div>
+            <div class="row"><?php include "../fields/file.php"; ?></div>
 
             <div class="row"><?php include "../fields/checks.php"; ?></div>
             
