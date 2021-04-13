@@ -199,12 +199,12 @@
                 {
                     //Hurra, wszystkie testy zaliczone!
                     #sql query to insert into database
-                    $sql = "INSERT INTO ucidk_policja VALUES(NULL, '$formDate', '$suspect', '$suspectId', '$institution', '$hq', '$hqProvince', '$hqCity', '$subject', '$incDate', '$desc', '$incProvince', '$incCity', '$firstname', '$lastname', '$email', '$phone')";
+                    $sql = "INSERT INTO incidents VALUES(NULL, '$formDate', '$suspect', '$suspectId', '$institution', '$hq', '$hqProvince', '$hqCity', '$subject', '$incDate', '$desc', '$incProvince', '$incCity', '$firstname', '$lastname', '$email', '$phone')";
 
                     if(mysqli_query($connection,$sql))
                     {
                         $_SESSION['sent']=true;
-                        header('Location: ../dziekujemy.php');
+                        header('Location: ../redirects/dziekujemy.php');
                     }
                     else
                     {

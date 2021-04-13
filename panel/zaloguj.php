@@ -3,7 +3,7 @@
 
     if((isset($_SESSION['logged'])) && ($_SESSION['logged']==true))
     {
-        header('Location: ../panels/zalozyciele.php');
+        header('Location: zalozyciele.php');
         exit();
     }
 ?>
@@ -16,7 +16,7 @@
     <title>ZALOGUJ</title>
 </head>
 <body>
-    <form action="redirects/login.php" method="post">
+    <form action="../redirects/login.php" method="post">
         Login:  <br><input type="text" name="login"><br>
         Hasło:  <br><input type="password" name="password"><br><br>
         <input type="submit" value="Zaloguj się">

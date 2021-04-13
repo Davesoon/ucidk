@@ -1,4 +1,4 @@
-<?php include "validators/zgloszenia.php"; ?>
+<?php include "validators/incydenty.php"; ?>
 <!DOCTYPE HTML>
 <html lang="pl">
 <head>
@@ -12,7 +12,7 @@
 <body>
     <header>
         <h2>ZGŁOŚ BEZPRAWIE!</h2>
-        <img src="../images/logo.png">
+        <a href="http://ucidk.pl/"><img src="../images/logo.png"></a>
     </header>
     <main>
         <form method="post" enctype="multipart/form-data">
@@ -20,7 +20,7 @@
             <input type="hidden" value="<?php echo date('Y-m-d'); ?>" name="formDate">
 
             <fieldset>
-                <legend><h4>Sprawca</h4></legend>
+                <legend align="center"><h4>SPRAWCA</h4></legend>
 
                 <div class="row"><?php include "../fields/suspect.php"; ?></div>
 
@@ -37,7 +37,7 @@
             </fieldset>
 
             <fieldset>
-                <legend><h4>Zdarzenie</h4></legend>
+                <legend align="center"><h4>ZDARZENIE</h4></legend>
 
                 <div class="row">
                     <?php include "../fields/subject.php"; ?>
@@ -56,7 +56,7 @@
             </fieldset>
 
             <fieldset>
-                <legend><h4>Poszkodowany</h4></legend>
+                <legend align="center"><h4>POSZKODOWANY</h4></legend>
                 <div class="row"><?php include "../fields/fullname.php"; ?></div>
                 <div class="row"><?php include "../fields/email-phone.php"; ?></div>
             </fieldset>

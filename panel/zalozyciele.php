@@ -3,7 +3,7 @@
 
     if(!isset($_SESSION['logged']))
     {
-        header('Location: ../zaloguj.php');
+        header('Location: zaloguj.php');
         exit();
     }
 ?>
@@ -19,7 +19,7 @@
 <body>
 <div class="row">
     <b>Założyciele</b>
-    <a href="zgloszenia.php">Zgłoszenia</a>
+    <a href="incydenty.php">Incydenty</a>
 </div>
 <?php
     echo "<p>Witaj ".$_SESSION['login'].'!</p>';
@@ -77,28 +77,28 @@
                 if(!isset($_GET['sort'])) $sort="desc";
 
                 if($date=="wszystkie" && $province=="wszystkie" && $community=="wszystkie") 
-                $query = "SELECT * FROM ucidk_members ORDER BY $orderby $sort";
+                $query = "SELECT * FROM members ORDER BY $orderby $sort";
 
                 if($date!="wszystkie" && $province=="wszystkie" && $community=="wszystkie") 
-                $query = "SELECT * FROM ucidk_members WHERE date = '$date' ORDER BY $orderby $sort";
+                $query = "SELECT * FROM members WHERE date = '$date' ORDER BY $orderby $sort";
 
                 if($date=="wszystkie" && $province!="wszystkie" && $community=="wszystkie") 
-                $query = "SELECT * FROM ucidk_members WHERE province = '$province' ORDER BY $orderby $sort";
+                $query = "SELECT * FROM members WHERE province = '$province' ORDER BY $orderby $sort";
 
                 if($date=="wszystkie" && $province=="wszystkie" && $community!="wszystkie") 
-                $query = "SELECT * FROM ucidk_members WHERE community = '$community' ORDER BY $orderby $sort";
+                $query = "SELECT * FROM members WHERE community = '$community' ORDER BY $orderby $sort";
 
                 if($date!="wszystkie" && $province!="wszystkie" && $community=="wszystkie") 
-                $query = "SELECT * FROM ucidk_members WHERE date = '$date' AND province = '$province' ORDER BY $orderby $sort";
+                $query = "SELECT * FROM members WHERE date = '$date' AND province = '$province' ORDER BY $orderby $sort";
 
                 if($date!="wszystkie" && $province=="wszystkie" && $community!="wszystkie") 
-                $query = "SELECT * FROM ucidk_members WHERE date = '$date' AND community = '$community' ORDER BY $orderby $sort";
+                $query = "SELECT * FROM members WHERE date = '$date' AND community = '$community' ORDER BY $orderby $sort";
 
                 if($date=="wszystkie" && $province!="wszystkie" && $community!="wszystkie") 
-                $query = "SELECT * FROM ucidk_members WHERE province = '$province' AND community = '$community' ORDER BY $orderby $sort";
+                $query = "SELECT * FROM members WHERE province = '$province' AND community = '$community' ORDER BY $orderby $sort";
 
                 if($date!="wszystkie" && $province!="wszystkie" && $community!="wszystkie") 
-                $query = "SELECT * FROM ucidk_members WHERE date = '$date' AND province = '$province' AND community = '$community' ORDER BY $orderby $sort";
+                $query = "SELECT * FROM members WHERE date = '$date' AND province = '$province' AND community = '$community' ORDER BY $orderby $sort";
                 
                 $result = $connection->query($query);
                 // while($row = $result->fetch_assoc())

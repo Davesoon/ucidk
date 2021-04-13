@@ -3,7 +3,7 @@
 
     if(!isset($_SESSION['logged']))
     {
-        header('Location: ../zaloguj.php');
+        header('Location: zaloguj.php');
         exit();
     }
 ?>
@@ -19,7 +19,7 @@
 <body>
 <div class="row">
     <a href="zalozyciele.php">Założyciele</a>
-    <b>Zgłoszenia</b>
+    <b>Incydenty</b>
 </div>
 <?php
     echo "<p>Witaj ".$_SESSION['login'].'!</p>';
@@ -33,7 +33,7 @@
     $orderby = $_GET['orderby'];
     $sort = $_GET['sort'];
 
-    include 'process/zgloszenia.php';
+    include 'process/incydenty.php';
 ?>
 
 <table border= "1px, solid, black">
@@ -84,28 +84,28 @@
                 if(!isset($_GET['sort'])) $sort="desc";
 
                 if($formDate=="wszystkie" && $incDate=="wszystkie" && $institution=="wszystkie") 
-                $query = "SELECT * FROM ucidk_policja ORDER BY $orderby $sort";
+                $query = "SELECT * FROM incidents ORDER BY $orderby $sort";
 
                 if($formDate!="wszystkie" && $incDate=="wszystkie" && $institution=="wszystkie") 
-                $query = "SELECT * FROM ucidk_policja WHERE formDate = '$formDate' ORDER BY $orderby $sort";
+                $query = "SELECT * FROM incidents WHERE formDate = '$formDate' ORDER BY $orderby $sort";
 
                 if($formDate=="wszystkie" && $incDate!="wszystkie" && $institution=="wszystkie") 
-                $query = "SELECT * FROM ucidk_policja WHERE incDate = '$incDate' ORDER BY $orderby $sort";
+                $query = "SELECT * FROM incidents WHERE incDate = '$incDate' ORDER BY $orderby $sort";
 
                 if($formDate=="wszystkie" && $incDate=="wszystkie" && $institution!="wszystkie") 
-                $query = "SELECT * FROM ucidk_policja WHERE institution = '$institution' ORDER BY $orderby $sort";
+                $query = "SELECT * FROM incidents WHERE institution = '$institution' ORDER BY $orderby $sort";
 
                 if($formDate!="wszystkie" && $incDate!="wszystkie" && $institution=="wszystkie") 
-                $query = "SELECT * FROM ucidk_policja WHERE formDate = '$formDate' AND incDate = '$incDate' ORDER BY $orderby $sort";
+                $query = "SELECT * FROM incidents WHERE formDate = '$formDate' AND incDate = '$incDate' ORDER BY $orderby $sort";
 
                 if($formDate!="wszystkie" && $incDate=="wszystkie" && $institution!="wszystkie") 
-                $query = "SELECT * FROM ucidk_policja WHERE formDate = '$formDate' AND institution = '$institution' ORDER BY $orderby $sort";
+                $query = "SELECT * FROM incidents WHERE formDate = '$formDate' AND institution = '$institution' ORDER BY $orderby $sort";
 
                 if($formDate=="wszystkie" && $incDate!="wszystkie" && $institution!="wszystkie") 
-                $query = "SELECT * FROM ucidk_policja WHERE incDate = '$incDate' AND institution = '$institution' ORDER BY $orderby $sort";
+                $query = "SELECT * FROM incidents WHERE incDate = '$incDate' AND institution = '$institution' ORDER BY $orderby $sort";
 
                 if($formDate!="wszystkie" && $incDate!="wszystkie" && $institution!="wszystkie") 
-                $query = "SELECT * FROM ucidk_policja WHERE formDate = '$formDate' AND incDate = '$incDate' AND institution = '$institution' ORDER BY $orderby $sort";
+                $query = "SELECT * FROM incidents WHERE formDate = '$formDate' AND incDate = '$incDate' AND institution = '$institution' ORDER BY $orderby $sort";
                 
                 $result = $connection->query($query);
                 // while($row = $result->fetch_assoc())

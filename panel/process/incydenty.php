@@ -1,4 +1,4 @@
-<form action="zgloszenia.php" method="get"><br>
+<form action="incydenty.php" method="get"><br>
 
 <fieldset>
     <legend>filtrowanie</legend>

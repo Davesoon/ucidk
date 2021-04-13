@@ -3,7 +3,7 @@
 
     if(!isset($_SESSION['sent']))
     {
-        header('Location: zaloguj.php');
+        header('Location: http://www.ucidk.pl/');
         exit();
     }
     else

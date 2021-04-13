@@ -12,7 +12,7 @@
 <body>
     <header>
         <h2>ZOSTAŃ ZAŁOŻYCIELEM UCiDK</h2>
-        <img src="../images/logo.png">
+        <a href="http://ucidk.pl/"><img src="../images/logo.png"></a>
         <h2>DOŁĄCZ DO NAS!</h2>
     </header>
     <main>

@@ -25,7 +25,7 @@
         $password = htmlentities($password, ENT_QUOTES, "UTF-8");
 
         if($result = @$connection->query(
-        sprintf("SELECT * FROM ucidk_admin WHERE login='%s' AND password='%s'",
+        sprintf("SELECT * FROM users WHERE login='%s' AND password='%s'",
         mysqli_real_escape_string($connection, $login),
         mysqli_real_escape_string($connection, $password))))
         {
@@ -39,12 +39,12 @@
                 
                 unset($_SESSION['error']);
                 $result->free_result();
-                header('Location: ../panels/zalozyciele.php');
+                header('Location: ../panel/zalozyciele.php');
             }
             else
             {
                 $_SESSION['error'] = '<span style="color:red">Nieprawidłowy login lub hasło!</span>';
-                header('Location: ../zaloguj.php');
+                header('Location: ../panel/zaloguj.php');
             }
         }
 
