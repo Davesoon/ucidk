@@ -178,7 +178,7 @@
                     if(mysqli_query($connection,$sql))
                     {
                         $_SESSION['sent']=true;
-                        header('Location: ../redirects/dziekujemy.php');
+                        header('Location: ../redirects/dziekujemy');
                     }
                     else
                     {

@@ -3,7 +3,7 @@
 
     if(!isset($_SESSION['logged']))
     {
-        header('Location: zaloguj.php');
+        header('Location: zaloguj');
         exit();
     }
 ?>
@@ -18,7 +18,7 @@
 </head>
 <body>
 <div class="row">
-    <a href="zalozyciele.php">Założyciele</a>
+    <a href="zalozyciele">Założyciele</a>
     <b>Incydenty</b>
 </div>
 <?php

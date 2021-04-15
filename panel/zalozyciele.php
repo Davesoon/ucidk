@@ -3,7 +3,7 @@
 
     if(!isset($_SESSION['logged']))
     {
-        header('Location: zaloguj.php');
+        header('Location: zaloguj');
         exit();
     }
 ?>
@@ -19,7 +19,7 @@
 <body>
 <div class="row">
     <b>Założyciele</b>
-    <a href="incydenty.php">Incydenty</a>
+    <a href="incydenty">Incydenty</a>
 </div>
 <?php
     echo "<p>Witaj ".$_SESSION['login'].'!</p>';

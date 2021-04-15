@@ -1,0 +1,13 @@
+RewriteEngine on
+RewriteRule formularz/incydenty formularz/incydenty.php
+RewriteRule formularz/zalozyciele formularz/zalozyciele.php
+RewriteRule panel/incydenty panel/incydenty.php
+RewriteRule panel/zalozyciele panel/zalozyciele.php
+RewriteRule panel/zaloguj panel/zaloguj.php
+RewriteRule redirects/blad redirects/blad.html
+RewriteRule redirects/dziekujemy redirects/dziekujemy.php
+
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^(www\.)?ucidk\.pl$ [NC]
+RewriteCond %{REQUEST_URI} ^/zgloszenia/fields/
+RewriteRule (.*) /zgloszenia/redirects/blad [R=301,L]
