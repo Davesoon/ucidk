@@ -20,18 +20,25 @@
             <input type="hidden" value="<?php echo date('Y-m-d'); ?>" name="formDate">
 
             <fieldset>
+                <h4>ZGŁASZAJĄCY</h4>
+
+                <div class="row"><?php include "../fields/fullname.php"; ?></div>
+                <div class="row"><?php include "../fields/email-phone.php"; ?></div>
+            </fieldset>
+
+            <fieldset>
                 <h4>SPRAWCA</h4>
 
                 <div class="row"><?php include "../fields/suspect.php"; ?></div>
 
                 <div class="row">
-                    <div class="field">Instytucja<select name="institution" id="institution"><option>-- wybierz --</option></select></div>
-                    <div class="field">Siedziba<select name="hq" id="hq"></select></div>
+                    <div class="field">Podmiot<select name="category" id="category"><option>-- wybierz --</option></select></div>
+                    <div class="field">Szczegóły podmiotu<select name="subCategory" id="subCategory"></select></div>
                 </div>
 
                 <div class="row">
                     <?php include "../fields/hqProvince.php"; ?>
-                    <div class="field">Miejscowość<?php include "../fields/hqCity.php"; ?></div>
+                    <div class="field">Adres<?php include "../fields/hqCity.php"; ?></div>
                 </div>
 
             </fieldset>
@@ -45,7 +52,9 @@
                 </div>
 
                 <div class="row">
-                    <div class="fieldRow">Opis<?php include "../fields/desc.php"; ?></div>
+                    <div class="fieldRow">Krótki opis<br>
+                        <textarea name="desc" required><?php include "../fields/desc.php"; ?>
+                    </div>
                 </div>
 
                 <div class="row">
@@ -53,13 +62,6 @@
                     <?php include "../fields/incCity.php"; ?>
                 </div>
 
-            </fieldset>
-
-            <fieldset>
-                <h4>POSZKODOWANY</h4>
-
-                <div class="row"><?php include "../fields/fullname.php"; ?></div>
-                <div class="row"><?php include "../fields/email-phone.php"; ?></div>
             </fieldset>
             
             <div class="column"><?php include "../fields/checks.php"; ?></div>
@@ -82,8 +84,8 @@
             Inne :  ['----']
         };
 
-        el_parent = document.getElementById("institution");
-        el_child = document.getElementById("hq");
+        el_parent = document.getElementById("category");
+        el_child = document.getElementById("subCategory");
 
         for (key in mList) {
             el_parent.innerHTML = el_parent.innerHTML + '<option>'+ key +'</option>';

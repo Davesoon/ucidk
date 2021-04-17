@@ -19,42 +19,42 @@
         if(!isset($incDate)||$incDate=='') echo ' wszystkie'; 
     ?><br>
 
-    Instytucja: <select name="institution">
+    Instytucja: <select name="category">
 
         <option <?php 
-            if((!isset($institution)||$institution=='wszystkie')) echo 'selected="selected" ';
+            if((!isset($category)||$category=='wszystkie')) echo 'selected="selected" ';
         ?>>wszystkie</option>
 
         <option <?php
-            if($institution=='policja') echo 'selected="selected" ';
+            if($category=='policja') echo 'selected="selected" ';
         ?>>policja</option>
 
         <option <?php
-            if($institution=='sanepid') echo 'selected="selected" ';
+            if($category=='sanepid') echo 'selected="selected" ';
         ?>>sanepid</option>
 
         <option <?php
-            if($institution=='urząd') echo 'selected="selected" ';
+            if($category=='urząd') echo 'selected="selected" ';
         ?>>urząd</option>
 
         <option <?php
-            if($institution=='sąd') echo 'selected="selected" ';
+            if($category=='sąd') echo 'selected="selected" ';
         ?>>sąd</option>
 
         <option <?php
-            if($institution=='prokuratura') echo 'selected="selected" ';
+            if($category=='prokuratura') echo 'selected="selected" ';
         ?>>prokuratura</option>
 
         <option <?php
-            if($institution=='firma') echo 'selected="selected" ';
+            if($category=='firma') echo 'selected="selected" ';
         ?>>firma</option>
 
         <option <?php
-            if($institution=='sklep') echo 'selected="selected" ';
+            if($category=='sklep') echo 'selected="selected" ';
         ?>>sklep</option>
 
         <option <?php
-            if($institution=='inne') echo 'selected="selected" ';
+            if($category=='inne') echo 'selected="selected" ';
         ?>>inne</option>
 
     </select><br>
@@ -90,8 +90,8 @@
             if($orderby=='incDate') echo 'selected="selected" ';
         ?>>data zdarzenia</option>
 
-        <option value="hq" <?php
-            if(($orderby=='hq')) echo 'selected="selected" ';
+        <option value="subCategory" <?php
+            if(($orderby=='subCategory')) echo 'selected="selected" ';
         ?>>komenda</option>
 
         <option value="incCity" <?php

@@ -29,7 +29,7 @@
     //Zapamiętaj wprowadzone dane
     $formDate = $_GET['formDate'];
     $incDate = $_GET['incDate'];
-    $institution = $_GET['institution'];
+    $category = $_GET['category'];
     $orderby = $_GET['orderby'];
     $sort = $_GET['sort'];
 
@@ -73,39 +73,39 @@
             {
                 $formDate = $_GET['formDate'];
                 $incDate = $_GET['incDate'];
-                $institution = $_GET['institution'];
+                $category = $_GET['category'];
                 $orderby = $_GET['orderby'];
                 $sort = $_GET['sort'];
 
                 if(!isset($_GET['formDate']) || $_GET['formDate']=="") $formDate="wszystkie";
                 if(!isset($_GET['incDate']) || $_GET['incDate']=="") $incDate="wszystkie";
-                if(!isset($_GET['institution']) || $_GET['institution']=="") $institution="wszystkie";
+                if(!isset($_GET['category']) || $_GET['category']=="") $category="wszystkie";
                 if(!isset($_GET['orderby'])) $orderby="formDate";
                 if(!isset($_GET['sort'])) $sort="desc";
 
-                if($formDate=="wszystkie" && $incDate=="wszystkie" && $institution=="wszystkie") 
+                if($formDate=="wszystkie" && $incDate=="wszystkie" && $category=="wszystkie") 
                 $query = "SELECT * FROM incidents ORDER BY $orderby $sort";
 
-                if($formDate!="wszystkie" && $incDate=="wszystkie" && $institution=="wszystkie") 
+                if($formDate!="wszystkie" && $incDate=="wszystkie" && $category=="wszystkie") 
                 $query = "SELECT * FROM incidents WHERE formDate = '$formDate' ORDER BY $orderby $sort";
 
-                if($formDate=="wszystkie" && $incDate!="wszystkie" && $institution=="wszystkie") 
+                if($formDate=="wszystkie" && $incDate!="wszystkie" && $category=="wszystkie") 
                 $query = "SELECT * FROM incidents WHERE incDate = '$incDate' ORDER BY $orderby $sort";
 
-                if($formDate=="wszystkie" && $incDate=="wszystkie" && $institution!="wszystkie") 
-                $query = "SELECT * FROM incidents WHERE institution = '$institution' ORDER BY $orderby $sort";
+                if($formDate=="wszystkie" && $incDate=="wszystkie" && $category!="wszystkie") 
+                $query = "SELECT * FROM incidents WHERE category = '$category' ORDER BY $orderby $sort";
 
-                if($formDate!="wszystkie" && $incDate!="wszystkie" && $institution=="wszystkie") 
+                if($formDate!="wszystkie" && $incDate!="wszystkie" && $category=="wszystkie") 
                 $query = "SELECT * FROM incidents WHERE formDate = '$formDate' AND incDate = '$incDate' ORDER BY $orderby $sort";
 
-                if($formDate!="wszystkie" && $incDate=="wszystkie" && $institution!="wszystkie") 
-                $query = "SELECT * FROM incidents WHERE formDate = '$formDate' AND institution = '$institution' ORDER BY $orderby $sort";
+                if($formDate!="wszystkie" && $incDate=="wszystkie" && $category!="wszystkie") 
+                $query = "SELECT * FROM incidents WHERE formDate = '$formDate' AND category = '$category' ORDER BY $orderby $sort";
 
-                if($formDate=="wszystkie" && $incDate!="wszystkie" && $institution!="wszystkie") 
-                $query = "SELECT * FROM incidents WHERE incDate = '$incDate' AND institution = '$institution' ORDER BY $orderby $sort";
+                if($formDate=="wszystkie" && $incDate!="wszystkie" && $category!="wszystkie") 
+                $query = "SELECT * FROM incidents WHERE incDate = '$incDate' AND category = '$category' ORDER BY $orderby $sort";
 
-                if($formDate!="wszystkie" && $incDate!="wszystkie" && $institution!="wszystkie") 
-                $query = "SELECT * FROM incidents WHERE formDate = '$formDate' AND incDate = '$incDate' AND institution = '$institution' ORDER BY $orderby $sort";
+                if($formDate!="wszystkie" && $incDate!="wszystkie" && $category!="wszystkie") 
+                $query = "SELECT * FROM incidents WHERE formDate = '$formDate' AND incDate = '$incDate' AND category = '$category' ORDER BY $orderby $sort";
                 
                 $result = $connection->query($query);
                 // while($row = $result->fetch_assoc())
@@ -126,8 +126,8 @@
                             ."<td>".$row["formDate"]."</td>"
                             ."<td>".$row["suspect"]."</td>"
                             ."<td>".$row["suspectId"]."</td>"
-                            ."<td>".$row["institution"]."</td>"
-                            ."<td>".$row["hq"]."</td>"
+                            ."<td>".$row["category"]."</td>"
+                            ."<td>".$row["subCategory"]."</td>"
                             ."<td>".$row["hqProvince"]."</td>"
                             ."<td>".$row["hqCity"]."</td>"
                             ."<td>".$row["subject"]."</td>"

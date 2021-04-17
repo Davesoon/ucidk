@@ -30,7 +30,9 @@
             </div>
 
             <div class="row">
-                <div class="fieldRow">Dodatkowe informacje <?php include "../fields/desc.php"; ?></div>
+                <div class="fieldRow">Dodatkowe informacje <br>
+                    <textarea name="desc" placeholder="Nieobowiązkowe..."><?php include "../fields/desc.php"; ?>
+                </div>
             </div>
 
             <div class="row"><?php include "../fields/file.php"; ?></div>
