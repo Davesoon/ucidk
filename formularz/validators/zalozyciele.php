@@ -33,23 +33,13 @@
         }
 
         // Sprawdź poprawność telefonu
-        $tmpDirection = $_POST['direction'];
-        $direction = filter_var($tmpDirection, FILTER_SANITIZE_STRING);
-
-        $tmpNumber = $_POST['number'];
-        $number = filter_var($tmpNumber, FILTER_SANITIZE_STRING);
-        if(ctype_digit($number)==false)
+        $tmpPhone = $_POST['phone'];
+        $phone = filter_var($tmpPhone, FILTER_SANITIZE_STRING);
+        if (strlen($phone)<11 || strlen($phone)>17)
         {
             $everything_OK=false;
-            $_SESSION['e_number']="Tylko cyfry, bez myślników i spacji!";
+            $_SESSION['e_phone']="Od 11 do 17 cyfr!";
         }
-        else if (strlen($number)<7 || strlen($number)>15)
-        {
-            $everything_OK=false;
-            $_SESSION['e_number']="Od 7 do 15 cyfr!";
-        }
-
-        $phone = "$direction $number";
 
         // Sprawdź poprawność województwa
         $hqProvince = $_POST['hqProvince'];
@@ -118,8 +108,7 @@
         $_SESSION['fr_firstname'] = $firstname;
         $_SESSION['fr_lastname'] = $lastname;
         $_SESSION['fr_email'] = $email;
-        $_SESSION['fr_direction'] = $direction;
-        $_SESSION['fr_number'] = $number;
+        $_SESSION['fr_phone'] = $phone;
         $_SESSION['fr_hqProvince'] = $hqProvince;
         $_SESSION['fr_hqCity'] = $hqCity;
         $_SESSION['fr_desc'] = $desc;

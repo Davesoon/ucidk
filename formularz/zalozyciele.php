@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../styles/forms.css">
     <script src="https://www.google.com/recaptcha/api.js"></script>
 </head>
-<body>
+<body id="zalozyciele">
     <header>
         <h2>ZOSTAŃ ZAŁOŻYCIELEM UCiDK</h2>
         <a href="http://ucidk.pl/"><img src="../images/logo.png"></a>

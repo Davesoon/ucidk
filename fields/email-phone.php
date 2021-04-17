@@ -17,31 +17,22 @@
 </div>
 <div class="field">
     Telefon <br>
-    <div id="phone">
         <input type="text" value="<?php
-            if(isset($_SESSION['fr_direction']))
-            {
-                echo $_SESSION['fr_direction'];
-                unset($_SESSION['fr_direction']);
-            }
-            else echo "+48";
-        ?>"
-        name="direction" maxlength="4" required
-        pattern="[+]+([0-9]|[0-9][0-9]|[0-9][0-9][0-9])">
-        
-        <input type="text" value="<?php
-        if(isset($_SESSION['fr_number']))
+        if(isset($_SESSION['fr_phone']))
         {
-            echo $_SESSION['fr_number'];
-            unset($_SESSION['fr_number']);
+            echo $_SESSION['fr_phone'];
+            unset($_SESSION['fr_phone']);
         }
-        ?>" name="number" required>
-    </div>
-    <?php
-        if(isset($_SESSION['e_number']))
+        else
         {
-            echo '<div class="error">'.$_SESSION['e_number'].'</div>';
-            unset($_SESSION['e_number']);
+            echo "+48 ";
+        }
+        ?>" name="phone" pattern="[+]+([0-9]{2,3}) [0-9]{7,12}" title="+48 123456789 (spacja po kierunkowym, 11-17 znaków)" required>
+    <?php
+        if(isset($_SESSION['e_phone']))
+        {
+            echo '<div class="error">'.$_SESSION['e_phone'].'</div>';
+            unset($_SESSION['e_phone']);
         }
     ?>
 </div>

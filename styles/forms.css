@@ -23,8 +23,13 @@ img
 .row
 {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     margin-bottom: 10px;
+}
+#zalozyciele .row
+{
+    padding-left: 20px;
+    padding-right: 20px;
 }
 .column
 {
@@ -33,7 +38,7 @@ img
     align-items: center;
 }
 .field{width: 45%;}
-.fieldRow{width: calc(100% - 25px);}
+.fieldRow{width: 100%;}
 input[type="text"], input[type="date"], textarea, select
 {
     background-color : rgb(33, 168, 155);
@@ -46,16 +51,14 @@ input[type="text"], input[type="date"], textarea, select
     padding-left: 10px;
     padding-right: 10px;
 }
-/* input[name=phone]{width: 150px;} */
-input[name=direction]
-{
-    width: 30px;
-    margin-right: 5px;
-}
+
 #phone{display: flex;}
 select{width: 100%;}
-.fieldRow textarea {height: 50px;}
-.field textarea {height: 100px;}
+textarea
+{
+    height: 50px;
+    resize: vertical;
+}
 a
 {
     color: white;
