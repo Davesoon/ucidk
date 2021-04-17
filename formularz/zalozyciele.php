@@ -35,7 +35,7 @@
 
             <div class="row"><?php include "../fields/file.php"; ?></div>
 
-            <div class="row"><?php include "../fields/checks.php"; ?></div>
+            <div class="column"><?php include "../fields/checks.php"; ?></div>
             
             <div id="submit">
                 <input type="submit" value="Wyślij FORMULARZ" name="submit" class="button">

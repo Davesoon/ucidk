@@ -1,33 +1,24 @@
-<div class="field">
-    <label>
-        <input type="checkbox" name="regulations" <?php
-        if(isset($_SESSION['fr_regulations']))
-        {
-            echo "checked";
-            unset($_SESSION['fr_regulations']);
-        }
-        ?>> Akceptuję REGULAMIN
-    </label><br>
-    <?php
-        if(isset($_SESSION['e_regulations']))
-        {
-            echo '<div class="error">'.$_SESSION['e_regulations'].'</div>';
-            unset($_SESSION['e_regulations']);
-        }
-    ?><br>
-</div>
-
-<div class="field">
-    <button class="g-recaptcha" 
-            data-sitekey="reCAPTCHA_site_key" 
-            data-callback='onSubmit' 
-            data-action='submit'>Submit
-    </button><br>
-    <?php
-        if(isset($_SESSION['e_bot']))
-        {
-            echo '<div class="error">'.$_SESSION['e_bot'].'</div>';
-            unset($_SESSION['e_bot']);
-        }
-    ?><br>
-</div>
+<label>
+    <input type="checkbox" name="regulations" <?php
+    if(isset($_SESSION['fr_regulations']))
+    {
+        echo "checked";
+        unset($_SESSION['fr_regulations']);
+    }
+    ?>> Akceptuję REGULAMIN
+</label><br>
+<?php
+    if(isset($_SESSION['e_regulations']))
+    {
+        echo '<div class="error">'.$_SESSION['e_regulations'].'</div>';
+        unset($_SESSION['e_regulations']);
+    }
+?><br>
+<div class="g-recaptcha" data-sitekey="6Le5RKwaAAAAAHpRivG7d1oHesTcUNYDygjzcWFH"></div><br>
+<?php
+    if(isset($_SESSION['e_bot']))
+    {
+        echo '<div class="error">'.$_SESSION['e_bot'].'</div>';
+        unset($_SESSION['e_bot']);
+    }
+?>

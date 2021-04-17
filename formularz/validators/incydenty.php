@@ -153,15 +153,8 @@
             $_SESSION['e_regulations']="Potwierdź akceptację regulaminu!";
         }
 
-        //bot or not?
-        // $secret = "";
-        // $verify = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret='.$secret.'&respone='.$_POST['g-recaptcha-response']);
-        // $response = json_decode($verify);
-        // if($response->success==false)
-        // {
-        //     $everything_OK=false;
-        //     $_SESSION['e_bot']="Potwierdź, że nie jesteś botem!";
-        // }
+        // bot or not?
+        include "../../redirects/reCaptcha.php";
 
         //Zapamiętaj wprowadzone dane
         $_SESSION['fr_formDate'] = $formDate;
@@ -204,7 +197,7 @@
                     if(mysqli_query($connection,$sql))
                     {
                         $_SESSION['sent']=true;
-                        header('Location: ../redirects/dziekujemy');
+                        header('Location: dziekujemy');
                     }
                     else
                     {

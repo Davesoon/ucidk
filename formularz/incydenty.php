@@ -61,7 +61,7 @@
                 <div class="row"><?php include "../fields/email-phone.php"; ?></div>
             </fieldset>
             
-            <div class="row"><?php include "../fields/checks.php"; ?></div>
+            <div class="column"><?php include "../fields/checks.php"; ?></div>
 
             <div id="submit">
                 <input type="submit" value="Wyślij FORMULARZ" name="submit" class="button">
