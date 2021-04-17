@@ -20,7 +20,7 @@
             <input type="hidden" value="<?php echo date('Y-m-d'); ?>" name="formDate">
 
             <fieldset>
-                <legend align="center"><h4>SPRAWCA</h4></legend>
+                <h4>SPRAWCA</h4>
 
                 <div class="row"><?php include "../fields/suspect.php"; ?></div>
 
@@ -37,7 +37,7 @@
             </fieldset>
 
             <fieldset>
-                <legend align="center"><h4>ZDARZENIE</h4></legend>
+                <h4>ZDARZENIE</h4>
 
                 <div class="row">
                     <?php include "../fields/subject.php"; ?>
@@ -56,7 +56,8 @@
             </fieldset>
 
             <fieldset>
-                <legend align="center"><h4>POSZKODOWANY</h4></legend>
+                <h4>POSZKODOWANY</h4>
+
                 <div class="row"><?php include "../fields/fullname.php"; ?></div>
                 <div class="row"><?php include "../fields/email-phone.php"; ?></div>
             </fieldset>
@@ -66,7 +67,6 @@
             <div id="submit">
                 <input type="submit" value="Wyślij FORMULARZ" name="submit" class="button">
             </div>
-
 
         </form>
     </main>
