@@ -144,7 +144,7 @@
         }
 
         // bot or not?
-        include "../../redirects/reCaptcha.php";
+        include "../redirects/reCaptcha.php";
 
         //Zapamiętaj wprowadzone dane
         $_SESSION['fr_formDate'] = $formDate;
