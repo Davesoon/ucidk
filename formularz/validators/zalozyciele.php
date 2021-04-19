@@ -68,22 +68,19 @@
         }
 
         //Sprawdź plik
-        #upload directory path
         $target_dir = '../uploads/';
-        #file name with a random number so that similar dont get replaced
-        // $file = rand(1000,10000)."-".$_FILES["file"]["name"];
-        #temporary file name to store file
         $tmpFile = $_FILES["file"]["tmp_name"];
         if($tmpFile != null)
         {
+            $filename = uniqid().rand(1000000,9999999);
             $fileType = strtolower(pathinfo($_FILES["file"]["name"],PATHINFO_EXTENSION));
-            $file = $firstname.$lastname."-".$number.".".$fileType;
+            $file = $filename.".".$fileType;
 
-            // Check file size (<= 1 MB)
-            if($_FILES["file"]["size"] > 1048576) 
+            // Check file size (<= 2 MB)
+            if($_FILES["file"]["size"] > 2097152)
             {
                 $everything_OK=false;
-                $_SESSION['e_file']="Plik nie może być większy niż 1 MB!";
+                $_SESSION['e_file']="Plik nie może być większy niż 2 MB!";
             }
             // Allow certain file formats
             if($fileType != "jpg" && $fileType != "png" && $fileType != "jpeg"
@@ -102,7 +99,7 @@
         }
 
         // bot or not?
-        include "../../redirects/reCaptcha.php";
+        include "../redirects/reCaptcha.php";
 
         //Zapamiętaj wprowadzone dane
         $_SESSION['fr_firstname'] = $firstname;
@@ -145,7 +142,18 @@
                 if($how_many_phones>0)
                 {
                     $everything_OK=false;
-                    $_SESSION['e_number']="Podany numer telefonu jest już w bazie!";
+                    $_SESSION['e_phone']="Podany numer telefonu jest już w bazie!";
+                }
+
+                //czy plik juz isnieje?
+                $result = $connection->query("SELECT id FROM members WHERE file='$file'");
+                if(!$result) throw new Exception($connection->error);
+            
+                $how_many_files = $result->num_rows;
+                if($how_many_files>0)
+                {
+                    $everything_OK=false;
+                    $_SESSION['e_file']="Problem z załadowaniem pliku, spróbuj ponownie!";
                 }
 
                 if($everything_OK==true)

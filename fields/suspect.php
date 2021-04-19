@@ -16,7 +16,7 @@
     ?>
 </div>
 <div class="field">
-    Numer identyfikacyjny lub NIP <br>
+    Numer ID lub NIP <br>
     <input type="text" value="<?php
     if(isset($_SESSION['fr_suspectId']))
     {

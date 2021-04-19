@@ -14,7 +14,7 @@
         unset($_SESSION['e_regulations']);
     }
 ?><br>
-<div class="g-recaptcha" data-sitekey="6Le5RKwaAAAAAHpRivG7d1oHesTcUNYDygjzcWFH"></div><br>
+<div class="g-recaptcha" data-sitekey="6Ld_5a4aAAAAADV2gvAStz-cCWct0eByRuEWiEGM"></div><br>
 <?php
     if(isset($_SESSION['e_bot']))
     {
