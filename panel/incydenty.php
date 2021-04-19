@@ -40,6 +40,10 @@
     <thead>
         <tr id="table-header">
             <th>Data rejestracji</th>
+            <th>Imię</th>
+            <th>Nazwisko</th>
+            <th>Adres e-mail</th>
+            <th>Numer telefonu</th>
             <th>Sprawca</th>
             <th>Id sprawcy</th>
             <th>Instytucja</th>
@@ -51,10 +55,6 @@
             <th>Opis zdarzenia</th>
             <th>Województwo zdarzenia</th>
             <th>Miejscowość zdarzenia</th>
-            <th>Imię</th>
-            <th>Nazwisko</th>
-            <th>Adres e-mail</th>
-            <th>Numer telefonu</th>
         </tr>
     </thead>
     <tbody><?php
@@ -124,6 +124,10 @@
                     {
                         echo "<tr>"
                             ."<td>".$row["formDate"]."</td>"
+                            ."<td>".$row["firstname"]."</td>"
+                            ."<td>".$row["lastname"]."</td>"
+                            ."<td>".$row["email"]."</td>"
+                            ."<td>".$row["phone"]."</td>"
                             ."<td>".$row["suspect"]."</td>"
                             ."<td>".$row["suspectId"]."</td>"
                             ."<td>".$row["category"]."</td>"
@@ -135,10 +139,6 @@
                             ."<td>".$row["desc"]."</td>"
                             ."<td>".$row["incProvince"]."</td>"
                             ."<td>".$row["incCity"]."</td>"
-                            ."<td>".$row["firstname"]."</td>"
-                            ."<td>".$row["lastname"]."</td>"
-                            ."<td>".$row["email"]."</td>"
-                            ."<td>".$row["phone"]."</td>"
                             ."</tr>";
                     }
                 }
