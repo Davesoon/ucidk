@@ -99,7 +99,7 @@
         }
 
         // bot or not?
-        include "../redirects/reCaptcha.php";
+        include "fields/reCaptcha.php";
 
         //Zapamiętaj wprowadzone dane
         $_SESSION['fr_firstname'] = $firstname;
@@ -111,7 +111,7 @@
         $_SESSION['fr_desc'] = $desc;
         if(isset($_POST['regulations'])) $_SESSION['fr_regulations'] = true;
 
-        require_once "../redirects/connect.php";
+        require_once "../connect.php";
         mysqli_report(MYSQLI_REPORT_STRICT);
 
         try

@@ -3,6 +3,9 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex">
+    <link rel="icon" href="../images/logo.png">
     <title>ZAŁOŻYCIELE</title>
     <link rel="stylesheet" href="../styles/panels.css">
 </head>
@@ -40,7 +43,7 @@
     </thead>
     <tbody><?php
 
-        require_once "../redirects/connect.php";
+        require_once "../connect.php";
         mysqli_report(MYSQLI_REPORT_STRICT);
 
         try
