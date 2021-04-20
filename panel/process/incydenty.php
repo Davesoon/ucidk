@@ -1,4 +1,4 @@
-<form action="incydenty.php" method="get"><br>
+<form action="incydenty" method="get"><br>
 
 <fieldset>
     <legend>filtrowanie</legend>

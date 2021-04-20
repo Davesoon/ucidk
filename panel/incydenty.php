@@ -1,13 +1,3 @@
-<?php
-    session_start();
-
-    if(!isset($_SESSION['logged']))
-    {
-        header('Location: zaloguj');
-        exit();
-    }
-?>
-
 <!DOCTYPE HTML>
 <html lang="pl">
 <head>
@@ -18,13 +8,11 @@
 </head>
 <body>
 <div class="row">
-    <a href="zalozyciele">Założyciele</a>
-    <b>Incydenty</b>
+    <a href="zalozyciele"><h2>Założyciele</h2></a>
+    <h2>Incydenty</h2>
 </div>
 <?php
-    echo "<p>Witaj ".$_SESSION['login'].'!</p>';
-    echo "<a href='../redirects/logout.php'>Wyloguj się!</a>";
-    // error_reporting(0);
+    error_reporting(0);
 
     //Zapamiętaj wprowadzone dane
     $formDate = $_GET['formDate'];
@@ -35,26 +23,31 @@
 
     include 'process/incydenty.php';
 ?>
-
+<br>
 <table border= "1px, solid, black">
     <thead>
-        <tr id="table-header">
+    <tr>
+        <th colspan="5" class="table-header">ZGŁASZAJĄCY</th>
+        <th colspan="6" class="table-header">SPRAWCA</th>
+        <th colspan="5" class="table-header">ZDARZENIE</th>
+    </tr>
+        <tr class="table-header">
             <th>Data rejestracji</th>
             <th>Imię</th>
             <th>Nazwisko</th>
-            <th>Adres e-mail</th>
-            <th>Numer telefonu</th>
-            <th>Sprawca</th>
-            <th>Id sprawcy</th>
-            <th>Instytucja</th>
-            <th>Siedziba</th>
-            <th>Województwo siedziby</th>
-            <th>Miejscowość siedziby</th>
+            <th>Email</th>
+            <th>Telefon</th>
+            <th>Imię i nazwisko lub nazwa</th>
+            <th>ID lub NIP</th>
+            <th>Podmiot</th>
+            <th>Szczegóły podmiotu</th>
+            <th>Województwo</th>
+            <th>Miejscowość</th>
             <th>Temat</th>
-            <th>Data zdarzenia</th>
-            <th>Opis zdarzenia</th>
-            <th>Województwo zdarzenia</th>
-            <th>Miejscowość zdarzenia</th>
+            <th>Data</th>
+            <th>Opis</th>
+            <th>Województwo</th>
+            <th>Miejscowość</th>
         </tr>
     </thead>
     <tbody><?php
@@ -144,7 +137,7 @@
                 }
                 else 
                 {
-                    echo "No data!";
+                    echo '<h1>BRAK DANYCH W BAZIE!</h1>';
                 }
                 $connection->close();
             }
@@ -152,7 +145,7 @@
         catch(Exception $e)
         {
             echo '<span style="color:red;">Błąd serwera! Przepraszamy za niedogodności i prosimy o rejestrację w innym terminie!</span>';
-            echo '<br>Informacja developerska: '.$e;
+            // echo '<br>Informacja developerska: '.$e;
         }
     ?></tbody>
 </table>

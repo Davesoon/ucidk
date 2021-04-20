@@ -1,4 +1,4 @@
-<form action="zalozyciele.php" method="get"><br>
+<form action="zalozyciele" method="get"><br>
 
 <fieldset>
     <legend>filtrowanie</legend>

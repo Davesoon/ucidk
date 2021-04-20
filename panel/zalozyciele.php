@@ -1,13 +1,3 @@
-<?php
-    session_start();
-
-    if(!isset($_SESSION['logged']))
-    {
-        header('Location: zaloguj');
-        exit();
-    }
-?>
-
 <!DOCTYPE HTML>
 <html lang="pl">
 <head>
@@ -18,12 +8,10 @@
 </head>
 <body>
 <div class="row">
-    <b>Założyciele</b>
-    <a href="incydenty">Incydenty</a>
+    <h2>Założyciele</h2>
+    <a href="incydenty"><h2>Incydenty</h2></a>
 </div>
 <?php
-    echo "<p>Witaj ".$_SESSION['login'].'!</p>';
-    echo "<a href='../redirects/logout.php'>Wyloguj się!</a>";
     error_reporting(0);
     
     //Zapamiętaj wprowadzone dane
@@ -35,10 +23,10 @@
 
     include 'process/zalozyciele.php';
 ?>
-
+<br>
 <table border= "1px, solid, black">
     <thead>
-        <tr id="table-header">
+        <tr class="table-header">
             <th>Data rejestracji</th>
             <th>Imię</th>
             <th>Nazwisko</th>
@@ -130,7 +118,7 @@
                 }
                 else 
                 {
-                    echo "No data!";
+                    echo '<h1>BRAK DANYCH W BAZIE!</h1>';
                 }
                 $connection->close();
             }
