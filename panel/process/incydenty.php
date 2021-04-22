@@ -19,7 +19,7 @@
         if(!isset($incDate)||$incDate=='') echo ' wszystkie'; 
     ?><br>
 
-    Instytucja: <select name="category">
+    Podmiot: <select name="category">
 
         <option <?php 
             if((!isset($category)||$category=='wszystkie')) echo 'selected="selected" ';
@@ -84,31 +84,39 @@
 
         <option value="lastname" <?php
             if(($orderby=='lastname')) echo 'selected="selected" ';
-        ?>>nazwisko</option>
+        ?>>zgłaszający - nazwisko</option>
 
-        <option value="incDate" <?php
-            if($orderby=='incDate') echo 'selected="selected" ';
-        ?>>data zdarzenia</option>
+        <option value="suspect" <?php
+            if($orderby=='suspect') echo 'selected="selected" ';
+        ?>>sprawca - nazwa</option>
+
+        <option value="suspectId" <?php
+            if(($orderby=='suspectId')) echo 'selected="selected" ';
+        ?>>sprawca - ID/NIP</option>
+
+        <option value="category" <?php
+            if(($orderby=='category')) echo 'selected="selected" ';
+        ?>>sprawca - podmiot</option>
 
         <option value="subCategory" <?php
             if(($orderby=='subCategory')) echo 'selected="selected" ';
-        ?>>komenda</option>
-
-        <option value="incCity" <?php
-            if(($orderby=='incCity')) echo 'selected="selected" ';
-        ?>>miejscowość zdarzenia</option>
-
-        <option value="hqCity" <?php
-            if(($orderby=='hqCity')) echo 'selected="selected" ';
-        ?>>miejscowość komendy</option>
-
-        <option value="incProvince" <?php
-            if(($orderby=='incProvince')) echo 'selected="selected" ';
-        ?>>Województwo zdarzenia</option>
+        ?>>sprawca - szczegóły podmiotu</option>
 
         <option value="hqProvince" <?php
             if(($orderby=='hqProvince')) echo 'selected="selected" ';
-        ?>>Województwo komendy</option>
+        ?>>sprawca - województwo</option>
+
+        <option value="subject" <?php
+            if(($orderby=='subject')) echo 'selected="selected" ';
+        ?>>zdarzenie - temat</option>
+
+        <option value="incDate" <?php
+            if(($orderby=='incDate')) echo 'selected="selected" ';
+        ?>>zdarzenie - data</option>
+
+        <option value="incProvince" <?php
+            if(($orderby=='incProvince')) echo 'selected="selected" ';
+        ?>>zdarzenie - województwo</option>
 
     </select><br>
 </fieldset>

@@ -45,12 +45,12 @@
             <th>Podmiot</th>
             <th>Szczegóły podmiotu</th>
             <th>Województwo</th>
-            <th>Miejscowość</th>
+            <th>Adres</th>
             <th>Temat</th>
             <th>Data</th>
             <th>Opis</th>
             <th>Województwo</th>
-            <th>Miejscowość</th>
+            <th>Adres</th>
         </tr>
     </thead>
     <tbody><?php
