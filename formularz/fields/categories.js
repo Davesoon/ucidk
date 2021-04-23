@@ -10,7 +10,7 @@ var mList = {
 };
 
 el_parent = document.getElementById("category");
-el_child = document.getElementById("subCategory");
+el_child = document.getElementById("subCategorySelect");
 
 for (key in mList) {
     el_parent.innerHTML = el_parent.innerHTML + '<option>'+ key +'</option>';

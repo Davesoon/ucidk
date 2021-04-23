@@ -1,5 +1,5 @@
 <div class="field">
-    <span id="suspect">Imię i nazwisko lub nazwa</span><br>
+    Imię i nazwisko<br>
     <input type="text" value="<?php
     if(isset($_SESSION['fr_suspect']))
     {
@@ -16,7 +16,7 @@
     ?>
 </div>
 <div class="field">
-    Numer ID lub NIP <br>
+    <span id="suspectId">Numer ID lub NIP</span><br>
     <input type="text" value="<?php
     if(isset($_SESSION['fr_suspectId']))
     {

@@ -1,5 +1,5 @@
-<div class="field">
-    Województwo <br> <select name="incProvince" <?php error_reporting(0); ?>>
+<div class="field"> Województwo 
+    <br><select name="incProvince" <?php error_reporting(0); ?>>
         <option
             <?php  if ($_SESSION['fr_incProvince'] == "-- wybierz --") echo 'selected="selected" ';?>
         >-- wybierz --</option>
@@ -52,11 +52,11 @@
             <?php if ($_SESSION['fr_incProvince'] == "zachodniopomorskie") echo 'selected="selected" ';?>
         >zachodniopomorskie</option>
     </select><br>
+    <?php
+            if(isset($_SESSION['e_incProvince']))
+            {
+                echo '<div class="error">'.$_SESSION['e_incProvince'].'</div>';
+                unset($_SESSION['e_incProvince']);
+            }
+    ?>
 </div>
-<?php
-        if(isset($_SESSION['e_incProvince']))
-        {
-            echo '<div class="error">'.$_SESSION['e_incProvince'].'</div>';
-            unset($_SESSION['e_incProvince']);
-        }
-?>

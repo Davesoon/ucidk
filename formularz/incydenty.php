@@ -32,10 +32,7 @@
 
                 <div class="row"><?php include "fields/suspect.php"; ?></div>
 
-                <div class="row">
-                    <div class="field">Podmiot<select name="category" id="category"><option>-- wybierz --</option></select></div>
-                    <div class="field">Szczegóły podmiotu<select name="subCategory" id="subCategory"></select></div>
-                </div>
+                <div class="row"><?php include "fields/categories.php"; ?></div>
 
                 <div class="row">
                     <?php include "fields/hqProvince.php"; ?>
@@ -74,6 +71,7 @@
         </form>
     </main>
     <script type="text/javascript" src="fields/categories.js"></script>
+    <script type="text/javascript" src="fields/fieldChanging.js"></script>
     <script>
         function onSubmit(token) {document.getElementById("demo-form").submit();}
     </script>

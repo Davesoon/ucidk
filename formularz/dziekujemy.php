@@ -24,6 +24,8 @@
 
     if(isset($_SESSION['fr_suspect'])) unset($_SESSION['fr_suspect']);
     if(isset($_SESSION['fr_suspectId'])) unset($_SESSION['fr_suspectId']);
+    if(isset($_SESSION['fr_category'])) unset($_SESSION['fr_category']);
+    if(isset($_SESSION['fr_subCategoryText'])) unset($_SESSION['fr_subCategoryText']);
     if(isset($_SESSION['fr_hq'])) unset($_SESSION['fr_hq']);
     if(isset($_SESSION['fr_incCity'])) unset($_SESSION['fr_incCity']);
     if(isset($_SESSION['fr_incProvince'])) unset($_SESSION['fr_incProvince']);
@@ -42,6 +44,8 @@
 
     if(isset($_SESSION['e_suspect'])) unset($_SESSION['e_suspect']);
     if(isset($_SESSION['e_suspectId'])) unset($_SESSION['e_suspectId']);
+    if(isset($_SESSION['e_category'])) unset($_SESSION['e_category']);
+    if(isset($_SESSION['e_subCategory'])) unset($_SESSION['e_subCategory']);
     if(isset($_SESSION['e_hq'])) unset($_SESSION['e_hq']);
     if(isset($_SESSION['e_incCity'])) unset($_SESSION['e_incCity']);
     if(isset($_SESSION['e_incProvince'])) unset($_SESSION['e_incProvince']);

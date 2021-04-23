@@ -31,6 +31,11 @@
             $everything_OK=false;
             $_SESSION['e_email']="Podaj poprawny adres e-mail!";
         }
+        if(strlen($email)<5 || strlen($email)>50)
+        {
+            $everything_OK=false;
+            $_SESSION['e_email']="Od 5 do 50 znaków!";
+        }
 
         // Sprawdź poprawność telefonu
         $tmpPhone = $_POST['phone'];
@@ -43,7 +48,7 @@
 
         // Sprawdź poprawność województwa
         $hqProvince = $_POST['hqProvince'];
-        if($hqProvince=='-- wybierz --')
+        if($hqProvince=='-- wybierz --' || strlen($hqProvince)<1)
         {
             $everything_OK=false;
             $_SESSION['e_hqProvince']="Wybierz województwo!";
