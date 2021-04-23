@@ -16,14 +16,14 @@
     ?>
 </div>
 <div class="field">
-    <span id="suspectId">Numer ID lub NIP</span><br>
+    <span id="suspectIdHeader">Numer ID lub NIP</span><br>
     <input type="text" value="<?php
     if(isset($_SESSION['fr_suspectId']))
     {
         echo $_SESSION['fr_suspectId'];
         unset($_SESSION['fr_suspectId']);
     }
-    ?>" name="suspectId" placeholder="Nieobowiązkowe..."><br>
+    ?>" name="suspectId" id="suspectIdText"><br>
     <?php
         if(isset($_SESSION['e_suspectId']))
         {

@@ -4,9 +4,9 @@ var mList = {
     Urząd :  ['-- wybierz --', 'Urząd Miasta', 'Urząd Miasta i Gminy', 'Urząd Gminy', 'Starostwo Powiatowe '],
     Sąd :  ['-- wybierz --', 'Sąd Rejonowy', 'Sąd Okręgowy', 'Wojewódzki Sąd Administracyjny', 'Naczelny Sąd Administracyjny', 'Sąd Apelacyjny', 'Sąd Najwyższy'],
     Prokuratura : ['-- wybierz --', 'Prokuratura Rejonowa', 'Prokuratura Okręgowa', 'Prokuratura Apelacyjna', 'Prokuratura Krajowa '],
-    Firma :  ['----'],
-    Sklep :  ['----'],
-    Inne :  ['----']
+    Firma :  [],
+    Sklep :  [],
+    Inne :  []
 };
 
 el_parent = document.getElementById("category");

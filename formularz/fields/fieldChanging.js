@@ -1,21 +1,29 @@
 function fieldChanging()
 {
-    if (document.getElementById("category").value == "Inne" || document.getElementById("category").value == "-- wybierz --") 
+    category = document.getElementById("category").value;
+
+    if (category == "Inne" || category == "-- wybierz --")
     {
-        document.getElementById("suspectId").innerHTML = "Numer ID lub NIP";
-        document.getElementById("subCategorySelect").style.display = "none";
-        document.getElementById("subCategoryText").style.display = "inline";
+        document.getElementById("suspectIdHeader").innerHTML = "Numer ID lub NIP";
+        document.getElementById("subCategorySelect").setAttribute("style", "display: none");
+        document.getElementById("subCategoryText").removeAttribute("style");
+        document.getElementById("suspectIdText").setAttribute("placeholder", "Nieobowiązkowe...");
+        document.getElementById("suspectIdText").removeAttribute("required");
     }
-    else if (document.getElementById("category").value == "Sklep" || document.getElementById("category").value == "Firma")
+    else if (category == "Sklep" || category == "Firma")
     {
-        document.getElementById("suspectId").innerHTML = "NIP";
-        document.getElementById("subCategorySelect").style.display = "none";
-        document.getElementById("subCategoryText").style.display = "inline";
+        document.getElementById("suspectIdHeader").innerHTML = "NIP";
+        document.getElementById("subCategorySelect").setAttribute("style", "display: none");
+        document.getElementById("subCategoryText").removeAttribute("style");
+        document.getElementById("suspectIdText").removeAttribute("placeholder");
+        document.getElementById("suspectIdText").setAttribute("required", true);
     }
     else
     {
-        document.getElementById("suspectId").innerHTML = "Numer ID";
-        document.getElementById("subCategoryText").style.display = "none";
-        document.getElementById("subCategorySelect").style.display = "inline";
+        document.getElementById("suspectIdHeader").innerHTML = "Numer ID";
+        document.getElementById("subCategorySelect").removeAttribute("style");
+        document.getElementById("subCategoryText").setAttribute("style", "display: none");
+        document.getElementById("suspectIdText").setAttribute("placeholder", "Nieobowiązkowe...");
+        document.getElementById("suspectIdText").removeAttribute("required");
     }
 }
