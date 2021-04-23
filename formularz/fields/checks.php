@@ -1,5 +1,5 @@
 <label>
-    <input type="checkbox" name="regulations" <?php
+    <input type="checkbox" name="regulations" required <?php
     if(isset($_SESSION['fr_regulations']))
     {
         echo "checked";

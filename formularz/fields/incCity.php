@@ -5,7 +5,7 @@
         echo $_SESSION['fr_incCity'];
         unset($_SESSION['fr_incCity']);
     }
-    ?>" name="incCity" required><br>
+    ?>" name="incCity" required pattern=".{3,50}" title="Od 3 do 50 znaków!"><br>
     <?php
         if(isset($_SESSION['e_incCity']))
         {

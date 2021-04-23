@@ -51,7 +51,7 @@
 
                 <div class="row">
                     <div class="fieldRow">Krótki opis<br>
-                        <textarea name="desc" required><?php include "fields/desc.php"; ?>
+                        <textarea name="desc" required title="Do 500 znaków!"><?php include "fields/desc.php"; ?>
                     </div>
                 </div>
 

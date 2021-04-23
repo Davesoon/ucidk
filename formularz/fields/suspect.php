@@ -6,7 +6,7 @@
         echo $_SESSION['fr_suspect'];
         unset($_SESSION['fr_suspect']);
     }
-    ?>" name="suspect" required><br>
+    ?>" name="suspect" required pattern=".{5,50}" title="Od 5 do 50 znaków!"><br>
     <?php
         if(isset($_SESSION['e_suspect']))
         {

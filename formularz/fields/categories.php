@@ -1,7 +1,7 @@
 <div class="field">
     Podmiot
-    <select name="category" id="category" onchange="fieldChanging()">
-        <option>-- wybierz --</option>
+    <select name="category" id="category" onchange="fieldChanging()" required>
+        <option value="" selected disabled hidden>-- wybierz --</option>
     </select>
     <?php
         if(isset($_SESSION['e_category']))
@@ -13,7 +13,9 @@
 </div>
 <div class="field">
     Szczegóły podmiotu
-    <select name="subCategorySelect" id="subCategorySelect"></select>
+    <select name="subCategorySelect" id="subCategorySelect">
+        <option value="" selected disabled hidden>-- wybierz --</option>
+    </select>
     <input type="text" id="subCategoryText" value="<?php
     if(isset($_SESSION['fr_subCategoryText']))
     {

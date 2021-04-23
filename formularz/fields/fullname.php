@@ -6,7 +6,7 @@
         echo $_SESSION['fr_firstname'];
         unset($_SESSION['fr_firstname']);
     }
-    ?>" name="firstname" required><br>
+    ?>" name="firstname" required pattern="[A-Za-z]{3,20}" title="Od 3 do 20 liter!"><br>
     <?php
         if(isset($_SESSION['e_firstname']))
         {
@@ -23,7 +23,7 @@
         echo $_SESSION['fr_lastname'];
         unset($_SESSION['fr_lastname']);
     }
-    ?>" name="lastname" required><br>
+    ?>" name="lastname" required pattern="[A-Za-z]{3,20}" title="Od 3 do 30 liter!"><br>
     <?php
         if(isset($_SESSION['e_lastname']))
         {

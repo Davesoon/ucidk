@@ -4,7 +4,7 @@ if(isset($_SESSION['fr_hqCity']))
     echo $_SESSION['fr_hqCity'];
     unset($_SESSION['fr_hqCity']);
 }
-?>" name="hqCity" required><br>
+?>" name="hqCity" required pattern=".{3,50}" title="Od 3 do 50 znaków!"><br>
 <?php
     if(isset($_SESSION['e_hqCity']))
     {

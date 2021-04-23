@@ -4,7 +4,8 @@
     {
         $everything_OK=true;
 
-        $formDate = $_POST['formDate'];
+        $tmpFormDate = $_POST['formDate'];
+        $formDate = filter_var($tmpFormDate, FILTER_SANITIZE_STRING);
 
         //Sprawdź poprawność imienia
         $tmpFirstname = $_POST['firstname'];
@@ -32,10 +33,10 @@
             $everything_OK=false;
             $_SESSION['e_email']="Podaj poprawny adres e-mail!";
         }
-        if(strlen($email)<5 || strlen($email)>50)
+        if(strlen($email)<10 || strlen($email)>50)
         {
             $everything_OK=false;
-            $_SESSION['e_email']="Od 5 do 50 znaków!";
+            $_SESSION['e_email']="Od 10 do 50 znaków!";
         }
     
         // Sprawdź poprawność telefonu
@@ -50,24 +51,25 @@
         //Sprawdź poprawność oskarżonego
         $tmpSuspect = $_POST['suspect'];
         $suspect = filter_var($tmpSuspect, FILTER_SANITIZE_STRING);
-        if(strlen($suspect)<6 || strlen($suspect)>50)
+        if(strlen($suspect)<5 || strlen($suspect)>50)
         {
             $everything_OK=false;
-            $_SESSION['e_suspect']="Od 6 do 50 znaków!";
+            $_SESSION['e_suspect']="Od 5 do 50 znaków!";
         }
     
-        //Sprawdź poprawność Id policjanta
+        //Sprawdź poprawność Id oskarżonego
         $tmpSuspectId = $_POST['suspectId'];
         $suspectId = filter_var($tmpSuspectId, FILTER_SANITIZE_STRING);
-        if(strlen($suspectId)>40)
+        if(strlen($suspectId)>30)
         {
             $everything_OK=false;
-            $_SESSION['e_suspectId']="Do 40 znaków!";
+            $_SESSION['e_suspectId']="Do 30 znaków!";
         }
 
         // Sprawdź poprawność podmiotu
-        $category = $_POST['category'];
-        if($category == '-- wybierz --' || strlen($category)<1)
+        $tmpCategory = $_POST['category'];
+        $category = filter_var($tmpCategory, FILTER_SANITIZE_STRING);
+        if (strlen($category)<1 || strlen($category)>12)
         {
             $everything_OK=false;
             $_SESSION['e_category']="Wybierz podmiot!";
@@ -80,28 +82,23 @@
         if ($category == 'Firma' || $category == 'Sklep' || $category == 'Inne') $tmpSubCategory = $subCategoryText;
         else $tmpSubCategory = $subCategorySelect;
 
-        $subCategory = filter_var($tmpSubCategory, FILTER_SANITIZE_STRING);
-        if($subCategory=='-- wybierz --' || strlen($subCategory)<1)
+        $subCategory = filter_var($tmpSubCategory, FILTER_SANITIZE_STRING);        
+        if(strlen($subCategory)<1 || strlen($subCategory)>50)
         {
             $everything_OK=false;
-            $_SESSION['e_subCategory']="Wprowadź szczegóły podmiotu!";
-        }
-        
-        if(strlen($subCategory)<3 || strlen($subCategory)>50)
-        {
-            $everything_OK=false;
-            $_SESSION['e_subCategory']="Od 3 do 50 znaków!";
+            $_SESSION['e_subCategory']="Od 1 do 50 znaków!";
         }
 
-        // Sprawdź poprawność województwa siedziby
-        $hqProvince = $_POST['hqProvince'];
-        if($hqProvince=='-- wybierz --' || strlen($hqProvince)<1)
+        // Sprawdź poprawność województwa podmiotu
+        $tmpHqProvince = $_POST['hqProvince'];
+        $hqProvince = filter_var($tmpHqProvince, FILTER_SANITIZE_STRING);
+        if(strlen($hqProvince)<1 || strlen($hqProvince)>20)
         {
             $everything_OK=false;
             $_SESSION['e_hqProvince']="Wybierz województwo!";
         }
 
-        // Sprawdź poprawność miejscowości siedziby
+        // Sprawdź poprawność miejscowości podmiotu
         $tmpHqCity = $_POST['hqCity'];
         $hqCity = filter_var($tmpHqCity, FILTER_SANITIZE_STRING);
         if(strlen($hqCity)<3 || strlen($hqCity)>50)
@@ -120,7 +117,8 @@
         }
 
         // Sprawdź poprawność daty zdarzenia
-        $incDate = $_POST['incDate'];
+        $tmpIncDate = $_POST['incDate'];
+        $incDate = filter_var($tmpIncDate, FILTER_SANITIZE_STRING);
         if($incDate > date("Y-m-d") || strlen($incDate)<1)
         {
             $everything_OK=false;
@@ -130,15 +128,16 @@
         //Sprawdź poprawność opisu
         $tmpDesc = $_POST['desc'];
         $desc = filter_var($tmpDesc, FILTER_SANITIZE_STRING);
-        if(strlen($desc)<5 || strlen($desc)>1000)
+        if(strlen($desc)<5 || strlen($desc)>500)
         {
             $everything_OK=false;
-            $_SESSION['e_desc']="Od 5 do 1000 znaków!";
+            $_SESSION['e_desc']="Od 5 do 500 znaków!";
         }
 
         // Sprawdź poprawność województwa zdarzenia
-        $incProvince = $_POST['incProvince'];
-        if($incProvince=='-- wybierz --' || strlen($incProvince)<1)
+        $tmpIncProvince = $_POST['incProvince'];
+        $incProvince = filter_var($tmpIncProvince, FILTER_SANITIZE_STRING);
+        if(strlen($incProvince)<1 || strlen($incProvince)>20)
         {
             $everything_OK=false;
             $_SESSION['e_incProvince']="Wybierz województwo!";

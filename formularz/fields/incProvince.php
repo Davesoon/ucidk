@@ -1,8 +1,6 @@
 <div class="field"> Województwo 
     <br><select name="incProvince" <?php error_reporting(0); ?>>
-        <option
-            <?php  if ($_SESSION['fr_incProvince'] == "-- wybierz --") echo 'selected="selected" ';?>
-        >-- wybierz --</option>
+        <option value="" selected disabled hidden>-- wybierz --</option>
         <option
             <?php if ($_SESSION['fr_incProvince'] == "dolnośląskie") echo 'selected="selected" ';?>
         >dolnośląskie</option>

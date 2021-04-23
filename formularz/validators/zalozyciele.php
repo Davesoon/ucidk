@@ -4,7 +4,8 @@
     {
         $everything_OK=true;
 
-        $formDate = $_POST['formDate'];
+        $tmpFormDate = $_POST['formDate'];
+        $formDate = filter_var($tmpFormDate, FILTER_SANITIZE_STRING);
 
         //Sprawdź poprawność imienia
         $tmpFirstname = $_POST['firstname'];
@@ -31,10 +32,10 @@
             $everything_OK=false;
             $_SESSION['e_email']="Podaj poprawny adres e-mail!";
         }
-        if(strlen($email)<5 || strlen($email)>50)
+        if(strlen($email)<10 || strlen($email)>50)
         {
             $everything_OK=false;
-            $_SESSION['e_email']="Od 5 do 50 znaków!";
+            $_SESSION['e_email']="Od 10 do 50 znaków!";
         }
 
         // Sprawdź poprawność telefonu
@@ -47,8 +48,9 @@
         }
 
         // Sprawdź poprawność województwa
-        $hqProvince = $_POST['hqProvince'];
-        if($hqProvince=='-- wybierz --' || strlen($hqProvince)<1)
+        $tmpHqProvince = $_POST['hqProvince'];
+        $hqProvince = filter_var($tmpHqProvince, FILTER_SANITIZE_STRING);
+        if (strlen($hqProvince)<1 || strlen($hqProvince)>20)
         {
             $everything_OK=false;
             $_SESSION['e_hqProvince']="Wybierz województwo!";
@@ -57,10 +59,10 @@
         // Sprawdź poprawność gminy
         $tmpHqCity = $_POST['hqCity'];
         $hqCity = filter_var($tmpHqCity, FILTER_SANITIZE_STRING);
-        if(strlen($hqCity)<3 || strlen($hqCity)>30)
+        if(strlen($hqCity)<3 || strlen($hqCity)>50)
         {
             $everything_OK=false;
-            $_SESSION['e_hqCity']="Od 3 do 30 liter!";
+            $_SESSION['e_hqCity']="Od 3 do 50 znaków!";
         }
         
         //Sprawdź poprawność informacji dodatkowej

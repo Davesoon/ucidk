@@ -1,12 +1,12 @@
 <div class="field">
     E-mail <br>
-    <input type="text" value="<?php
+    <input type="email" value="<?php
     if(isset($_SESSION['fr_email']))
     {
         echo $_SESSION['fr_email'];
         unset($_SESSION['fr_email']);
     }
-    ?>" name="email" required><br>
+    ?>" name="email" required pattern=".{10,50}" title="Od 10 do 50 znaków!"><br>
     <?php
         if(isset($_SESSION['e_email']))
         {
@@ -17,7 +17,7 @@
 </div>
 <div class="field">
     Telefon <br>
-        <input type="text" value="<?php
+        <input type="tel" value="<?php
         if(isset($_SESSION['fr_phone']))
         {
             echo $_SESSION['fr_phone'];

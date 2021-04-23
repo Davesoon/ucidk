@@ -40,7 +40,7 @@ img
 }
 .field{width: 45%;}
 .fieldRow{width: 100%;}
-input[type="text"], input[type="date"], textarea, select
+input[type="text"], input[type="date"], input[type="email"], input[type="tel"], textarea, select
 {
     background-color : rgb(33, 168, 155);
     border-radius: 5px;

@@ -1,9 +1,9 @@
 var mList = {
-    Policja : ['-- wybierz --', 'Komenda Główna', 'Komenda Stołeczna', 'Komenda Wojewódzka', 'Komenda Miejska', 'Komenda Powiatowa', 'Posterunek Policji'],
-    Sanepid :  ['-- wybierz --', 'Powiatowa Stacja Sanitarno - Epidemiologiczna', 'Wojewódzka Stacja Sanitarno - Epidemiologiczna', 'Główny Inspektorat Sanitarny'],
-    Urząd :  ['-- wybierz --', 'Urząd Miasta', 'Urząd Miasta i Gminy', 'Urząd Gminy', 'Starostwo Powiatowe '],
-    Sąd :  ['-- wybierz --', 'Sąd Rejonowy', 'Sąd Okręgowy', 'Wojewódzki Sąd Administracyjny', 'Naczelny Sąd Administracyjny', 'Sąd Apelacyjny', 'Sąd Najwyższy'],
-    Prokuratura : ['-- wybierz --', 'Prokuratura Rejonowa', 'Prokuratura Okręgowa', 'Prokuratura Apelacyjna', 'Prokuratura Krajowa '],
+    Policja : ['Komenda Główna', 'Komenda Stołeczna', 'Komenda Wojewódzka', 'Komenda Miejska', 'Komenda Powiatowa', 'Posterunek Policji'],
+    Sanepid :  ['Powiatowa Stacja Sanitarno - Epidemiologiczna', 'Wojewódzka Stacja Sanitarno - Epidemiologiczna', 'Główny Inspektorat Sanitarny'],
+    Urząd :  ['Urząd Miasta', 'Urząd Miasta i Gminy', 'Urząd Gminy', 'Starostwo Powiatowe '],
+    Sąd :  ['Sąd Rejonowy', 'Sąd Okręgowy', 'Wojewódzki Sąd Administracyjny', 'Naczelny Sąd Administracyjny', 'Sąd Apelacyjny', 'Sąd Najwyższy'],
+    Prokuratura : ['Prokuratura Rejonowa', 'Prokuratura Okręgowa', 'Prokuratura Apelacyjna', 'Prokuratura Krajowa '],
     Firma :  [],
     Sklep :  [],
     Inne :  []

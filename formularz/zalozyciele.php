@@ -32,7 +32,7 @@
 
             <div class="row">
                 <div class="fieldRow">Dodatkowe informacje <br>
-                    <textarea name="desc" placeholder="Nieobowiązkowe..."><?php include "fields/desc.php"; ?>
+                    <textarea name="desc" placeholder="Nieobowiązkowe..." title="Do 300 znaków!"><?php include "fields/desc.php"; ?>
                 </div>
             </div>
 
