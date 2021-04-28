@@ -17,57 +17,41 @@
     </header>
     <main>
         <form method="post" enctype="multipart/form-data">
-
             <input type="hidden" value="<?php echo date('Y-m-d'); ?>" name="formDate">
-
             <fieldset>
                 <h4>ZGŁASZAJĄCY</h4>
-
                 <div class="row"><?php include "fields/fullname.php"; ?></div>
                 <div class="row"><?php include "fields/email-phone.php"; ?></div>
             </fieldset>
-
             <fieldset>
                 <h4>SPRAWCA</h4>
-
-                <div class="row"><?php include "fields/suspect.php"; ?></div>
-
                 <div class="row"><?php include "fields/categories.php"; ?></div>
-
+                <div class="row"><?php include "fields/suspect.php"; ?></div>
                 <div class="row">
                     <?php include "fields/hqProvince.php"; ?>
                     <div class="field">Adres<?php include "fields/hqCity.php"; ?></div>
                 </div>
-
             </fieldset>
-
             <fieldset>
                 <h4>ZDARZENIE</h4>
-
                 <div class="row">
                     <?php include "fields/subject.php"; ?>
                     <?php include "fields/incDate.php"; ?>
                 </div>
-
                 <div class="row">
                     <div class="fieldRow">Krótki opis<br>
                         <textarea name="desc" required title="Do 500 znaków!"><?php include "fields/desc.php"; ?>
                     </div>
                 </div>
-
                 <div class="row">
                     <?php include "fields/incProvince.php"; ?>
                     <?php include "fields/incCity.php"; ?>
                 </div>
-
             </fieldset>
-            
             <div class="column"><?php include "fields/checks.php"; ?></div>
-
             <div id="submit">
                 <input type="submit" value="Wyślij FORMULARZ" name="submit" class="button">
             </div>
-
         </form>
     </main>
     <script type="text/javascript" src="fields/categories.js"></script>
