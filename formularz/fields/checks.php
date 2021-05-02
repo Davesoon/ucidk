@@ -5,7 +5,8 @@
         echo "checked";
         unset($_SESSION['fr_regulations']);
     }
-    ?>> Potwierdzam, że zapoznałem/-am się i akceptuję <a href="https://ucidk.pl/index.php/regulamin" target="_blank">politykę prywatności.</a>
+    ?>> Potwierdzam, że zapoznałem/-am się i akceptuję
+    <br><a href="https://ucidk.pl/index.php/o-ucidk/polityka-prywatnosci" target="_blank">POLITYKĘ PRYWATNOŚCI UCIDK</a>
 </label><br>
 <?php
     if(isset($_SESSION['e_regulations']))
