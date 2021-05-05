@@ -2,7 +2,7 @@ html
 {
     display: flex;
     justify-content: center;
-    background-image: url("images/brushed.png");
+    background-image: url("../images/solid.png");
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 body
@@ -84,7 +84,7 @@ a
 }
 .button
 {
-    background-color: maroon;
+    background-color: rgb(20, 107, 98);
     color: white;
     border-radius: 5px;
     padding: 10px;

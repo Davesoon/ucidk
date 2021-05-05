@@ -6,7 +6,7 @@
         unset($_SESSION['fr_regulations']);
     }
     ?>> Potwierdzam, że zapoznałem/-am się i akceptuję
-    <br><a href="https://ucidk.pl/index.php/o-ucidk/polityka-prywatnosci" target="_blank">POLITYKĘ PRYWATNOŚCI UCIDK</a>
+    <br><a href="https://ucidk.pl/index.php/o-ucidk/polityka-prywatnosci" target="_blank">POLITYKĘ PRYWATNOŚCI UCiDK</a>
 </label><br>
 <?php
     if(isset($_SESSION['e_regulations']))
